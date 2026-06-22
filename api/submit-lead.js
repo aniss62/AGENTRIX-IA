@@ -37,6 +37,10 @@ async function saveToAirtable(nom, email, message) {
   if (!res.ok) throw new Error("Airtable " + res.status);
 }
 
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 async function sendEmail(nom, email, message) {
   var date = new Date().toLocaleString("fr-FR", { timeZone: "Africa/Casablanca" });
   var res = await fetch("https://api.resend.com/emails", {
@@ -48,12 +52,12 @@ async function sendEmail(nom, email, message) {
     body: JSON.stringify({
       from: "Agentrix <onboarding@resend.dev>",
       to:   [NOTIFY_EMAIL],
-      subject: "Nouveau lead — " + nom,
+      subject: "Nouveau lead — " + esc(nom),
       html: [
         "<h2>Nouveau lead Agentrix·IA</h2>",
-        "<p><strong>Nom :</strong> " + nom + "</p>",
-        "<p><strong>Email :</strong> " + email + "</p>",
-        "<p><strong>Projet :</strong> " + message + "</p>",
+        "<p><strong>Nom :</strong> " + esc(nom) + "</p>",
+        "<p><strong>Email :</strong> " + esc(email) + "</p>",
+        "<p><strong>Projet :</strong> " + esc(message) + "</p>",
         "<p><strong>Date :</strong> " + date + "</p>"
       ].join("")
     })
