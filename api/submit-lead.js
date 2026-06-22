@@ -70,15 +70,6 @@ async function sendEmail(nom, email, message) {
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "method" });
 
-  // temporary env check — remove after debugging
-  if (req.url && req.url.includes("envcheck")) {
-    return res.status(200).json({
-      airtable: !!process.env.AIRTABLE_TOKEN,
-      resend: !!process.env.RESEND_API_KEY,
-      resendPrefix: (process.env.RESEND_API_KEY || "").slice(0, 6)
-    });
-  }
-
   var nom     = (req.body || {}).nom;
   var email   = (req.body || {}).email;
   var message = (req.body || {}).message;
@@ -97,8 +88,8 @@ module.exports = async function handler(req, res) {
     emailId = await withRetry(function () { return sendEmail(nom, email, message); }, 3, 500);
   } catch (err) {
     console.error("[submit-lead] Resend error after 3 retries:", err.message);
-    return res.status(502).json({ error: "resend", detail: err.message });
+    return res.status(502).json({ error: "resend" });
   }
 
-  return res.status(200).json({ ok: true, emailId: emailId });
+  return res.status(200).json({ ok: true });
 };
