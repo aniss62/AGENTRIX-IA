@@ -62,10 +62,9 @@ async function sendEmail(nom, email, message) {
       ].join("")
     })
   });
-  if (!res.ok) {
-    var body = await res.text();
-    throw new Error("Resend " + res.status + ": " + body);
-  }
+  var data = await res.json();
+  if (!res.ok) throw new Error("Resend " + res.status + ": " + JSON.stringify(data));
+  return data.id;
 }
 
 module.exports = async function handler(req, res) {
@@ -84,12 +83,13 @@ module.exports = async function handler(req, res) {
     return res.status(502).json({ error: "airtable" });
   }
 
+  var emailId;
   try {
-    await withRetry(function () { return sendEmail(nom, email, message); }, 3, 500);
+    emailId = await withRetry(function () { return sendEmail(nom, email, message); }, 3, 500);
   } catch (err) {
     console.error("[submit-lead] Resend error after 3 retries:", err.message);
-    return res.status(502).json({ error: "resend" });
+    return res.status(502).json({ error: "resend", detail: err.message });
   }
 
-  return res.status(200).json({ ok: true });
+  return res.status(200).json({ ok: true, emailId: emailId });
 };
