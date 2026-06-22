@@ -70,6 +70,15 @@ async function sendEmail(nom, email, message) {
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "method" });
 
+  // temporary env check — remove after debugging
+  if (req.url && req.url.includes("envcheck")) {
+    return res.status(200).json({
+      airtable: !!process.env.AIRTABLE_TOKEN,
+      resend: !!process.env.RESEND_API_KEY,
+      resendPrefix: (process.env.RESEND_API_KEY || "").slice(0, 6)
+    });
+  }
+
   var nom     = (req.body || {}).nom;
   var email   = (req.body || {}).email;
   var message = (req.body || {}).message;
