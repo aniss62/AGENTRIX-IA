@@ -18,8 +18,6 @@ function PageContact() {
       <section className="hero hero--inner">
         <div className="wrap">
           <Eyebrow>{t("contact.hero.eyebrow")}</Eyebrow>
-          <Reveal as="h1" className="h-1 mt-m maxw-xl">{t("contact.hero.title")}</Reveal>
-          <Reveal className="lead mt-s" delay="1">{t("contact.hero.sub")}</Reveal>
         </div>
       </section>
 
@@ -72,6 +70,15 @@ function PageContact() {
               </a>
             </Reveal>
           </div>
+
+          <Reveal delay="2" className="contact__formwrap">
+            <div className="mono-tag">{t("home.lead.eyebrow")}</div>
+            <h2 className="h-2 mt-s">{t("home.lead.title")}</h2>
+            <p className="lead mt-s">{t("home.lead.sub")}</p>
+            <div className="contact__form">
+              <LeadForm variant="section" />
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

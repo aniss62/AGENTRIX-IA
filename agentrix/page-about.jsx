@@ -60,19 +60,19 @@ function PageAbout({ go }) {
             <Eyebrow>{t("about.team.eyebrow")}</Eyebrow>
             <h2 className="h-1">{t("about.team.title")}</h2>
           </div>
-          <div className="grid cols-4">
-            {team.map((m, i) => (
-              <Reveal key={i} delay={String((i % 4) + 1)}>
-                <div className="member">
-                  <div className="member__photo">
-                    <img className="member__img" src={window.TEAM_PHOTOS[i]} alt={m.name} loading="lazy" />
-                  </div>
-                  <div className="member__name">{m.name}</div>
-                  <div className="member__role">{m.role}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <div className="ceo">
+              <div className="ceo__photo">
+                <img className="ceo__img" src={window.TEAM_PHOTOS[0]} alt={team[0].name} loading="lazy" />
+              </div>
+              <div className="ceo__body">
+                <svg className="ceo__quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.5 0C6.5 3 0 10 0 17.5 0 22.5 3.6 26 8.3 26c4.3 0 7.7-3.4 7.7-7.6 0-4-2.8-7-6.6-7.4C10.5 6.7 14 3.2 18 1.4L14.5 0zM32.5 0c-8 3-14.5 10-14.5 17.5 0 5 3.6 8.5 8.3 8.5 4.3 0 7.7-3.4 7.7-7.6 0-4-2.8-7-6.6-7.4C28.5 6.7 32 3.2 36 1.4L32.5 0z" fill="currentColor"/></svg>
+                <p className="ceo__note">{t("about.team.ceoNote")}</p>
+                <div className="ceo__name">{team[0].name}</div>
+                <div className="ceo__role">{team[0].role}</div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

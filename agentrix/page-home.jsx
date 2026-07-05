@@ -24,9 +24,9 @@ function PageHome({ go }) {
                 <Btn variant="ghost" lg onClick={() => go("product")}>{t("home.hero.cta2")}</Btn>
               </Reveal>
               <Reveal className="hero__stats" delay="3">
-                <div className="hero__stat"><div className="num"><CountUp value="18h" /></div><div className="lbl">{t("home.hero.s1")}</div></div>
+                <div className="hero__stat"><div className="num"><CountUp value="≈16h" /></div><div className="lbl">{t("home.hero.s1")}</div></div>
                 <div className="hero__stat"><div className="num"><CountUp value="120+" /></div><div className="lbl">{t("home.hero.s2")}</div></div>
-                <div className="hero__stat"><div className="num"><CountUp value="92%" /></div><div className="lbl">{t("home.hero.s3")}</div></div>
+                <div className="hero__stat"><div className="num"><CountUp value="90%" /></div><div className="lbl">{t("home.hero.s3")}</div></div>
               </Reveal>
             </div>
             <div className="hero__visual">

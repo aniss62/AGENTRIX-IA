@@ -1,5 +1,4 @@
 // Agentrix-IA — Tweaks (accent, display font, corner style)
-const { useEffect } = React;
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "#c2f43a",
   "displayFont": "Bricolage Grotesque",
