@@ -126,7 +126,7 @@ function Footer({ go }) {
             </div>
             <div className="footer__col">
               <h4>{t("footer.contact")}</h4>
-              <a href="#contact" onClick={(e) => { e.preventDefault(); go("contact"); }}>contact@agentrix.ai</a>
+              <a href="#contact" onClick={(e) => { e.preventDefault(); go("contact"); }}>contact@agentrix-ia.com</a>
               <a href="#contact" onClick={(e) => { e.preventDefault(); go("contact"); }}>{t("nav.cta")}</a>
             </div>
           </div>

@@ -52,6 +52,7 @@ function App() {
 
   return (
     <>
+      <AmbientBackdrop />
       <Nav route={route} go={go} />
       <main key={route}>
         {Page ? <Page go={go} /> : <PageStub route={route} />}
