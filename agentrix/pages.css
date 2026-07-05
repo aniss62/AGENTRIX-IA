@@ -320,3 +320,35 @@ a.info-card__big:hover { color: var(--accent); }
 .ftm__role { color: var(--muted); font-size: 13.5px; }
 .ftm__co { color: var(--accent); font-size: 12.5px; font-family: var(--font-mono); }
 .ftm__more { display: flex; justify-content: center; margin-block-start: 36px; }
+
+/* ============================================================
+   À propos — bloc CEO (photo + citation)
+   ============================================================ */
+.ceo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.ceo__photo {
+  width: 50%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line-2);
+  aspect-ratio: 3 / 4;
+}
+.ceo__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.03) brightness(0.96);
+  transition: filter .45s var(--ease), transform .6s var(--ease);
+}
+.ceo__photo:hover .ceo__img { filter: grayscale(0) contrast(1) brightness(1); transform: scale(1.03); }
+.ceo__body { display: flex; flex-direction: column; gap: 20px; }
+.ceo__quote { color: var(--accent); opacity: .5; flex-shrink: 0; }
+.ceo__note { font-size: clamp(17px, 1.8vw, 21px); line-height: 1.6; color: var(--muted); }
+:root[lang="ar"] .ceo__note { line-height: 1.9; }
+.ceo__name { font-family: var(--font-display); font-weight: 600; font-size: 18px; }
+.ceo__role { color: var(--muted); font-size: 14.5px; margin-block-start: 2px; }
+@media (max-width: 760px) { .ceo { grid-template-columns: 1fr; } .ceo__photo { width: 50%; } }
