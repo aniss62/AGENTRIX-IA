@@ -32,9 +32,6 @@ function PageTestimonials({ go }) {
             {items.map((q, i) => (
               <Reveal key={i} delay={String((i % 3) + 1)} className="quotes__cell">
                 <figure className="quote">
-                  <image-slot id={`tpage-${i}`} className="quote__shot" shape="rounded" radius="14"
-                    src={window.PERSON_PHOTOS[i]}
-                    placeholder={t("home.tmoni.photo")} style={{ display: "block", width: "100%", height: "160px" }}></image-slot>
                   <div className="quote__mark">"</div>
                   <blockquote>{q.quote}</blockquote>
                   <figcaption className="quote__by">
