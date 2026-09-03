@@ -1,0 +1,24 @@
+# Agentrix
+
+> Agentrix is an agentic AI agency that builds autonomous AI agents which think, organize themselves, and take action to give businesses back their time.
+
+## What we do
+
+- Workflow automation — end-to-end automation of recurring tasks (follow-ups, data entry, reports, syncing between tools), running continuously without oversight.
+- Scraping & qualified leads — agents that find, enrich, and qualify prospects at scale, feeding CRM pipelines with contacts that matter.
+- High-conversion websites — modern, fast, SEO-optimized websites designed, built, and delivered end-to-end.
+- Reasoning agents — agents that break down complex goals, plan, decide, and adapt to business rules, with optional human validation.
+
+## Key pages
+
+- [Home](https://www.agentrix-ia.com/): Overview of Agentrix and what our autonomous AI agents do.
+- [Product](https://www.agentrix-ia.com/#product): The Agentrix agent platform and its capabilities.
+- [About](https://www.agentrix-ia.com/#about): Our mission, values, and team.
+- [Testimonials](https://www.agentrix-ia.com/#testimonials): Client results and feedback.
+- [Contact](https://www.agentrix-ia.com/#contact): Get in touch to discuss a project.
+
+## Contact
+
+- Email: contact@agentrix-ia.com
+- Phone: +212 661 151 480
+- Website: https://www.agentrix-ia.com/
