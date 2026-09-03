@@ -41,7 +41,7 @@ window.I18N_FR = {
           desc: "Vos tâches répétitives gérées de bout en bout, jour et nuit, sans que vous ayez à y penser.",
           long: "Relances, saisies, rapports, synchronisations : tout ce qui vous prend du temps chaque jour est pris en charge par des agents qui travaillent en continu, sans jamais perdre le fil.",
           points: ["Relances et suivis automatiques", "Synchronisation entre vos outils", "Rapports générés sans intervention", "Déclencheurs et règles sur mesure"],
-          metric: { value: "18h", label: "récupérées / semaine" } },
+          metric: { value: "≈16h", label: "récupérées / semaine" } },
         { tag: "02 · Acquisition", title: "Scraping & leads qualifiés",
           desc: "On identifie, on enrichit et on qualifie vos prospects, à grande échelle.",
           long: "Des agents qui repèrent, enrichissent et qualifient vos prospects en continu, pour remplir votre pipeline de contacts qui comptent vraiment.",
@@ -72,8 +72,8 @@ window.I18N_FR = {
       eyebrow: "Impact mesurable",
       title: "Le temps que vous récupérez, en chiffres.",
       items: [
-        { value: "18h", label: "récupérées par semaine et par équipe" },
-        { value: "92%", label: "des tâches répétitives automatisées" },
+        { value: "≈16h", label: "récupérées par semaine et par équipe" },
+        { value: "90%", label: "des tâches répétitives automatisées" },
         { value: "3,4×", label: "de leads qualifiés en plus" },
         { value: "< 4 sem.", label: "du premier appel à la mise en production" }
       ]
@@ -113,8 +113,6 @@ window.I18N_FR = {
       optional: "(optionnel)",
       required: "Champ requis",
       emailInvalid: "Adresse e-mail invalide",
-      errorTitle: "Une erreur est survenue",
-      errorRetry: "Veuillez réessayer.",
       submit: "Être recontacté",
       sending: "Envoi…",
       success: "Merci, c'est bien reçu ✓",
@@ -185,7 +183,7 @@ window.I18N_FR = {
     hero: {
       eyebrow: "À propos",
       title: "Nous rendons l'automatisation autonome accessible à toutes les équipes.",
-      sub: "Agentrix-IA réunit des ingénieurs IA, des designers et des stratèges produit autour d'une conviction simple : votre temps doit servir à ce qui compte vraiment."
+      sub: "Votre temps doit servir à ce qui compte vraiment."
     },
     story: {
       eyebrow: "Notre mission",
@@ -203,14 +201,12 @@ window.I18N_FR = {
       ]
     },
     team: {
-      eyebrow: "L'équipe",
-      title: "Les artisans derrière vos agents.",
+      eyebrow: "Le mot du fondateur",
+      title: "Une conviction, pas un pitch.",
       members: [
-        { name: "Aniss Sebbane", role: "Co-fondateur & CEO" },
-        { name: "Léa Moreau", role: "Directrice IA" },
-        { name: "Karim Haddad", role: "Lead Agent Engineering" },
-        { name: "Sofia Renard", role: "Design & Conversion" }
-      ]
+        { name: "Aniss Sebbane", role: "Co-fondateur & CEO" }
+      ],
+      ceoNote: "On a fondé Agentrix parce qu'on en avait assez de voir des équipes brillantes s'épuiser sur des tâches qu'une machine peut faire mieux. Chaque agent qu'on construit a un seul objectif : vous rendre du temps pour ce qui compte vraiment. C'est une conviction, pas un argument de vente."
     }
   },
   testimonials: {
@@ -251,7 +247,7 @@ window.I18N_FR = {
     info: {
       eyebrow: "Nos coordonnées",
       emailLabel: "E-mail",
-      email: "contact@agentrix.ai",
+      email: "contact@agentrix-ia.com",
       phoneLabel: "Téléphone",
       phone: "+212 661 151 480",
       addressLabel: "Adresse",
@@ -309,7 +305,7 @@ window.I18N_EN = {
           desc: "Your repetitive processes run end-to-end, 24/7, with no supervision.",
           long: "Follow-ups, data entry, reports, syncing: your repetitive tasks run end-to-end, handled by agents that work continuously and never lose the thread.",
           points: ["Automatic follow-ups & nudges", "Sync across your tools", "Reports generated hands-free", "Custom triggers & rules"],
-          metric: { value: "18h", label: "reclaimed / week" } },
+          metric: { value: "≈16h", label: "reclaimed / week" } },
         { tag: "02 · Acquisition", title: "Scraping & qualified leads",
           desc: "Identify, enrich and qualify prospects at scale, automatically.",
           long: "Agents that identify, enrich and qualify your prospects continuously, feeding your pipeline with genuinely relevant contacts.",
@@ -340,8 +336,8 @@ window.I18N_EN = {
       eyebrow: "Measurable impact",
       title: "The time you reclaim, quantified.",
       items: [
-        { value: "18h", label: "reclaimed per week, per team" },
-        { value: "92%", label: "of repetitive tasks automated" },
+        { value: "≈16h", label: "reclaimed per week, per team" },
+        { value: "90%", label: "of repetitive tasks automated" },
         { value: "3.4×", label: "more qualified leads" },
         { value: "< 4 wks", label: "from first call to production" }
       ]
@@ -381,8 +377,6 @@ window.I18N_EN = {
       optional: "(optional)",
       required: "Required field",
       emailInvalid: "Invalid email address",
-      errorTitle: "Something went wrong",
-      errorRetry: "Please try again.",
       submit: "Get a callback",
       sending: "Sending…",
       success: "Thanks, got it ✓",
@@ -453,7 +447,7 @@ window.I18N_EN = {
     hero: {
       eyebrow: "About",
       title: "We make autonomous automation accessible to every team.",
-      sub: "Agentrix-IA brings together AI engineers, designers and product strategists around one belief: your time should go to what truly matters."
+      sub: "Your time should go to what truly matters."
     },
     story: {
       eyebrow: "Our mission",
@@ -471,14 +465,12 @@ window.I18N_EN = {
       ]
     },
     team: {
-      eyebrow: "The team",
-      title: "The people behind your agents.",
+      eyebrow: "Founder's note",
+      title: "A conviction, not a pitch.",
       members: [
-        { name: "Aniss Sebbane", role: "Co-founder & CEO" },
-        { name: "Léa Moreau", role: "Head of AI" },
-        { name: "Karim Haddad", role: "Lead Agent Engineering" },
-        { name: "Sofia Renard", role: "Design & Conversion" }
-      ]
+        { name: "Aniss Sebbane", role: "Co-founder & CEO" }
+      ],
+      ceoNote: "We started Agentrix because we were tired of watching brilliant teams burn out on work a machine could do better. Every agent we build has one goal: give you back time for what actually matters. That's a conviction, not a pitch."
     }
   },
   testimonials: {
@@ -519,7 +511,7 @@ window.I18N_EN = {
     info: {
       eyebrow: "Our details",
       emailLabel: "Email",
-      email: "contact@agentrix.ai",
+      email: "contact@agentrix-ia.com",
       phoneLabel: "Phone",
       phone: "+212 661 151 480",
       addressLabel: "Address",
@@ -577,7 +569,7 @@ window.I18N_AR = {
           desc: "تنفيذ عملياتك المتكررة من البداية للنهاية، على مدار الساعة، دون إشراف.",
           long: "المتابعات وإدخال البيانات والتقارير والمزامنة: تُنفَّذ مهامك المتكررة من البداية للنهاية بواسطة وكلاء يعملون باستمرار دون أن يفقدوا الخيط أبداً.",
           points: ["متابعات وتذكيرات تلقائية", "مزامنة بين أدواتك", "تقارير تُولَّد دون تدخل", "محفّزات وقواعد حسب الطلب"],
-          metric: { value: "١٨ساعة", label: "موفّرة / أسبوع" } },
+          metric: { value: "≈16ساعة", label: "موفّرة / أسبوع" } },
         { tag: "٠٢ · الاستقطاب", title: "جمع وتأهيل العملاء المحتملين",
           desc: "تحديد وإثراء وتأهيل العملاء المحتملين على نطاق واسع وبشكل آلي.",
           long: "وكلاء يحدّدون ويُثرون ويؤهّلون عملاءك المحتملين باستمرار، لتغذية مسار مبيعاتك بجهات اتصال وثيقة الصلة فعلاً.",
@@ -608,8 +600,8 @@ window.I18N_AR = {
       eyebrow: "أثر قابل للقياس",
       title: "الوقت الذي تستعيده، بالأرقام.",
       items: [
-        { value: "١٨ساعة", label: "موفّرة أسبوعياً لكل فريق" },
-        { value: "٩٢٪", label: "من المهام المتكررة مؤتمتة" },
+        { value: "≈16ساعة", label: "موفّرة أسبوعياً لكل فريق" },
+        { value: "90٪", label: "من المهام المتكررة مؤتمتة" },
         { value: "٣٫٤×", label: "عملاء محتملون مؤهّلون أكثر" },
         { value: "< ٤ أسابيع", label: "من أول مكالمة إلى الإنتاج" }
       ]
@@ -649,8 +641,6 @@ window.I18N_AR = {
       optional: "(اختياري)",
       required: "حقل مطلوب",
       emailInvalid: "بريد إلكتروني غير صالح",
-      errorTitle: "حدث خطأ",
-      errorRetry: "يرجى المحاولة مرة أخرى.",
       submit: "أريد أن يُعاد الاتصال بي",
       sending: "جارٍ الإرسال…",
       success: "شكراً، تم التسجيل ✓",
@@ -721,7 +711,7 @@ window.I18N_AR = {
     hero: {
       eyebrow: "من نحن",
       title: "نجعل الأتمتة المستقلة في متناول كل فريق.",
-      sub: "تجمع Agentrix-IA مهندسي ذكاء اصطناعي ومصمّمين واستراتيجيي منتجات حول قناعة واحدة: وقتك يجب أن يُكرَّس لما يهمّ حقاً."
+      sub: "وقتك يجب أن يُكرَّس لما يهمّ حقاً."
     },
     story: {
       eyebrow: "مهمّتنا",
@@ -739,14 +729,12 @@ window.I18N_AR = {
       ]
     },
     team: {
-      eyebrow: "الفريق",
-      title: "الأشخاص خلف وكلائك.",
+      eyebrow: "كلمة المؤسّس",
+      title: "قناعة، لا شعار تسويقي.",
       members: [
-        { name: "أنيس سبّان", role: "شريك مؤسّس ومدير تنفيذي" },
-        { name: "ليا مورو", role: "مديرة الذكاء الاصطناعي" },
-        { name: "كريم حدّاد", role: "قائد هندسة الوكلاء" },
-        { name: "صوفيا رينار", role: "التصميم والتحويل" }
-      ]
+        { name: "أنيس الصبان", role: "شريك مؤسّس ومدير تنفيذي" }
+      ],
+      ceoNote: "أسسنا Agentrix لأننا مللنا من رؤية فرق موهوبة تنهك في مهام يمكن لآلة أن تؤديها بشكل أفضل. كل وكيل نبنيه له هدف واحد: إعادة وقتك لما يهمّ فعلاً. هذه قناعة، لا شعار تسويقي."
     }
   },
   testimonials: {
@@ -787,7 +775,7 @@ window.I18N_AR = {
     info: {
       eyebrow: "بيانات التواصل",
       emailLabel: "البريد الإلكتروني",
-      email: "contact@agentrix.ai",
+      email: "contact@agentrix-ia.com",
       phoneLabel: "الهاتف",
       phone: "+212 661 151 480",
       addressLabel: "العنوان",

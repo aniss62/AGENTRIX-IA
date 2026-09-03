@@ -141,9 +141,6 @@ function HomeTestimonials({ go }) {
           {featured.map((q, i) => (
             <Reveal key={i} delay={String(i + 1)}>
               <figure className="ftm">
-                <image-slot id={`tmoni-${i}`} className="ftm__shot" shape="rounded" radius="16"
-                  src={window.PERSON_PHOTOS[i]}
-                  placeholder={t("home.tmoni.photo")} style={{ display: "block", width: "100%", height: "210px" }}></image-slot>
                 <blockquote className="ftm__quote">{q.quote}</blockquote>
                 <figcaption className="ftm__by">
                   <span className="ftm__name">{q.name}</span>
