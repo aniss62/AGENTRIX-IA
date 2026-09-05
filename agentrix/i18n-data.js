@@ -6,6 +6,7 @@ window.I18N_FR = {
     home: "Accueil",
     product: "Produit",
     about: "À propos",
+    blog: "Blog",
     testimonials: "Témoignages",
     contact: "Contact",
     cta: "Nous contacter"
@@ -270,6 +271,7 @@ window.I18N_EN = {
     home: "Home",
     product: "Product",
     about: "About",
+    blog: "Blog",
     testimonials: "Testimonials",
     contact: "Contact",
     cta: "Get in touch"
@@ -534,6 +536,7 @@ window.I18N_AR = {
     home: "الرئيسية",
     product: "المنتج",
     about: "من نحن",
+    blog: "المدونة",
     testimonials: "آراء العملاء",
     contact: "تواصل معنا",
     cta: "اتصل بنا"

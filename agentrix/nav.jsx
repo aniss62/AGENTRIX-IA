@@ -58,6 +58,7 @@ function Nav({ route, go }) {
     ["home", t("nav.home")],
     ["product", t("nav.product")],
     ["about", t("nav.about")],
+    ["blog", t("nav.blog"), "/blog/"],
     ["testimonials", t("nav.testimonials")]
   ];
 
@@ -69,9 +70,13 @@ function Nav({ route, go }) {
         </a>
 
         <nav className="nav__links">
-          {links.map(([key, label]) => (
-            <a key={key} href={`#${key}`} className={`nav__link ${route === key ? "active" : ""}`}
-               onClick={(e) => { e.preventDefault(); go(key); }}>{label}</a>
+          {links.map(([key, label, href]) => (
+            href ? (
+              <a key={key} href={href} className="nav__link">{label}</a>
+            ) : (
+              <a key={key} href={`#${key}`} className={`nav__link ${route === key ? "active" : ""}`}
+                 onClick={(e) => { e.preventDefault(); go(key); }}>{label}</a>
+            )
           ))}
         </nav>
 
@@ -86,12 +91,19 @@ function Nav({ route, go }) {
 
       <div className={`mobilemenu ${menu ? "open" : ""}`}>
         <div className="mobilemenu__links">
-          {links.map(([key, label], i) => (
-            <a key={key} href={`#${key}`} className={`mobilemenu__link ${route === key ? "active" : ""}`}
-               style={{ transitionDelay: `${0.04 * i + 0.05}s` }}
-               onClick={(e) => { e.preventDefault(); go(key); }}>
-              <span className="mobilemenu__idx">0{i + 1}</span>{label}
-            </a>
+          {links.map(([key, label, href], i) => (
+            href ? (
+              <a key={key} href={href} className="mobilemenu__link"
+                 style={{ transitionDelay: `${0.04 * i + 0.05}s` }}>
+                <span className="mobilemenu__idx">0{i + 1}</span>{label}
+              </a>
+            ) : (
+              <a key={key} href={`#${key}`} className={`mobilemenu__link ${route === key ? "active" : ""}`}
+                 style={{ transitionDelay: `${0.04 * i + 0.05}s` }}
+                 onClick={(e) => { e.preventDefault(); go(key); }}>
+                <span className="mobilemenu__idx">0{i + 1}</span>{label}
+              </a>
+            )
           ))}
         </div>
         <div className="mobilemenu__foot">
