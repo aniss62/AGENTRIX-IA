@@ -30,6 +30,17 @@ de la SPA — sinon ils resteraient invisibles pour le SEO/GEO.
      du site (contact@agentrix-ia.com, +212 661 151 480) pour rester cohérent.
    - Un CTA en fin d'article (diagnostic gratuit de 30 minutes) — la seule mention promotionnelle
      autorisée par `BRAND.md`.
+   - **Sommaire en colonne latérale droite** (sticky en desktop, empilé au-dessus de l'article en
+     mobile via `order` CSS), pas un bloc inline en tête d'article.
+   - **FAQ en accordéon** : `<details>` avec le même attribut `name` sur chaque item du groupe
+     (support natif navigateur, sans JS) pour qu'ouvrir une question ferme les autres.
+   - **Section "Sources" obligatoire en bas d'article**, avant le CTA final : liste numérotée de
+     tous les chiffres cités avec lien direct vers le document/la page réellement consultée (pas
+     l'organisation citée de mémoire). Si un chiffre ne peut pas être retracé à une URL vérifiable
+     au moment de la publication, le retirer plutôt que le garder sans lien.
+   - **Viser plus court que le mot-cible du template** (ex. page pilier : viser ~1500-1800 mots
+     réels plutôt que 3000-4000) — densité d'information plutôt que longueur, conformément à
+     `VOICE.md` (pas de remplissage pour atteindre un chiffre).
 3. **Mettre à jour `blog/index.html`** (page d'accueil du blog, à créer au premier article) pour
    lister tous les articles publiés, du plus récent au plus ancien.
 4. **Mettre à jour `sitemap.xml`** à la racine : ajouter une entrée pour
