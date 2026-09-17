@@ -5,3 +5,4 @@ Une ligne par article. Statuts : `intake` → `research` → `draft` → `optimi
 | Slug | Sujet | Mot-clé principal | Pilier | Template | Statut | Date |
 |------|-------|--------------------|--------|----------|--------|------|
 | automatisation-ia-pme-guide-complet | Automatisation IA pour PME : le guide complet | automatisation IA pour PME | Automatisation de workflows | pillar-page | published | 2026-09-05 — https://www.agentrix-ia.com/blog/automatisation-ia-pme-guide-complet/ |
+| qualifier-leads-automatiquement-agent-ia | Comment qualifier des leads automatiquement avec un agent IA | qualifier des leads automatiquement avec un agent IA | Scraping & leads qualifiés | how-to-guide | published | 2026-09-18 — https://www.agentrix-ia.com/blog/qualifier-leads-automatiquement-agent-ia/ |
