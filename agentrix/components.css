@@ -244,14 +244,16 @@
   position: fixed; inset-block-end: 20px; inset-inline-start: 20px; z-index: 90;
   display: flex; align-items: flex-start; gap: 12px;
   width: min(340px, calc(100vw - 40px));
-  padding: 15px 16px; border-radius: var(--radius);
+  padding: 15px 17px; border-radius: 22px 22px 22px 5px;
   border: 1px solid var(--accent);
   background: var(--accent);
   box-shadow: 0 24px 60px -18px var(--accent-glow), 0 0 0 1px oklch(1 0 0 / 0.02);
   opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.98);
+  transform-origin: bottom left;
   transition: opacity .4s var(--ease), transform .4s var(--ease), visibility .4s;
   pointer-events: none;
 }
+:root[dir="rtl"] .socialproof { border-radius: 22px 22px 5px 22px; transform-origin: bottom right; }
 .socialproof.show { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
 .socialproof__dot {
   flex-shrink: 0; margin-block-start: 5px;
