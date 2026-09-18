@@ -470,9 +470,9 @@ a.info-card__big:hover { color: var(--accent); }
    Legal pages (Privacy / Cookies / Terms)
    ============================================================ */
 .legal { display: flex; flex-direction: column; max-width: 760px; }
-.legal__item { padding-block: 26px; border-block-end: 1px solid var(--line); }
+.legal__item { padding-block: 10px; border-block-end: 1px solid var(--line); }
 .legal__item:first-child { padding-block-start: 0; }
 .legal__item:last-child { border-block-end: none; }
-.legal__item h3 { margin-block-end: 10px; }
+.legal__item h3 { margin-block-end: 8px; }
 .legal__item p { color: var(--muted); line-height: 1.65; }
 :root[lang="ar"] .legal__item p { line-height: 1.9; }
