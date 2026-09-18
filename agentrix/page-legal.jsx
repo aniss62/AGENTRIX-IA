@@ -5,7 +5,7 @@ function LegalPage({ type }) {
   const sections = t(`${base}.sections`);
 
   return (
-    <div className="page">
+    <div className="page page--legal">
       <section className="hero hero--inner">
         <div className="wrap">
           <Eyebrow>{t(`${base}.eyebrow`)}</Eyebrow>
@@ -15,7 +15,7 @@ function LegalPage({ type }) {
         </div>
       </section>
 
-      <section className="section--tight">
+      <section className="section--tight legal-section">
         <div className="wrap">
           <div className="legal">
             {sections.map((s, i) => (

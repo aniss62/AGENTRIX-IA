@@ -469,6 +469,8 @@ a.info-card__big:hover { color: var(--accent); }
 /* ============================================================
    Legal pages (Privacy / Cookies / Terms)
    ============================================================ */
+.page--legal .hero--inner { padding-block-end: 8px; }
+.legal-section { padding-block-start: 8px; }
 .legal { display: flex; flex-direction: column; max-width: 760px; }
 .legal__item { padding-block: 10px; border-block-end: 1px solid var(--line); }
 .legal__item:first-child { padding-block-start: 0; }
