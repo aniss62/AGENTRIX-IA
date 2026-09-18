@@ -1,7 +1,7 @@
 // Agentrix-IA — App shell + router
 const { useState: useStateApp, useEffect } = React;
 
-const ROUTES = ["home", "product", "about", "testimonials", "contact"];
+const ROUTES = ["home", "product", "about", "testimonials", "contact", "privacy", "cookies", "terms"];
 
 function getRouteFromHash() {
   const h = (location.hash || "").replace("#", "");
@@ -46,7 +46,10 @@ function App() {
     product: window.PageProduct,
     about: window.PageAbout,
     testimonials: window.PageTestimonials,
-    contact: window.PageContact
+    contact: window.PageContact,
+    privacy: window.PagePrivacy,
+    cookies: window.PageCookies,
+    terms: window.PageTerms
   };
   const Page = pages[route] || null;
 
@@ -60,6 +63,7 @@ function App() {
       <Footer go={go} />
       <AgentrixTweaks />
       <ChatAgent />
+      <CookieConsent go={go} />
     </>
   );
 }

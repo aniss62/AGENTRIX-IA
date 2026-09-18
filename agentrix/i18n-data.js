@@ -262,7 +262,62 @@ window.I18N_FR = {
     company: "Entreprise",
     contact: "Contact",
     rights: "© 2026 Agentrix-IA. Tous droits réservés.",
-    cta: "Nous contacter"
+    cta: "Nous contacter",
+    legal: { privacy: "Confidentialité", cookies: "Cookies", terms: "Conditions" }
+  },
+  legal: {
+    privacy: {
+      eyebrow: "Confidentialité",
+      title: "Politique de confidentialité",
+      updated: "Dernière mise à jour : 18 septembre 2026",
+      intro: "Agentrix-IA accorde une attention particulière à la protection de vos données personnelles. Cette politique explique quelles données nous collectons, pourquoi, et comment vous pouvez exercer vos droits.",
+      sections: [
+        { h: "Responsable de traitement", body: "Agentrix-IA, Avenue Hassane Rue Boundoukia, 30050 Fès, Maroc — contact@agentrix-ia.com — est responsable du traitement des données collectées via ce site." },
+        { h: "Données que nous collectons", body: "Lorsque vous remplissez notre formulaire de contact : nom, e-mail professionnel, entreprise, nature de votre besoin et message. Nous collectons également des données techniques de navigation (langue choisie, informations de connexion basiques) nécessaires au bon fonctionnement du site — voir notre Politique de cookies pour le détail." },
+        { h: "Pourquoi nous les utilisons", body: "Répondre à vos demandes de contact ou de devis, vous fournir et améliorer nos agents IA, assurer la sécurité du site, et respecter nos obligations légales. Nous n'utilisons jamais vos données à des fins de publicité tierce." },
+        { h: "Base légale", body: "Le traitement repose sur votre consentement (formulaire de contact), l'exécution de mesures précontractuelles à votre demande, et notre intérêt légitime à assurer la sécurité et le bon fonctionnement du site." },
+        { h: "Partage des données", body: "Vos données ne sont jamais vendues. Elles peuvent être transmises à des prestataires techniques strictement nécessaires (hébergement, messagerie) agissant sous nos instructions et dans le respect de la confidentialité." },
+        { h: "Durée de conservation", body: "Les données issues d'une demande de contact sont conservées 24 mois maximum en l'absence de relation commerciale, puis supprimées ou anonymisées." },
+        { h: "Vos droits", body: "Vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition et de portabilité sur vos données. Pour les exercer, écrivez-nous à contact@agentrix-ia.com. Vous pouvez également saisir la Commission Nationale de contrôle de la protection des Données à caractère Personnel (CNDP) au Maroc, ou l'autorité de protection des données compétente si vous résidez dans l'Union européenne." },
+        { h: "Sécurité", body: "Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables pour protéger vos données contre la perte, l'accès non autorisé ou la divulgation." },
+        { h: "Contact", body: "Pour toute question relative à cette politique, contactez-nous à contact@agentrix-ia.com ou au +212 661 151 480." }
+      ]
+    },
+    cookies: {
+      eyebrow: "Cookies",
+      title: "Politique de cookies",
+      updated: "Dernière mise à jour : 18 septembre 2026",
+      intro: "Cette page explique ce que sont les cookies, lesquels nous utilisons sur agentrix-ia.com, et comment vous pouvez gérer vos préférences.",
+      sections: [
+        { h: "Qu'est-ce qu'un cookie ?", body: "Un cookie (ou traceur similaire, comme le stockage local du navigateur) est un petit fichier déposé sur votre appareil lors de votre visite, qui permet de mémoriser des informations d'une visite à l'autre." },
+        { h: "Les cookies que nous utilisons", body: "Notre site utilise uniquement des traceurs essentiels : votre langue d'affichage préférée (FR/EN/AR) et votre choix de consentement aux cookies. Aucun cookie publicitaire ou de mesure d'audience n'est déposé à ce jour." },
+        { h: "Services tiers", body: "La page Contact intègre une carte OpenStreetMap. Ce service tiers peut déposer ses propres cookies techniques lorsque la carte est affichée, indépendamment de notre site. Nous n'avons pas de contrôle sur ces cookies." },
+        { h: "Gérer vos préférences", body: "Vous pouvez accepter ou refuser les cookies non essentiels via le bandeau affiché lors de votre première visite. Vous pouvez également supprimer les cookies et le stockage local à tout moment depuis les réglages de votre navigateur." },
+        { h: "Mise à jour de cette politique", body: "Si notre usage des cookies évolue (par exemple l'ajout d'un outil de mesure d'audience), cette page sera mise à jour et, si nécessaire, un nouveau consentement vous sera demandé." }
+      ]
+    },
+    terms: {
+      eyebrow: "Conditions",
+      title: "Conditions d'utilisation",
+      updated: "Dernière mise à jour : 18 septembre 2026",
+      intro: "Ces conditions régissent l'utilisation du site agentrix-ia.com. En y naviguant, vous acceptez les termes ci-dessous.",
+      sections: [
+        { h: "Objet", body: "Ce site présente Agentrix-IA, agence spécialisée dans la conception d'agents IA agentiques, l'automatisation de workflows et la création de sites web, ainsi que ses coordonnées et son offre." },
+        { h: "Propriété intellectuelle", body: "L'ensemble des contenus du site (textes, visuels, logo, code) est la propriété d'Agentrix-IA ou de ses partenaires, sauf mention contraire, et ne peut être reproduit sans autorisation écrite préalable." },
+        { h: "Utilisation du site", body: "Vous vous engagez à utiliser ce site de manière conforme à la loi et à ne pas tenter d'en extraire le contenu, d'en perturber le fonctionnement ou d'en abuser (scraping massif, attaque, usurpation)." },
+        { h: "Nos services", body: "Les présentes conditions concernent uniquement la navigation sur ce site vitrine. Toute prestation (déploiement d'agents, automatisation, développement web) fait l'objet d'un devis et d'un contrat distinct entre Agentrix-IA et le client." },
+        { h: "Disponibilité et responsabilité", body: "Nous mettons tout en œuvre pour assurer la disponibilité du site mais ne garantissons pas un accès ininterrompu. Le site peut contenir des liens vers des sites tiers dont nous ne maîtrisons pas le contenu." },
+        { h: "Droit applicable", body: "Les présentes conditions sont soumises au droit marocain. Tout litige relève de la compétence des juridictions de Fès, Maroc, sauf disposition légale impérative contraire." },
+        { h: "Contact", body: "Pour toute question relative à ces conditions, écrivez-nous à contact@agentrix-ia.com." }
+      ]
+    }
+  },
+  cookieBanner: {
+    title: "Nous utilisons des cookies essentiels",
+    text: "Uniquement pour mémoriser votre langue et votre choix ci-dessous — aucun traceur publicitaire.",
+    accept: "Accepter",
+    decline: "Refuser",
+    link: "En savoir plus"
   }
 };
 
@@ -527,7 +582,62 @@ window.I18N_EN = {
     company: "Company",
     contact: "Contact",
     rights: "© 2026 Agentrix-IA. All rights reserved.",
-    cta: "Get in touch"
+    cta: "Get in touch",
+    legal: { privacy: "Privacy", cookies: "Cookies", terms: "Terms" }
+  },
+  legal: {
+    privacy: {
+      eyebrow: "Privacy",
+      title: "Privacy Policy",
+      updated: "Last updated: September 18, 2026",
+      intro: "Agentrix-IA takes the protection of your personal data seriously. This policy explains what data we collect, why, and how you can exercise your rights.",
+      sections: [
+        { h: "Data controller", body: "Agentrix-IA, Avenue Hassane Rue Boundoukia, 30050 Fès, Morocco — contact@agentrix-ia.com — is the data controller for the data collected through this site." },
+        { h: "Data we collect", body: "When you fill in our contact form: your name, professional email, company, the nature of your need, and your message. We also collect basic technical browsing data (your chosen language, basic connection information) needed to run the site — see our Cookie Policy for details." },
+        { h: "Why we use it", body: "To respond to your contact or quote requests, to deliver and improve our AI agents, to keep the site secure, and to meet our legal obligations. We never use your data for third-party advertising." },
+        { h: "Legal basis", body: "Processing relies on your consent (contact form), pre-contractual steps taken at your request, and our legitimate interest in keeping the site secure and functional." },
+        { h: "Data sharing", body: "Your data is never sold. It may be shared with technical service providers strictly required for our operations (hosting, email), acting on our instructions and bound by confidentiality." },
+        { h: "Retention period", body: "Data from a contact request is kept for a maximum of 24 months in the absence of a business relationship, then deleted or anonymized." },
+        { h: "Your rights", body: "You have the right to access, correct, erase, object to, and port your data. To exercise these rights, write to contact@agentrix-ia.com. You may also contact Morocco's National Commission for the Control of Personal Data Protection (CNDP), or your competent data protection authority if you are based in the European Union." },
+        { h: "Security", body: "We apply reasonable technical and organizational measures to protect your data against loss, unauthorized access, or disclosure." },
+        { h: "Contact", body: "For any question about this policy, reach us at contact@agentrix-ia.com or +212 661 151 480." }
+      ]
+    },
+    cookies: {
+      eyebrow: "Cookies",
+      title: "Cookie Policy",
+      updated: "Last updated: September 18, 2026",
+      intro: "This page explains what cookies are, which ones we use on agentrix-ia.com, and how you can manage your preferences.",
+      sections: [
+        { h: "What is a cookie?", body: "A cookie (or similar tracker, such as browser local storage) is a small file placed on your device during your visit, used to remember information between visits." },
+        { h: "The cookies we use", body: "Our site only uses essential trackers: your preferred display language (FR/EN/AR) and your cookie consent choice. No advertising or audience-measurement cookie is set at this time." },
+        { h: "Third-party services", body: "The Contact page embeds an OpenStreetMap map. This third-party service may set its own technical cookies when the map is displayed, independently of our site. We have no control over these cookies." },
+        { h: "Managing your preferences", body: "You can accept or decline non-essential cookies via the banner shown on your first visit. You can also delete cookies and local storage at any time from your browser settings." },
+        { h: "Updates to this policy", body: "If our use of cookies changes (for example, adding an audience-measurement tool), this page will be updated and, if needed, your consent will be requested again." }
+      ]
+    },
+    terms: {
+      eyebrow: "Terms",
+      title: "Terms of Use",
+      updated: "Last updated: September 18, 2026",
+      intro: "These terms govern the use of agentrix-ia.com. By browsing this site, you accept the terms below.",
+      sections: [
+        { h: "Purpose", body: "This site presents Agentrix-IA, an agency specializing in agentic AI agents, workflow automation, and website creation, along with its contact details and offering." },
+        { h: "Intellectual property", body: "All content on this site (text, visuals, logo, code) is the property of Agentrix-IA or its partners, unless stated otherwise, and may not be reproduced without prior written permission." },
+        { h: "Use of the site", body: "You agree to use this site lawfully and not to attempt to extract its content, disrupt its operation, or misuse it (mass scraping, attacks, impersonation)." },
+        { h: "Our services", body: "These terms only cover browsing this showcase site. Any service engagement (agent deployment, automation, web development) is subject to a separate quote and contract between Agentrix-IA and the client." },
+        { h: "Availability and liability", body: "We do our best to keep the site available but do not guarantee uninterrupted access. The site may contain links to third-party sites whose content we do not control." },
+        { h: "Governing law", body: "These terms are governed by Moroccan law. Any dispute falls under the jurisdiction of the courts of Fès, Morocco, unless mandatory law provides otherwise." },
+        { h: "Contact", body: "For any question about these terms, write to contact@agentrix-ia.com." }
+      ]
+    }
+  },
+  cookieBanner: {
+    title: "We use essential cookies",
+    text: "Only to remember your language and your choice below — no advertising trackers.",
+    accept: "Accept",
+    decline: "Decline",
+    link: "Learn more"
   }
 };
 

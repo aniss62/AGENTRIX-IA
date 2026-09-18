@@ -207,9 +207,37 @@
 .footer__col h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); font-weight: 500; margin-block-end: 4px; }
 .footer__col a { color: var(--muted); font-size: 15px; transition: color .2s; width: fit-content; }
 .footer__col a:hover { color: var(--accent); }
-.footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-block-start: 24px; flex-wrap: wrap; gap: 12px; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-block-start: 24px; flex-wrap: wrap; gap: 12px 28px; }
+.footer__legal { display: flex; gap: 20px; }
+.footer__legal a { color: var(--faint); font-size: 13px; transition: color .2s; }
+.footer__legal a:hover { color: var(--accent); }
 @media (max-width: 760px) { .footer__top { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .footer__cols { grid-template-columns: 1fr 1fr; } }
+
+/* --- Cookie consent banner --- */
+.cookiebanner {
+  position: fixed; inset-block-end: 20px; inset-inline-start: 20px; z-index: 95;
+  display: flex; flex-wrap: wrap; align-items: flex-start; gap: 14px;
+  width: min(380px, calc(100vw - 40px));
+  padding: 20px; border-radius: var(--radius);
+  border: 1px solid var(--line-2);
+  background: linear-gradient(180deg, var(--surface), var(--bg-2));
+  box-shadow: 0 28px 70px -20px oklch(0 0 0 / 0.6), 0 0 0 1px oklch(1 0 0 / 0.02);
+  animation: cookieRise .5s var(--ease);
+}
+@keyframes cookieRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .cookiebanner { animation: none; } }
+.cookiebanner__ic {
+  flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px;
+  display: grid; place-items: center; color: var(--accent); background: var(--accent-soft);
+}
+.cookiebanner__body { flex: 1; min-width: 0; }
+.cookiebanner__title { font-family: var(--font-display); font-weight: 600; font-size: 15.5px; margin-block-end: 6px; }
+.cookiebanner__text { color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+.cookiebanner__text a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.cookiebanner__actions { display: flex; flex-wrap: wrap; flex-basis: 100%; gap: 10px; margin-block-start: 4px; margin-inline-start: 56px; }
+.cookiebanner__actions .btn { padding: 10px 16px; font-size: 13.5px; }
+@media (max-width: 480px) { .cookiebanner__actions { margin-inline-start: 0; } }
 
 /* ============================================================
    Services explorer (developed pillars section)

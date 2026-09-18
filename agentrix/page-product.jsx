@@ -77,6 +77,7 @@ function DashPreview({ label }) {
 
   return (
     <div className="dash-mock-wrap">
+      <span className="dash-mock__ring" aria-hidden="true"></span>
       <div className="dash-mock" role="img" aria-label={label}>
         <div className="dash-mock__bar">
           <div className="dash-mock__id">
@@ -183,26 +184,24 @@ function PageProduct({ go }) {
 
   return (
     <div className="page">
-      {/* Hero */}
-      <section className="hero hero--inner hero--center">
+      {/* Hero + dashboard preview */}
+      <section className="hero hero--inner">
         <div className="wrap">
-          <Eyebrow>{t("product.hero.eyebrow")}</Eyebrow>
-          <Reveal as="h1" className="h-1 mt-m maxw-xl">{t("product.hero.title")}</Reveal>
-          <Reveal className="lead mt-s" delay="1">{t("product.hero.sub")}</Reveal>
-        </div>
-      </section>
-
-      {/* Dashboard preview */}
-      <section className="section--tight">
-        <div className="wrap">
-          <Reveal>
-            <DashPreview label={t("product.dash.label")} />
-          </Reveal>
+          <div className="hero__grid">
+            <div className="hero__copy">
+              <Eyebrow>{t("product.hero.eyebrow")}</Eyebrow>
+              <Reveal as="h1" className="h-1 mt-m">{t("product.hero.title")}</Reveal>
+              <Reveal className="lead mt-s hero__sub" delay="1">{t("product.hero.sub")}</Reveal>
+            </div>
+            <div className="hero__visual hero__visual--wide">
+              <DashPreview label={t("product.dash.label")} />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Capabilities */}
-      <section className="section">
+      <section className="section section--tight">
         <div className="wrap">
           <div className="shead">
             <Eyebrow>{t("product.capabilities.eyebrow")}</Eyebrow>

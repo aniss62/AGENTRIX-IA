@@ -146,6 +146,11 @@ function Footer({ go }) {
         <div className="rule"></div>
         <div className="footer__bottom">
           <span className="mono-tag">{t("footer.rights")}</span>
+          <nav className="footer__legal">
+            <a href="#privacy" onClick={(e) => { e.preventDefault(); go("privacy"); }}>{t("footer.legal.privacy")}</a>
+            <a href="#cookies" onClick={(e) => { e.preventDefault(); go("cookies"); }}>{t("footer.legal.cookies")}</a>
+            <a href="#terms" onClick={(e) => { e.preventDefault(); go("terms"); }}>{t("footer.legal.terms")}</a>
+          </nav>
           <span className="mono-tag footer__made">FR · EN · ع</span>
         </div>
       </div>

@@ -11,6 +11,11 @@
 .hero--center h1, .hero--center .lead { margin-inline: auto; }
 .hero--center .lead { max-width: 54ch; }
 
+/* --- Product: hero visual (dashboard mock is wider than the homepage's AgentNetwork graphic) --- */
+@media (max-width: 880px) {
+  .hero__visual--wide { max-width: 560px; }
+}
+
 /* --- Product: agentic loop --- */
 .loop { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .loop__item { position: relative; text-align: center; }
@@ -119,8 +124,29 @@
 .dash-mock-wrap::after { bottom: -14%; right: -6%; opacity: 0.1; }
 @media (max-width: 640px) { .dash-mock-wrap::before, .dash-mock-wrap::after { display: none; } }
 
-.dash-mock { position: relative; z-index: 1; border-radius: var(--radius-lg); border: 1px solid var(--line); background: linear-gradient(180deg, var(--surface), var(--bg-2)); overflow: hidden; box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.5); transition: transform .5s var(--ease), border-color .4s; }
-.dash-mock:hover { transform: translateY(-4px); border-color: var(--line-2); }
+.dash-mock {
+  position: relative; z-index: 1; border-radius: var(--radius-lg);
+  border: 1px solid var(--line-2);
+  border-block-end-width: 3px; border-block-end-color: var(--accent);
+  background: linear-gradient(180deg, var(--surface), var(--bg-2)); overflow: hidden;
+  box-shadow: 0 0 40px -14px var(--accent-glow), 0 30px 80px -30px oklch(0 0 0 / 0.5);
+  transition: transform .5s var(--ease), border-color .4s, box-shadow .4s;
+}
+.dash-mock:hover { transform: translateY(-4px); border-color: var(--accent-dim); border-block-end-color: var(--accent); box-shadow: 0 0 52px -10px var(--accent-glow), 0 30px 80px -30px oklch(0 0 0 / 0.5); }
+
+/* Animated light-chase ring travelling around the frame */
+@property --dash-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.dash-mock__ring {
+  position: absolute; inset: 0; z-index: 2; border-radius: var(--radius-lg);
+  padding: 1.5px; pointer-events: none;
+  background: conic-gradient(from var(--dash-angle, 0deg), transparent 0deg, transparent 260deg, var(--accent) 300deg, var(--text) 320deg, var(--accent) 340deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: dashRingSpin 5.5s linear infinite;
+}
+@keyframes dashRingSpin { to { --dash-angle: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .dash-mock__ring { animation: none; } }
 .dash-mock__bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 24px; border-bottom: 1px solid var(--line); }
 .dash-mock__id { display: flex; align-items: center; gap: 14px; }
 .dash-mock__dots { display: flex; gap: 6px; }
@@ -439,3 +465,14 @@ a.info-card__big:hover { color: var(--accent); }
 .ceo__name { font-family: var(--font-display); font-weight: 600; font-size: 18px; }
 .ceo__role { color: var(--muted); font-size: 14.5px; margin-block-start: 2px; }
 @media (max-width: 760px) { .ceo { grid-template-columns: 1fr; } .ceo__photo { width: 60%; } }
+
+/* ============================================================
+   Legal pages (Privacy / Cookies / Terms)
+   ============================================================ */
+.legal { display: flex; flex-direction: column; max-width: 760px; }
+.legal__item { padding-block: 26px; border-block-end: 1px solid var(--line); }
+.legal__item:first-child { padding-block-start: 0; }
+.legal__item:last-child { border-block-end: none; }
+.legal__item h3 { margin-block-end: 10px; }
+.legal__item p { color: var(--muted); line-height: 1.65; }
+:root[lang="ar"] .legal__item p { line-height: 1.9; }
