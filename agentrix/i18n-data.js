@@ -318,6 +318,33 @@ window.I18N_FR = {
     accept: "Accepter",
     decline: "Refuser",
     link: "En savoir plus"
+  },
+  socialProof: {
+    lead: "Une entreprise à",
+    verb: "vient de",
+    now: "À l'instant",
+    items: [
+      { city: "Casablanca", activity: "demander un site web moderne" },
+      { city: "Paris", activity: "demander l'automatisation de ses workflows" },
+      { city: "Abidjan", activity: "solliciter un agent IA pour le service client" },
+      { city: "Dakar", activity: "demander un devis pour des agents IA" },
+      { city: "Montréal", activity: "réserver une démonstration de nos agents" },
+      { city: "Douala", activity: "demander la génération de leads qualifiés" },
+      { city: "Kigali", activity: "demander une refonte de son site web" },
+      { city: "Marrakech", activity: "demander l'intégration de ses outils (CRM, Slack, Gmail)" },
+      { city: "Lyon", activity: "demander un agent IA de facturation" },
+      { city: "Yaoundé", activity: "solliciter l'automatisation de sa prospection" },
+      { city: "Rabat", activity: "demander un audit de ses processus" },
+      { city: "Québec", activity: "demander un agent IA pour son support client" },
+      { city: "Dakar", activity: "demander la création d'un site vitrine" },
+      { city: "Bouaké", activity: "demander l'automatisation de sa facturation" },
+      { city: "Tanger", activity: "demander un agent IA de veille concurrentielle" },
+      { city: "Marseille", activity: "demander l'automatisation de ses e-mails" },
+      { city: "Kigali", activity: "demander un accompagnement en agents IA" },
+      { city: "Fès", activity: "demander un agent IA pour la prospection" },
+      { city: "Bordeaux", activity: "demander un devis pour un site e-commerce" },
+      { city: "Toronto", activity: "demander l'intégration d'un agent IA à son CRM" }
+    ]
   }
 };
 
@@ -638,6 +665,33 @@ window.I18N_EN = {
     accept: "Accept",
     decline: "Decline",
     link: "Learn more"
+  },
+  socialProof: {
+    lead: "A company in",
+    verb: "just",
+    now: "Just now",
+    items: [
+      { city: "Casablanca", activity: "requested a modern website" },
+      { city: "Paris", activity: "requested workflow automation" },
+      { city: "Abidjan", activity: "asked about an AI customer service agent" },
+      { city: "Dakar", activity: "requested a quote for AI agents" },
+      { city: "Montreal", activity: "booked a demo of our agents" },
+      { city: "Douala", activity: "requested qualified lead generation" },
+      { city: "Kigali", activity: "requested a website redesign" },
+      { city: "Marrakech", activity: "requested tool integrations (CRM, Slack, Gmail)" },
+      { city: "Lyon", activity: "requested an AI billing agent" },
+      { city: "Yaoundé", activity: "asked about prospecting automation" },
+      { city: "Rabat", activity: "requested a process audit" },
+      { city: "Quebec City", activity: "requested an AI customer support agent" },
+      { city: "Dakar", activity: "requested a showcase website" },
+      { city: "Bouaké", activity: "requested billing automation" },
+      { city: "Tangier", activity: "requested a competitive-watch AI agent" },
+      { city: "Marseille", activity: "requested email automation" },
+      { city: "Kigali", activity: "requested AI agent support" },
+      { city: "Fès", activity: "requested an AI prospecting agent" },
+      { city: "Bordeaux", activity: "requested a quote for an e-commerce site" },
+      { city: "Toronto", activity: "requested an AI agent integrated with their CRM" }
+    ]
   }
 };
 

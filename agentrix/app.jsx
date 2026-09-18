@@ -64,6 +64,7 @@ function App() {
       <AgentrixTweaks />
       <ChatAgent />
       <CookieConsent go={go} />
+      <SocialProof />
     </>
   );
 }
