@@ -108,6 +108,93 @@
 .member:hover .member__img { filter: grayscale(0) contrast(1) brightness(1); transform: scale(1.03); }
 .member:hover .member__photo::after { opacity: 0; }
 .dash-img { width: 100%; display: block; border-radius: var(--radius-lg); border: 1px solid var(--line); }
+
+/* --- Agent dashboard mock (product page preview) --- */
+.dash-mock-wrap { position: relative; }
+.dash-mock-wrap::before, .dash-mock-wrap::after {
+  content: ""; position: absolute; width: 46%; height: 60%; border-radius: 50%;
+  background: var(--accent); filter: blur(90px); opacity: 0.16; z-index: 0; pointer-events: none;
+}
+.dash-mock-wrap::before { top: -12%; left: -8%; }
+.dash-mock-wrap::after { bottom: -14%; right: -6%; opacity: 0.1; }
+@media (max-width: 640px) { .dash-mock-wrap::before, .dash-mock-wrap::after { display: none; } }
+
+.dash-mock { position: relative; z-index: 1; border-radius: var(--radius-lg); border: 1px solid var(--line); background: linear-gradient(180deg, var(--surface), var(--bg-2)); overflow: hidden; box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.5); transition: transform .5s var(--ease), border-color .4s; }
+.dash-mock:hover { transform: translateY(-4px); border-color: var(--line-2); }
+.dash-mock__bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 24px; border-bottom: 1px solid var(--line); }
+.dash-mock__id { display: flex; align-items: center; gap: 14px; }
+.dash-mock__dots { display: flex; gap: 6px; }
+.dash-mock__dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--line-2); }
+.dash-mock__title { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.16em; color: var(--muted); }
+.dash-mock__title .logo { filter: none; }
+.dash-mock__live { display: inline-flex; align-items: center; gap: 7px; padding: 5px 13px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.08em; }
+.dash-mock__live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); animation: dashPulse 1.8s ease-in-out infinite; }
+
+.dash-mock__nav { display: flex; flex-wrap: wrap; gap: 3px; padding: 12px 18px; border-bottom: 1px solid var(--line); }
+.dash-mock__navitem { display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border-radius: 10px; font-size: 14px; color: var(--muted); white-space: nowrap; transition: color .3s var(--ease), background .3s var(--ease); }
+.dash-mock__navitem svg { opacity: 0.65; transition: opacity .3s, color .3s; }
+.dash-mock__navitem.active { color: var(--text); background: oklch(1 0 0 / 0.045); font-weight: 600; }
+.dash-mock__navitem.active svg { opacity: 1; color: var(--accent); }
+
+.dash-mock__body { padding: 22px 24px 8px; min-height: 258px; display: flex; flex-direction: column; }
+.dash-mock__section-head { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-block-end: 14px; }
+.dash-mock__agent { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); text-transform: none; letter-spacing: 0.02em; }
+.dash-mock__livedot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); animation: dashPulse 1.8s ease-in-out infinite; flex-shrink: 0; }
+
+.dash-mock__frame { flex: 1; animation: dashFadeIn .5s var(--ease); }
+@keyframes dashFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.dash-mock__row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.dash-mock__row:last-child { border-bottom: none; }
+.dash-mock__avatar { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--accent-ink); background: var(--accent-dim); }
+.dash-mock__check { width: 21px; height: 21px; border-radius: 50%; border: 1.5px solid var(--line-2); display: grid; place-items: center; flex-shrink: 0; color: transparent; transition: color .3s, border-color .3s, background .3s; }
+.dash-mock__check.done { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.dash-mock__task { flex: 1; font-size: 14.5px; color: var(--text); }
+.dash-mock__task.done { color: var(--faint); text-decoration: line-through; }
+.dash-mock__pill { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--muted); white-space: nowrap; }
+.dash-mock__pill.accent { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+/* Production frame — progress bars */
+.dash-mock__stage { padding: 11px 0; }
+.dash-mock__stage-head { display: flex; align-items: center; justify-content: space-between; font-size: 14px; margin-block-end: 8px; }
+.dash-mock__stage-head span:last-child { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.dash-mock__bar-track { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.dash-mock__bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent-dim), var(--accent)); transition: width 1s var(--ease); }
+
+/* Dashboard frame — stat cards + sparkline */
+.dash-mock__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-block-end: 16px; }
+.dash-mock__stat { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 13px 14px; background: oklch(1 0 0 / 0.02); }
+.dash-mock__stat-val { font-family: var(--font-display); font-weight: 600; font-size: 21px; color: var(--accent); }
+.dash-mock__stat-lbl { font-size: 12px; color: var(--muted); margin-block-start: 3px; line-height: 1.3; }
+.dash-mock__spark { width: 100%; height: 54px; display: block; }
+
+/* Alerts frame — activity feed */
+.dash-mock__alert { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.dash-mock__alert:last-child { border-bottom: none; }
+.dash-mock__alert-dot { width: 8px; height: 8px; border-radius: 50%; margin-block-start: 6px; flex-shrink: 0; background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
+.dash-mock__alert-dot.warn { background: var(--line-2); box-shadow: none; border: 1.5px solid var(--muted); }
+.dash-mock__alert-text { flex: 1; font-size: 14px; color: var(--text); line-height: 1.4; }
+.dash-mock__alert-time { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--faint); margin-block-start: 2px; }
+
+/* Carousel dots */
+.dash-mock__dotsnav { display: flex; justify-content: center; gap: 7px; padding-block: 6px 14px; }
+.dash-mock__dotsnav button { width: 6px; height: 6px; padding: 0; border-radius: 50%; border: none; background: var(--line-2); cursor: pointer; transition: background .3s, transform .3s; }
+.dash-mock__dotsnav button.active { background: var(--accent); transform: scale(1.3); }
+
+.dash-mock__foot { text-align: center; padding: 14px; font-family: var(--font-mono); font-size: 11.5px; color: var(--faint); border-top: 1px solid var(--line); }
+
+@keyframes dashPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+@media (prefers-reduced-motion: reduce) {
+  .dash-mock__live::before, .dash-mock__livedot { animation: none; }
+  .dash-mock__frame { animation: none; }
+  .dash-mock:hover { transform: none; }
+}
+@media (max-width: 640px) {
+  .dash-mock__nav { display: none; }
+  .dash-mock__bar { padding: 16px 18px; }
+  .dash-mock__body { padding: 18px 18px 4px; min-height: 300px; }
+  .dash-mock__stats { grid-template-columns: 1fr; }
+}
 .member__initials {
   position: absolute; inset: 0; display: grid; place-items: center;
   font-family: var(--font-display); font-weight: 600; font-size: 34px;
