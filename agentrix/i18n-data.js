@@ -322,7 +322,7 @@ window.I18N_FR = {
   socialProof: {
     lead: "Une demande de",
     verb: "pour",
-    now: "À l'instant",
+    times: ["À l'instant", "Il y a 5 minutes", "Il y a 20 minutes", "Il y a 1 heure", "Il y a 3 heures", "Il y a 12 heures", "Il y a 24 heures", "Il y a 48 heures"],
     items: [
       { city: "Casablanca", activity: "un site web moderne" },
       { city: "Paris", activity: "l'automatisation de ses workflows" },
@@ -669,7 +669,7 @@ window.I18N_EN = {
   socialProof: {
     lead: "A request from",
     verb: "for",
-    now: "Just now",
+    times: ["Just now", "5 minutes ago", "20 minutes ago", "1 hour ago", "3 hours ago", "12 hours ago", "24 hours ago", "48 hours ago"],
     items: [
       { city: "Casablanca", activity: "a modern website" },
       { city: "Paris", activity: "workflow automation" },

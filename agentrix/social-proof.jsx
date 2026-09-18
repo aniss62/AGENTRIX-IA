@@ -16,9 +16,11 @@ function shuffleIndices(n) {
 function SocialProof() {
   const { t } = useT();
   const items = t("socialProof.items");
+  const times = t("socialProof.times");
   const [gateOpen, setGateOpen] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
   const [idx, setIdx] = React.useState(0);
+  const [timeIdx, setTimeIdx] = React.useState(0);
   const queueRef = React.useRef([]);
   const posRef = React.useRef(0);
 
@@ -46,6 +48,7 @@ function SocialProof() {
       }
       setIdx(queueRef.current[posRef.current]);
       posRef.current += 1;
+      if (times && times.length) setTimeIdx(Math.floor(Math.random() * times.length));
       setVisible(true);
       schedule(() => {
         setVisible(false);
@@ -65,7 +68,7 @@ function SocialProof() {
       <span className="socialproof__dot"></span>
       <div className="socialproof__body">
         <p className="socialproof__text">{t("socialProof.lead")} <strong>{item.city}</strong> {t("socialProof.verb")} {item.activity}.</p>
-        <span className="socialproof__time">{t("socialProof.now")}</span>
+        <span className="socialproof__time">{times && times[timeIdx]}</span>
       </div>
       <button className="socialproof__close" aria-label="Close" onClick={() => setVisible(false)}>
         <Icon name="close" size={12} />
