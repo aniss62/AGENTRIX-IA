@@ -3,8 +3,14 @@
    ============================================================ */
 
 /* --- Logo / wordmark --- */
-.logo { display: inline-flex; }
-.logo svg { display: block; }
+.logo { display: inline-flex; position: relative; }
+.logo svg { display: block; position: relative; z-index: 1; }
+/* Light theme: the icon is thin low-opacity green strokes/dots with no
+   fill — invisible on light gray without a dark backing circle. */
+:root[data-theme="light"] .logo::before {
+  content: ""; position: absolute; inset: -5px;
+  background: var(--accent-ink); border-radius: 50%;
+}
 .wordmark {
   display: inline-flex; align-items: center; gap: 11px;
   font-family: var(--font-display);
@@ -259,9 +265,9 @@
   display: flex; align-items: flex-start; gap: 12px;
   width: min(340px, calc(100vw - 40px));
   padding: 15px 17px; border-radius: 22px 22px 22px 5px;
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  box-shadow: 0 24px 60px -18px var(--accent-glow), 0 0 0 1px oklch(1 0 0 / 0.02);
+  border: 1px solid var(--line-2);
+  background: var(--bg);
+  box-shadow: 0 24px 60px -18px oklch(0 0 0 / 0.5), 0 0 0 1px oklch(1 0 0 / 0.02);
   opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.98);
   transform-origin: bottom left;
   transition: opacity .4s var(--ease), transform .4s var(--ease), visibility .4s;
@@ -272,15 +278,15 @@
 .socialproof__dot {
   flex-shrink: 0; margin-block-start: 5px;
   width: 8px; height: 8px; border-radius: 50%;
-  background: var(--accent-ink); box-shadow: 0 0 6px oklch(0 0 0 / 0.3);
+  background: var(--accent); box-shadow: 0 0 6px var(--accent-glow);
   animation: dashPulse 1.8s ease-in-out infinite;
 }
 .socialproof__body { flex: 1; min-width: 0; }
-.socialproof__text { font-size: 13.5px; line-height: 1.45; color: var(--accent-ink); }
-.socialproof__text strong { font-weight: 700; }
-.socialproof__time { display: block; margin-block-start: 4px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--accent-ink); opacity: 0.65; }
-.socialproof__close { flex-shrink: 0; color: var(--accent-ink); opacity: 0.6; padding: 2px; transition: opacity .2s; }
-.socialproof__close:hover { opacity: 1; }
+.socialproof__text { font-size: 13.5px; line-height: 1.45; color: var(--text); }
+.socialproof__text strong { font-weight: 700; color: var(--accent); }
+.socialproof__time { display: block; margin-block-start: 4px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--faint); }
+.socialproof__close { flex-shrink: 0; color: var(--faint); opacity: 0.8; padding: 2px; transition: opacity .2s, color .2s; }
+.socialproof__close:hover { opacity: 1; color: var(--text); }
 @media (prefers-reduced-motion: reduce) { .socialproof { transition: opacity .2s; } .socialproof__dot { animation: none; } }
 
 /* ============================================================
