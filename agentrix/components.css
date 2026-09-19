@@ -369,3 +369,22 @@
   .svc__tab-arrow { display: none; }
 }
 @media (max-width: 520px) { .svc__points { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Light theme: icon badges
+   Soft-tinted green (--accent-soft) on a light-gray canvas reads too
+   pale, so every icon badge gets a solid dark chip with the bright
+   icon on top instead — same treatment as the logo/eyebrow chips.
+   ============================================================ */
+:root[data-theme="light"] .pcard__icon,
+:root[data-theme="light"] .cookiebanner__ic,
+:root[data-theme="light"] .svc__tab.active .svc__tab-ic,
+:root[data-theme="light"] .svc__panel-ic,
+:root[data-theme="light"] .chatsec__hint-ic,
+:root[data-theme="light"] .detail__ic,
+:root[data-theme="light"] .chat__avatar,
+:root[data-theme="light"] .chat__msg-av,
+:root[data-theme="light"] .dash-mock__check.done {
+  background: var(--accent-ink);
+  color: var(--accent);
+}
