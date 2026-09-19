@@ -283,7 +283,7 @@
 }
 .socialproof__body { flex: 1; min-width: 0; }
 .socialproof__text { font-size: 13.5px; line-height: 1.45; color: var(--text); }
-.socialproof__text strong { font-weight: 700; color: var(--accent); }
+.socialproof__text strong { font-weight: 700; color: var(--text); }
 .socialproof__time { display: block; margin-block-start: 4px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--faint); }
 .socialproof__close { flex-shrink: 0; color: var(--faint); opacity: 0.8; padding: 2px; transition: opacity .2s, color .2s; }
 .socialproof__close:hover { opacity: 1; color: var(--text); }
