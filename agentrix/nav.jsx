@@ -37,9 +37,10 @@ function LangSwitcher({ compact }) {
 }
 
 function ThemeToggle() {
+  const { t } = useT();
   const { isLight, toggleTheme } = useTheme();
   return (
-    <button className="themesw" onClick={toggleTheme} aria-label={isLight ? "Mode sombre" : "Mode clair"}>
+    <button className="themesw" onClick={toggleTheme} aria-label={isLight ? t("common.darkMode") : t("common.lightMode")}>
       <Icon name={isLight ? "moon" : "sun"} size={17} />
     </button>
   );

@@ -1,54 +1,6 @@
 // Agentrix-IA — Page Produit / Fonctionnalités
 const { useState: useStateProduct, useEffect: useEffectProduct } = React;
 
-/* --- Animated agent-dashboard mock (illustrative example, not a real client) ---
-   Cycles through 4 distinct screens (équipe / production / tableau de bord / alertes)
-   to show the breadth of what an agent tracks, not just one static view. */
-const DASH_NAV = [
-  ["layout", "Projets"],
-  ["layers", "Maquettes"],
-  ["check", "Validations"],
-  ["target", "Production"],
-  ["user", "Prestataires"],
-  ["bolt", "Alertes"],
-  ["user", "Équipe"],
-  ["grid", "Tableau de bord"],
-];
-
-const DASH_TEAM = [
-  { init: "MA", done: true, task: "Envoyer la révision D à l'atelier", tag: "Design" },
-  { init: "LK", done: true, task: "Confirmer les points d'accroche avec le lieu", tag: "Ops" },
-  { init: "SB", done: false, task: "Briefer l'équipe de montage (6 pers.)", tag: "Logistique", accent: true },
-  { init: "TN", done: false, task: "Relancer le client sur la façade", tag: "Compte", accent: true },
-];
-
-const DASH_PRODUCTION = [
-  { label: "Conception", pct: 100 },
-  { label: "Fabrication", pct: 100 },
-  { label: "Livraison", pct: 65 },
-  { label: "Montage", pct: 10 },
-];
-
-const DASH_STATS = [
-  { val: "18", lbl: "tâches automatisées" },
-  { val: "94%", lbl: "échéances tenues" },
-  { val: "6 h", lbl: "économisées / semaine" },
-];
-
-const DASH_ALERTS = [
-  { time: "Il y a 4 min", text: "Relance envoyée au prestataire audiovisuel", ok: true },
-  { time: "Il y a 22 min", text: "Livraison confirmée par le transporteur", ok: true },
-  { time: "Il y a 1 h", text: "Écart de budget détecté sur le poste signalétique", ok: false },
-  { time: "Il y a 3 h", text: "Rapport hebdomadaire généré et partagé", ok: true },
-];
-
-const DASH_FRAMES = [
-  { navIdx: 6, title: "Équipe — cette semaine" },
-  { navIdx: 3, title: "Production — cette semaine" },
-  { navIdx: 7, title: "Cette semaine en un coup d'œil" },
-  { navIdx: 5, title: "Activité récente" },
-];
-
 function DashSpark() {
   const pts = [10, 22, 16, 30, 26, 40, 34, 48];
   const max = Math.max(...pts);
@@ -64,16 +16,19 @@ function DashSpark() {
 }
 
 function DashPreview({ label }) {
+  const { t } = useT();
+  const dash = t("product.dash");
   const [idx, setIdx] = useStateProduct(0);
 
   useEffectProduct(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
-    const id = setInterval(() => setIdx((v) => (v + 1) % DASH_FRAMES.length), 4200);
+    const id = setInterval(() => setIdx((v) => (v + 1) % dash.frames.length), 4200);
     return () => clearInterval(id);
-  }, []);
+  }, [dash.frames.length]);
 
-  const frame = DASH_FRAMES[idx];
+  const frame = dash.frames[idx];
+  const screenLabel = (i) => dash.screen.replace("{n}", i + 1).replace("{total}", dash.frames.length);
 
   return (
     <div className="dash-mock-wrap">
@@ -84,10 +39,10 @@ function DashPreview({ label }) {
             <span className="dash-mock__dots"><span></span><span></span><span></span></span>
             <span className="dash-mock__title"><Logo size={14} />AGENTRIX-IA</span>
           </div>
-          <span className="dash-mock__live">En direct</span>
+          <span className="dash-mock__live">{dash.live}</span>
         </div>
         <nav className="dash-mock__nav">
-          {DASH_NAV.map(([icon, itemLabel], i) => (
+          {dash.nav.map(([icon, itemLabel], i) => (
             <span key={i} className={`dash-mock__navitem${i === frame.navIdx ? " active" : ""}`}>
               <Icon name={icon} size={16} />{itemLabel}
             </span>
@@ -96,12 +51,12 @@ function DashPreview({ label }) {
         <div className="dash-mock__body">
           <div className="dash-mock__section-head">
             <span>{frame.title}</span>
-            <span className="dash-mock__agent"><span className="dash-mock__livedot" aria-hidden="true"></span>Agent actif</span>
+            <span className="dash-mock__agent"><span className="dash-mock__livedot" aria-hidden="true"></span>{dash.agentActive}</span>
           </div>
 
           {idx === 0 && (
             <div className="dash-mock__frame">
-              {DASH_TEAM.map((r, i) => (
+              {dash.team.map((r, i) => (
                 <div className="dash-mock__row" key={i}>
                   <span className="dash-mock__avatar">{r.init}</span>
                   <span className={`dash-mock__check${r.done ? " done" : ""}`}>
@@ -116,7 +71,7 @@ function DashPreview({ label }) {
 
           {idx === 1 && (
             <div className="dash-mock__frame">
-              {DASH_PRODUCTION.map((s, i) => (
+              {dash.production.map((s, i) => (
                 <div className="dash-mock__stage" key={i}>
                   <div className="dash-mock__stage-head">
                     <span>{s.label}</span>
@@ -133,7 +88,7 @@ function DashPreview({ label }) {
           {idx === 2 && (
             <div className="dash-mock__frame">
               <div className="dash-mock__stats">
-                {DASH_STATS.map((s, i) => (
+                {dash.stats.map((s, i) => (
                   <div className="dash-mock__stat" key={i}>
                     <div className="dash-mock__stat-val">{s.val}</div>
                     <div className="dash-mock__stat-lbl">{s.lbl}</div>
@@ -146,7 +101,7 @@ function DashPreview({ label }) {
 
           {idx === 3 && (
             <div className="dash-mock__frame">
-              {DASH_ALERTS.map((a, i) => (
+              {dash.alerts.map((a, i) => (
                 <div className="dash-mock__alert" key={i}>
                   <span className={`dash-mock__alert-dot${a.ok ? "" : " warn"}`}></span>
                   <span className="dash-mock__alert-text">
@@ -159,17 +114,17 @@ function DashPreview({ label }) {
           )}
         </div>
         <div className="dash-mock__dotsnav">
-          {DASH_FRAMES.map((_, i) => (
+          {dash.frames.map((_, i) => (
             <button
               key={i}
               type="button"
               className={i === idx ? "active" : ""}
-              aria-label={`Écran ${i + 1} sur ${DASH_FRAMES.length}`}
+              aria-label={screenLabel(i)}
               onClick={() => setIdx(i)}
             ></button>
           ))}
         </div>
-        <div className="dash-mock__foot">Aperçu d'interface · données d'exemple</div>
+        <div className="dash-mock__foot">{dash.footer}</div>
       </div>
     </div>
   );

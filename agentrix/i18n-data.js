@@ -17,7 +17,9 @@ window.I18N_FR = {
     learnMore: "En savoir plus",
     explore: "Explorer",
     perWeek: "par semaine",
-    backHome: "Retour à l'accueil"
+    backHome: "Retour à l'accueil",
+    darkMode: "Mode sombre",
+    lightMode: "Mode clair"
   },
   home: {
     hero: {
@@ -178,7 +180,44 @@ window.I18N_FR = {
       title: "Connecté à toute votre pile technologique.",
       sub: "Vos agents agissent là où vous travaillez déjà."
     },
-    dash: { label: "Aperçu du tableau de bord agents" }
+    dash: {
+      label: "Aperçu du tableau de bord agents",
+      live: "En direct",
+      agentActive: "Agent actif",
+      screen: "Écran {n} sur {total}",
+      footer: "Aperçu d'interface · données d'exemple",
+      nav: [
+        ["layout", "Projets"], ["layers", "Maquettes"], ["check", "Validations"],
+        ["target", "Production"], ["user", "Prestataires"], ["bolt", "Alertes"],
+        ["user", "Équipe"], ["grid", "Tableau de bord"]
+      ],
+      team: [
+        { init: "MA", done: true, task: "Envoyer la révision D à l'atelier", tag: "Design" },
+        { init: "LK", done: true, task: "Confirmer les points d'accroche avec le lieu", tag: "Ops" },
+        { init: "SB", done: false, task: "Briefer l'équipe de montage (6 pers.)", tag: "Logistique", accent: true },
+        { init: "TN", done: false, task: "Relancer le client sur la façade", tag: "Compte", accent: true }
+      ],
+      production: [
+        { label: "Conception", pct: 100 }, { label: "Fabrication", pct: 100 },
+        { label: "Livraison", pct: 65 }, { label: "Montage", pct: 10 }
+      ],
+      stats: [
+        { val: "18", lbl: "tâches automatisées" }, { val: "94%", lbl: "échéances tenues" },
+        { val: "6 h", lbl: "économisées / semaine" }
+      ],
+      alerts: [
+        { time: "Il y a 4 min", text: "Relance envoyée au prestataire audiovisuel", ok: true },
+        { time: "Il y a 22 min", text: "Livraison confirmée par le transporteur", ok: true },
+        { time: "Il y a 1 h", text: "Écart de budget détecté sur le poste signalétique", ok: false },
+        { time: "Il y a 3 h", text: "Rapport hebdomadaire généré et partagé", ok: true }
+      ],
+      frames: [
+        { navIdx: 6, title: "Équipe — cette semaine" },
+        { navIdx: 3, title: "Production — cette semaine" },
+        { navIdx: 7, title: "Cette semaine en un coup d'œil" },
+        { navIdx: 5, title: "Activité récente" }
+      ]
+    }
   },
   about: {
     hero: {
@@ -364,7 +403,9 @@ window.I18N_EN = {
     learnMore: "Learn more",
     explore: "Explore",
     perWeek: "per week",
-    backHome: "Back to home"
+    backHome: "Back to home",
+    darkMode: "Dark mode",
+    lightMode: "Light mode"
   },
   home: {
     hero: {
@@ -525,7 +566,44 @@ window.I18N_EN = {
       title: "Connected to your whole stack.",
       sub: "Your agents act right where you already work."
     },
-    dash: { label: "Agent dashboard preview" }
+    dash: {
+      label: "Agent dashboard preview",
+      live: "Live",
+      agentActive: "Agent active",
+      screen: "Screen {n} of {total}",
+      footer: "Interface preview · sample data",
+      nav: [
+        ["layout", "Projects"], ["layers", "Mockups"], ["check", "Approvals"],
+        ["target", "Production"], ["user", "Vendors"], ["bolt", "Alerts"],
+        ["user", "Team"], ["grid", "Dashboard"]
+      ],
+      team: [
+        { init: "MA", done: true, task: "Send revision D to the workshop", tag: "Design" },
+        { init: "LK", done: true, task: "Confirm the fixing points with the venue", tag: "Ops" },
+        { init: "SB", done: false, task: "Brief the setup crew (6 people)", tag: "Logistics", accent: true },
+        { init: "TN", done: false, task: "Follow up with the client on the facade", tag: "Account", accent: true }
+      ],
+      production: [
+        { label: "Design", pct: 100 }, { label: "Fabrication", pct: 100 },
+        { label: "Delivery", pct: 65 }, { label: "Assembly", pct: 10 }
+      ],
+      stats: [
+        { val: "18", lbl: "tasks automated" }, { val: "94%", lbl: "deadlines met" },
+        { val: "6 h", lbl: "saved / week" }
+      ],
+      alerts: [
+        { time: "4 min ago", text: "Follow-up sent to the AV vendor", ok: true },
+        { time: "22 min ago", text: "Delivery confirmed by the carrier", ok: true },
+        { time: "1 h ago", text: "Budget variance detected on signage", ok: false },
+        { time: "3 h ago", text: "Weekly report generated and shared", ok: true }
+      ],
+      frames: [
+        { navIdx: 6, title: "Team — this week" },
+        { navIdx: 3, title: "Production — this week" },
+        { navIdx: 7, title: "This week at a glance" },
+        { navIdx: 5, title: "Recent activity" }
+      ]
+    }
   },
   about: {
     hero: {
@@ -711,7 +789,9 @@ window.I18N_AR = {
     learnMore: "اعرف المزيد",
     explore: "استكشف",
     perWeek: "أسبوعياً",
-    backHome: "العودة إلى الرئيسية"
+    backHome: "العودة إلى الرئيسية",
+    darkMode: "الوضع الداكن",
+    lightMode: "الوضع الفاتح"
   },
   home: {
     hero: {
@@ -872,7 +952,44 @@ window.I18N_AR = {
       title: "متصل بكامل منظومتك التقنية.",
       sub: "يعمل وكلاؤك حيث تعمل أنت بالفعل."
     },
-    dash: { label: "معاينة لوحة تحكّم الوكلاء" }
+    dash: {
+      label: "معاينة لوحة تحكّم الوكلاء",
+      live: "مباشر",
+      agentActive: "وكيل نشط",
+      screen: "الشاشة {n} من {total}",
+      footer: "معاينة الواجهة · بيانات توضيحية",
+      nav: [
+        ["layout", "المشاريع"], ["layers", "التصاميم"], ["check", "الموافقات"],
+        ["target", "الإنتاج"], ["user", "المزوّدون"], ["bolt", "التنبيهات"],
+        ["user", "الفريق"], ["grid", "لوحة التحكم"]
+      ],
+      team: [
+        { init: "MA", done: true, task: "إرسال المراجعة D إلى الورشة", tag: "تصميم" },
+        { init: "LK", done: true, task: "تأكيد نقاط التثبيت مع المكان", tag: "العمليات" },
+        { init: "SB", done: false, task: "إطلاع فريق التركيب (6 أشخاص)", tag: "لوجستيك", accent: true },
+        { init: "TN", done: false, task: "متابعة العميل بخصوص الواجهة", tag: "الحساب", accent: true }
+      ],
+      production: [
+        { label: "التصميم", pct: 100 }, { label: "التصنيع", pct: 100 },
+        { label: "التسليم", pct: 65 }, { label: "التركيب", pct: 10 }
+      ],
+      stats: [
+        { val: "18", lbl: "مهمة مؤتمتة" }, { val: "94%", lbl: "مواعيد نهائية محترمة" },
+        { val: "6 س", lbl: "موفَّرة / أسبوعيًا" }
+      ],
+      alerts: [
+        { time: "قبل 4 دقائق", text: "تم إرسال متابعة إلى مزوّد السمعيات البصرية", ok: true },
+        { time: "قبل 22 دقيقة", text: "تم تأكيد التسليم من طرف الناقل", ok: true },
+        { time: "قبل ساعة", text: "تم رصد فارق في ميزانية اللافتات", ok: false },
+        { time: "قبل 3 ساعات", text: "تم إنشاء التقرير الأسبوعي ومشاركته", ok: true }
+      ],
+      frames: [
+        { navIdx: 6, title: "الفريق — هذا الأسبوع" },
+        { navIdx: 3, title: "الإنتاج — هذا الأسبوع" },
+        { navIdx: 7, title: "نظرة عامة على هذا الأسبوع" },
+        { navIdx: 5, title: "النشاط الأخير" }
+      ]
+    }
   },
   about: {
     hero: {
@@ -956,7 +1073,89 @@ window.I18N_AR = {
     company: "الشركة",
     contact: "تواصل",
     rights: "© ٢٠٢٦ Agentrix-IA. جميع الحقوق محفوظة.",
-    cta: "اتصل بنا"
+    cta: "اتصل بنا",
+    legal: { privacy: "الخصوصية", cookies: "ملفات تعريف الارتباط", terms: "الشروط" }
+  },
+  legal: {
+    privacy: {
+      eyebrow: "الخصوصية",
+      title: "سياسة الخصوصية",
+      updated: "آخر تحديث: 18 سبتمبر 2026",
+      intro: "تولي Agentrix-IA أهمية خاصة لحماية بياناتك الشخصية. توضح هذه السياسة البيانات التي نجمعها، ولماذا، وكيف يمكنك ممارسة حقوقك.",
+      sections: [
+        { h: "المسؤول عن المعالجة", body: "شركة Agentrix-IA، الكائنة بـ Avenue Hassane Rue Boundoukia، 30050 فاس، المغرب — contact@agentrix-ia.com — هي المسؤولة عن معالجة البيانات المجمّعة عبر هذا الموقع." },
+        { h: "البيانات التي نجمعها", body: "عند تعبئة نموذج الاتصال: الاسم، البريد الإلكتروني المهني، الشركة، طبيعة طلبك ورسالتك. كما نجمع بيانات تصفح تقنية أساسية (اللغة المختارة، معلومات اتصال بسيطة) ضرورية لتشغيل الموقع — راجع سياسة ملفات تعريف الارتباط لمزيد من التفاصيل." },
+        { h: "لماذا نستخدمها", body: "للرد على طلبات الاتصال أو عروض الأسعار، لتقديم وتحسين وكلائنا للذكاء الاصطناعي، لضمان أمان الموقع، والامتثال لالتزاماتنا القانونية. لا نستخدم بياناتك أبدًا لأغراض إعلانية لدى أطراف ثالثة." },
+        { h: "الأساس القانوني", body: "تستند المعالجة إلى موافقتك (نموذج الاتصال)، والإجراءات السابقة للتعاقد بناءً على طلبك، ومصلحتنا المشروعة في ضمان أمان الموقع وحسن سيره." },
+        { h: "مشاركة البيانات", body: "لا تُباع بياناتك أبدًا. يمكن مشاركتها مع مزودي خدمات تقنيين ضروريين فقط (الاستضافة، البريد الإلكتروني) يعملون بتعليماتنا وفي إطار احترام السرية." },
+        { h: "مدة الاحتفاظ", body: "يتم الاحتفاظ بالبيانات الناتجة عن طلب اتصال لمدة 24 شهرًا كحد أقصى في غياب علاقة تجارية، ثم تُحذف أو تُجهّل." },
+        { h: "حقوقك", body: "لديك الحق في الوصول إلى بياناتك وتصحيحها ومحوها والاعتراض عليها ونقلها. لممارسة هذه الحقوق، راسلنا على contact@agentrix-ia.com. يمكنك أيضًا التواصل مع اللجنة الوطنية لمراقبة حماية المعطيات ذات الطابع الشخصي (CNDP) بالمغرب، أو السلطة المختصة بحماية البيانات إذا كنت مقيمًا في الاتحاد الأوروبي." },
+        { h: "الأمان", body: "نطبّق تدابير تقنية وتنظيمية معقولة لحماية بياناتك من الفقدان أو الوصول غير المصرح به أو الإفشاء." },
+        { h: "التواصل", body: "لأي سؤال يتعلق بهذه السياسة، تواصلوا معنا عبر contact@agentrix-ia.com أو على الرقم +212 661 151 480." }
+      ]
+    },
+    cookies: {
+      eyebrow: "ملفات تعريف الارتباط",
+      title: "سياسة ملفات تعريف الارتباط",
+      updated: "آخر تحديث: 18 سبتمبر 2026",
+      intro: "توضح هذه الصفحة ما هي ملفات تعريف الارتباط، وأيها نستخدمه على agentrix-ia.com، وكيف يمكنك إدارة تفضيلاتك.",
+      sections: [
+        { h: "ما هو ملف تعريف الارتباط؟", body: "ملف تعريف الارتباط (أو متتبع مشابه، مثل التخزين المحلي للمتصفح) هو ملف صغير يُوضع على جهازك أثناء زيارتك، يتيح حفظ معلومات من زيارة إلى أخرى." },
+        { h: "ملفات تعريف الارتباط التي نستخدمها", body: "يستخدم موقعنا فقط متتبعات أساسية: لغة العرض المفضلة لديك (FR/EN/AR) واختيارك بخصوص الموافقة على ملفات تعريف الارتباط. لا يتم حاليًا وضع أي ملف تعريف ارتباط إعلاني أو لقياس الجمهور." },
+        { h: "خدمات الأطراف الثالثة", body: "تتضمن صفحة الاتصال خريطة من OpenStreetMap. قد تضع هذه الخدمة الخارجية ملفات تعريف ارتباط تقنية خاصة بها عند عرض الخريطة، بشكل مستقل عن موقعنا. ليس لدينا أي تحكم في هذه الملفات." },
+        { h: "إدارة تفضيلاتك", body: "يمكنك قبول أو رفض ملفات تعريف الارتباط غير الأساسية عبر الشريط الذي يظهر عند أول زيارة لك. يمكنك أيضًا حذف ملفات تعريف الارتباط والتخزين المحلي في أي وقت من إعدادات متصفحك." },
+        { h: "تحديث هذه السياسة", body: "إذا تغيّر استخدامنا لملفات تعريف الارتباط (مثل إضافة أداة لقياس الجمهور)، سيتم تحديث هذه الصفحة، وسيُطلب منك عند الحاجة موافقة جديدة." }
+      ]
+    },
+    terms: {
+      eyebrow: "الشروط",
+      title: "شروط الاستخدام",
+      updated: "آخر تحديث: 18 سبتمبر 2026",
+      intro: "تحكم هذه الشروط استخدام موقع agentrix-ia.com. من خلال تصفح هذا الموقع، فإنك تقبل الشروط أدناه.",
+      sections: [
+        { h: "الغرض", body: "يقدّم هذا الموقع شركة Agentrix-IA، الوكالة المتخصصة في تصميم وكلاء الذكاء الاصطناعي الوكيلي وأتمتة سير العمل وإنشاء المواقع الإلكترونية، إلى جانب بيانات التواصل الخاصة بها وعروضها." },
+        { h: "الملكية الفكرية", body: "جميع محتويات الموقع (النصوص، الوسائط البصرية، الشعار، الكود) هي ملك لشركة Agentrix-IA أو شركائها، ما لم يُذكر خلاف ذلك، ولا يجوز إعادة إنتاجها دون إذن كتابي مسبق." },
+        { h: "استخدام الموقع", body: "تلتزم باستخدام هذا الموقع بما يتوافق مع القانون وبعدم محاولة استخراج محتواه أو تعطيل عمله أو إساءة استخدامه (الاستخراج الجماعي، الهجمات، انتحال الهوية)." },
+        { h: "خدماتنا", body: "تخص هذه الشروط فقط تصفح هذا الموقع التعريفي. أي خدمة (نشر وكلاء، أتمتة، تطوير مواقع) تخضع لعرض سعر وعقد منفصل بين Agentrix-IA والعميل." },
+        { h: "التوفر والمسؤولية", body: "نبذل قصارى جهدنا لضمان توفر الموقع لكن لا نضمن وصولاً متواصلاً دون انقطاع. قد يحتوي الموقع على روابط لمواقع أطراف ثالثة لا نتحكم في محتواها." },
+        { h: "القانون المعمول به", body: "تخضع هذه الشروط للقانون المغربي. يعود الاختصاص في أي نزاع للمحاكم المختصة في فاس، المغرب، ما لم ينص القانون الملزم على خلاف ذلك." },
+        { h: "التواصل", body: "لأي سؤال يتعلق بهذه الشروط، راسلونا على contact@agentrix-ia.com." }
+      ]
+    }
+  },
+  cookieBanner: {
+    title: "نستخدم ملفات تعريف ارتباط أساسية فقط",
+    text: "فقط لحفظ لغتك واختيارك أدناه — دون أي متتبع إعلاني.",
+    accept: "قبول",
+    decline: "رفض",
+    link: "معرفة المزيد"
+  },
+  socialProof: {
+    lead: "طلب من",
+    verb: "من أجل",
+    times: ["الآن", "قبل 5 دقائق", "قبل 20 دقيقة", "قبل ساعة", "قبل 3 ساعات", "قبل 12 ساعة", "قبل 24 ساعة", "قبل 48 ساعة"],
+    items: [
+      { city: "الدار البيضاء", activity: "موقع إلكتروني عصري" },
+      { city: "باريس", activity: "أتمتة سير عملها" },
+      { city: "أبيدجان", activity: "وكيل ذكاء اصطناعي لخدمة العملاء" },
+      { city: "داكار", activity: "عرض سعر لوكلاء الذكاء الاصطناعي" },
+      { city: "مونتريال", activity: "عرض توضيحي لوكلائنا" },
+      { city: "دوالا", activity: "توليد عملاء مؤهلين" },
+      { city: "كيغالي", activity: "إعادة تصميم موقعها الإلكتروني" },
+      { city: "مراكش", activity: "دمج أدواتها (CRM، Slack، Gmail)" },
+      { city: "ليون", activity: "وكيل ذكاء اصطناعي للفوترة" },
+      { city: "ياوندي", activity: "أتمتة عملية التنقيب عن العملاء" },
+      { city: "الرباط", activity: "تدقيق في عملياتها" },
+      { city: "كيبيك", activity: "وكيل ذكاء اصطناعي لدعم العملاء" },
+      { city: "داكار", activity: "إنشاء موقع تعريفي" },
+      { city: "بواكي", activity: "أتمتة الفوترة" },
+      { city: "طنجة", activity: "وكيل ذكاء اصطناعي لمراقبة المنافسين" },
+      { city: "مرسيليا", activity: "أتمتة بريدها الإلكتروني" },
+      { city: "كيغالي", activity: "مرافقة في وكلاء الذكاء الاصطناعي" },
+      { city: "فاس", activity: "وكيل ذكاء اصطناعي للتنقيب عن العملاء" },
+      { city: "بوردو", activity: "عرض سعر لموقع تجارة إلكترونية" },
+      { city: "تورونتو", activity: "دمج وكيل ذكاء اصطناعي مع نظام CRM" }
+    ]
   }
 };
 
