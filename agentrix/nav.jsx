@@ -36,6 +36,15 @@ function LangSwitcher({ compact }) {
   );
 }
 
+function ThemeToggle() {
+  const { isLight, toggleTheme } = useTheme();
+  return (
+    <button className="themesw" onClick={toggleTheme} aria-label={isLight ? "Mode sombre" : "Mode clair"}>
+      <Icon name={isLight ? "moon" : "sun"} size={17} />
+    </button>
+  );
+}
+
 function Nav({ route, go }) {
   const { t } = useT();
   const [scrolled, setScrolled] = useStateNav(false);
@@ -81,6 +90,7 @@ function Nav({ route, go }) {
         </nav>
 
         <div className="nav__right">
+          <ThemeToggle />
           <LangSwitcher />
           <span className="nav__cta-d"><Btn variant="primary" onClick={() => go("contact")} arrow>{t("nav.cta")}</Btn></span>
           <button className={`burger ${menu ? "open" : ""}`} onClick={() => setMenu(m => !m)} aria-label="Menu">

@@ -82,7 +82,9 @@ function Icon({ name, size = 22 }) {
     send: <path d="M4 12l16-7-7 16-2.5-6.5L4 12z" />,
     phone: <path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16.5 16.5 0 014.5 5.7 2 2 0 016.5 3.5z" />,
     pin: <g><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></g>,
-    cookie: <g><path d="M20.5 12.3a2.6 2.6 0 01-2.9-2.9 2.6 2.6 0 01-2.9-2.9A8.5 8.5 0 1020.5 12.3z"/><circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="8.3" cy="14.7" r="1" fill="currentColor" stroke="none"/><circle cx="13" cy="16" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="12" r="1" fill="currentColor" stroke="none"/></g>
+    cookie: <g><path d="M20.5 12.3a2.6 2.6 0 01-2.9-2.9 2.6 2.6 0 01-2.9-2.9A8.5 8.5 0 1020.5 12.3z"/><circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="8.3" cy="14.7" r="1" fill="currentColor" stroke="none"/><circle cx="13" cy="16" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="12" r="1" fill="currentColor" stroke="none"/></g>,
+    sun: <g><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.7 4.7l1.85 1.85M17.45 17.45l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.7 19.3l1.85-1.85M17.45 6.55l1.85-1.85"/></g>,
+    moon: <path d="M20 14.2A8.5 8.5 0 119.8 4 6.6 6.6 0 0020 14.2z" />
   };
   return <svg {...s}>{paths[name] || paths.spark}</svg>;
 }

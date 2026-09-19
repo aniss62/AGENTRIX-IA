@@ -71,9 +71,11 @@ function App() {
 
 function Root() {
   return (
-    <LangProvider>
-      <App />
-    </LangProvider>
+    <ThemeProvider>
+      <LangProvider>
+        <App />
+      </LangProvider>
+    </ThemeProvider>
   );
 }
 

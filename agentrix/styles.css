@@ -13,6 +13,11 @@
   --line:   oklch(1 0 0 / 0.08);
   --line-2: oklch(1 0 0 / 0.14);
 
+  /* Faint decorative tints (grid lines, halos, hairline fills) — always readable against --bg */
+  --hairline:  oklch(1 0 0 / 0.07);
+  --tint-soft: oklch(1 0 0 / 0.02);
+  --tint-mid:  oklch(1 0 0 / 0.045);
+
   /* Text */
   --text:  oklch(0.975 0.004 264);
   --muted: oklch(0.74 0.012 264);
@@ -39,6 +44,35 @@
   --radius-sm: 11px;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
+}
+
+/* Light theme — same tokens, flipped for a bright neutral background.
+   Accent is deepened/desaturated so it stays legible on white instead
+   of reading as neon; --accent-ink flips to a light on-accent color. */
+:root[data-theme="light"] {
+  --bg:        oklch(0.99 0.003 264);
+  --bg-2:      oklch(0.965 0.004 264);
+  --surface:   oklch(0.98 0.003 264);
+  --surface-2: oklch(0.93 0.006 264);
+
+  --line:   oklch(0 0 0 / 0.09);
+  --line-2: oklch(0 0 0 / 0.15);
+
+  --hairline:  oklch(0 0 0 / 0.055);
+  --tint-soft: oklch(0 0 0 / 0.025);
+  --tint-mid:  oklch(0 0 0 / 0.05);
+
+  --text:  oklch(0.22 0.012 264);
+  --muted: oklch(0.44 0.014 264);
+  --faint: oklch(0.58 0.014 264);
+
+  --accent:      oklch(0.58 0.16 var(--accent-h));
+  --accent-dim:  oklch(0.52 0.15 var(--accent-h));
+  --accent-ink:  oklch(0.99 0.01 var(--accent-h));
+  --accent-soft: oklch(0.58 0.16 var(--accent-h) / 0.12);
+  --accent-glow: oklch(0.58 0.16 var(--accent-h) / 0.18);
+  color-scheme: light;
 }
 
 /* Arabic uses a dedicated face for both display + body */
@@ -60,6 +94,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  transition: background-color .35s var(--ease), color .35s var(--ease);
 }
 
 :root[lang="ar"] body { line-height: 1.8; }
@@ -89,8 +124,8 @@ body::before {
 .ambient__grid {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(oklch(1 0 0 / 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(1 0 0 / 0.07) 1px, transparent 1px);
+    linear-gradient(var(--hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
   background-size: 56px 56px;
   -webkit-mask-image: linear-gradient(180deg, black 0%, black 55%, transparent 100%);
   mask-image: linear-gradient(180deg, black 0%, black 55%, transparent 100%);
@@ -101,7 +136,7 @@ body::before {
   width: 3.5px; height: 3.5px; border-radius: 50%;
   background: var(--muted);
   opacity: 0.28;
-  box-shadow: 0 0 3px 0.5px oklch(1 0 0 / 0.06);
+  box-shadow: 0 0 3px 0.5px var(--hairline);
   transition: opacity 1.4s ease, background 1.4s ease, box-shadow 1.4s ease;
 }.diode--on {
   background: var(--accent);
@@ -177,7 +212,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 .btn:active { transform: translateY(1px) scale(0.99); }
 .btn--primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 0 0 0 var(--accent-glow); }
 .btn--primary:hover { box-shadow: 0 14px 40px -10px var(--accent-glow); transform: translateY(-2px); }
-.btn--ghost { border-color: var(--line-2); color: var(--text); background: oklch(1 0 0 / 0.02); }
+.btn--ghost { border-color: var(--line-2); color: var(--text); background: var(--tint-soft); }
 .btn--ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 .btn--lg { padding: 17px 28px; font-size: 16.5px; }
 .btn .arr { transition: transform .35s var(--ease); }
@@ -208,7 +243,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
   border-radius: 999px;
   font-size: 13.5px;
   color: var(--muted);
-  background: oklch(1 0 0 / 0.02);
+  background: var(--tint-soft);
 }
 
 /* Divider line that scans across */
@@ -223,8 +258,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
   border: 1px solid var(--line-2);
   background:
     repeating-linear-gradient(135deg,
-      oklch(1 0 0 / 0.025) 0 12px,
-      oklch(1 0 0 / 0.05) 12px 24px);
+      var(--tint-soft) 0 12px,
+      var(--tint-mid) 12px 24px);
   display: grid;
   place-items: center;
   overflow: hidden;

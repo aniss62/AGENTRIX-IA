@@ -159,7 +159,7 @@
 .dash-mock__nav { display: flex; flex-wrap: wrap; gap: 3px; padding: 12px 18px; border-bottom: 1px solid var(--line); }
 .dash-mock__navitem { display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border-radius: 10px; font-size: 14px; color: var(--muted); white-space: nowrap; transition: color .3s var(--ease), background .3s var(--ease); }
 .dash-mock__navitem svg { opacity: 0.65; transition: opacity .3s, color .3s; }
-.dash-mock__navitem.active { color: var(--text); background: oklch(1 0 0 / 0.045); font-weight: 600; }
+.dash-mock__navitem.active { color: var(--text); background: var(--tint-mid); font-weight: 600; }
 .dash-mock__navitem.active svg { opacity: 1; color: var(--accent); }
 
 .dash-mock__body { padding: 22px 24px 8px; min-height: 258px; display: flex; flex-direction: column; }
@@ -189,7 +189,7 @@
 
 /* Dashboard frame — stat cards + sparkline */
 .dash-mock__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-block-end: 16px; }
-.dash-mock__stat { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 13px 14px; background: oklch(1 0 0 / 0.02); }
+.dash-mock__stat { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 13px 14px; background: var(--tint-soft); }
 .dash-mock__stat-val { font-family: var(--font-display); font-weight: 600; font-size: 21px; color: var(--accent); }
 .dash-mock__stat-lbl { font-size: 12px; color: var(--muted); margin-block-start: 3px; line-height: 1.3; }
 .dash-mock__spark { width: 100%; height: 54px; display: block; }
@@ -333,6 +333,7 @@ a.info-card__big:hover { color: var(--accent); }
   display: block; width: 100%; height: 100%; min-height: 380px; border: 0;
   filter: invert(0.91) hue-rotate(178deg) saturate(0.62) brightness(0.94) contrast(0.92);
 }
+:root[data-theme="light"] .contact__map-frame { filter: none; }
 .contact__map::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   box-shadow: inset 0 0 0 1px var(--line), inset 0 -70px 90px -40px var(--bg);
@@ -342,7 +343,7 @@ a.info-card__big:hover { color: var(--accent); }
   position: absolute; inset-block-start: 16px; inset-inline-start: 16px; z-index: 2;
   display: inline-flex; align-items: center; gap: 8px;
   padding: 9px 14px; border-radius: 999px;
-  background: oklch(0.155 0.008 264 / 0.82); backdrop-filter: blur(10px);
+  background: color-mix(in oklch, var(--bg) 82%, transparent); backdrop-filter: blur(10px);
   border: 1px solid var(--line-2); color: var(--text);
   font-size: 13.5px; font-weight: 500; transition: border-color .25s, color .25s;
 }
