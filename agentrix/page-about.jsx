@@ -17,7 +17,7 @@ function PageAbout({ go }) {
       </section>
 
       {/* Mission */}
-      <section className="section">
+      <section className="section section--tight">
         <div className="wrap">
           <div className="story">
             <div className="story__left">
