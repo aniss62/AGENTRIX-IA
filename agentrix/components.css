@@ -135,6 +135,12 @@
 .hero__badge { margin-block-end: 26px; }
 .hero h1 { margin-block-end: 24px; }
 .hero h1 .hi { color: var(--accent); display: block; }
+:root[data-theme="light"] .hero h1 .hi {
+  display: inline-block;
+  background: var(--accent-ink);
+  padding: 4px 18px;
+  border-radius: 16px;
+}
 .hero__sub { margin-block-end: 34px; }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
 .hero__stats { display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 48px); margin-block-start: 52px; padding-block-start: 32px; border-block-start: 1px solid var(--line); }

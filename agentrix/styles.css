@@ -165,6 +165,14 @@ body::before {
   background: var(--accent);
   box-shadow: 0 0 12px var(--accent-glow);
 }
+/* Light theme: green-on-light-gray is low contrast, so give accent text
+   a dark backing chip instead of just deepening the color. */
+:root[data-theme="light"] .eyebrow {
+  background: var(--accent-ink);
+  padding: 7px 14px 7px 11px;
+  border-radius: 999px;
+  width: fit-content;
+}
 :root[lang="ar"] .eyebrow { letter-spacing: 0; font-family: var(--font-mono); }
 
 h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.04; letter-spacing: -0.02em; }
@@ -179,6 +187,11 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 .muted { color: var(--muted); }
 .faint { color: var(--faint); }
 .accent { color: var(--accent); }
+:root[data-theme="light"] .wordmark .accent {
+  background: var(--accent-ink);
+  padding: 1px 6px;
+  border-radius: 6px;
+}
 
 .mono-tag {
   font-family: var(--font-mono);
