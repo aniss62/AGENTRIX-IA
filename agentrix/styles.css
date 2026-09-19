@@ -112,14 +112,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   pointer-events: none; will-change: transform, opacity;
   transition: opacity .25s var(--ease);
 }
-.reticle__ring { stroke: var(--accent); opacity: 0.85; transition: r .25s var(--ease), stroke-width .25s var(--ease); }
+.reticle svg { animation: reticleSpin 7s linear infinite; }
+.reticle__ring {
+  stroke: var(--accent); transform-origin: 18px 18px;
+  transition: r .25s var(--ease), stroke-width .25s var(--ease);
+  animation: reticlePulse 2.2s ease-in-out infinite;
+}
 .reticle__dot { fill: var(--accent); transition: r .2s var(--ease); }
 .reticle__ticks { stroke: var(--accent); opacity: 0.85; transition: opacity .25s var(--ease); }
-.reticle--active .reticle__ring { r: 17; stroke-width: 1.6; }
+.reticle--active .reticle__ring { r: 17; stroke-width: 1.6; animation-duration: .9s; }
 .reticle--active .reticle__dot { r: 2.4; }
 .reticle--active .reticle__ticks { opacity: 0; }
 .reticle--down .reticle__ring { r: 10; }
-@media (prefers-reduced-motion: reduce) { .reticle { transition: none; } }
+@keyframes reticlePulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.14); }
+}
+@keyframes reticleSpin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .reticle { transition: none; }
+  .reticle svg, .reticle__ring { animation: none; opacity: 0.85; }
+}
 
 /* Ambient grain/gradient on the page background */
 body::before {
