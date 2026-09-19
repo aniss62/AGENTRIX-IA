@@ -65,6 +65,7 @@ function App() {
       <ChatAgent />
       <CookieConsent go={go} />
       <SocialProof />
+      <CustomCursor />
     </>
   );
 }

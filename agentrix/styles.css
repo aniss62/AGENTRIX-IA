@@ -98,6 +98,29 @@ a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
 
+/* ----------------------------------------------------------
+   Custom cursor — targeting reticle ("viseur")
+   Only takes over on devices with a real mouse; touch/trackpad-only
+   or reduced-motion users keep the native pointer.
+   ---------------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  html.has-reticle, html.has-reticle * { cursor: none !important; }
+  html.has-reticle input, html.has-reticle textarea { cursor: text !important; }
+}
+.reticle {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  pointer-events: none; will-change: transform, opacity;
+  transition: opacity .25s var(--ease);
+}
+.reticle__ring { stroke: var(--accent); opacity: 0.85; transition: r .25s var(--ease), stroke-width .25s var(--ease); }
+.reticle__dot { fill: var(--accent); transition: r .2s var(--ease); }
+.reticle__ticks { stroke: var(--accent); opacity: 0.85; transition: opacity .25s var(--ease); }
+.reticle--active .reticle__ring { r: 17; stroke-width: 1.6; }
+.reticle--active .reticle__dot { r: 2.4; }
+.reticle--active .reticle__ticks { opacity: 0; }
+.reticle--down .reticle__ring { r: 10; }
+@media (prefers-reduced-motion: reduce) { .reticle { transition: none; } }
+
 /* Ambient grain/gradient on the page background */
 body::before {
   content: "";
