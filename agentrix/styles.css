@@ -47,14 +47,13 @@
   color-scheme: dark;
 }
 
-/* Light theme — same tokens, flipped for a bright neutral background.
-   Accent is deepened/desaturated so it stays legible on white instead
-   of reading as neon; --accent-ink flips to a light on-accent color. */
+/* Light theme — light neutral gray canvas (not stark white) so the same
+   neon accent from dark mode still pops instead of reading too harsh. */
 :root[data-theme="light"] {
-  --bg:        oklch(0.99 0.003 264);
-  --bg-2:      oklch(0.965 0.004 264);
-  --surface:   oklch(0.98 0.003 264);
-  --surface-2: oklch(0.93 0.006 264);
+  --bg:        oklch(0.93 0.006 264);
+  --bg-2:      oklch(0.95 0.005 264);
+  --surface:   oklch(0.975 0.003 264);
+  --surface-2: oklch(0.99 0.002 264);
 
   --line:   oklch(0 0 0 / 0.09);
   --line-2: oklch(0 0 0 / 0.15);
@@ -67,11 +66,6 @@
   --muted: oklch(0.44 0.014 264);
   --faint: oklch(0.58 0.014 264);
 
-  --accent:      oklch(0.58 0.16 var(--accent-h));
-  --accent-dim:  oklch(0.52 0.15 var(--accent-h));
-  --accent-ink:  oklch(0.99 0.01 var(--accent-h));
-  --accent-soft: oklch(0.58 0.16 var(--accent-h) / 0.12);
-  --accent-glow: oklch(0.58 0.16 var(--accent-h) / 0.18);
   color-scheme: light;
 }
 
