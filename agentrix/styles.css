@@ -124,6 +124,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .reticle--active .reticle__dot { r: 2.4; }
 .reticle--active .reticle__ticks { opacity: 0; }
 .reticle--down .reticle__ring { r: 10; }
+/* Pointing at a button that's the same accent green — swap to the dark
+   ink color so the reticle doesn't disappear into it. */
+.reticle--on-accent .reticle__ring,
+.reticle--on-accent .reticle__ticks { stroke: var(--accent-ink); }
+.reticle--on-accent .reticle__dot { fill: var(--accent-ink); }
 @keyframes reticlePulse {
   0%, 100% { opacity: 0.55; transform: scale(1); }
   50%      { opacity: 1;    transform: scale(1.14); }

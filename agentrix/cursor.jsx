@@ -12,6 +12,22 @@ function CustomCursor() {
     const el = ref.current;
     document.documentElement.classList.add("has-reticle");
 
+    // Probe element used to resolve --accent to a comparable computed color,
+    // so we can detect "pointing at a same-colored button" regardless of
+    // theme (dark vs light accent values differ).
+    const probe = document.createElement("span");
+    probe.style.cssText = "position:fixed;top:-999px;left:-999px;pointer-events:none;background:var(--accent);";
+    document.body.appendChild(probe);
+    const isAccentBg = (t) => {
+      const accentColor = getComputedStyle(probe).backgroundColor;
+      let node = t;
+      for (let i = 0; i < 5 && node; i++) {
+        if (getComputedStyle(node).backgroundColor === accentColor) return true;
+        node = node.parentElement;
+      }
+      return false;
+    };
+
     const onMove = (e) => {
       posRef.current.x = e.clientX;
       posRef.current.y = e.clientY;
@@ -19,7 +35,11 @@ function CustomCursor() {
     };
     const onLeave = () => { el.style.opacity = "0"; };
     const isTargetable = (t) => !!t.closest("a, button, [role='button'], input, textarea, select, .btn");
-    const onOver = (e) => { el.classList.toggle("reticle--active", isTargetable(e.target)); };
+    const onOver = (e) => {
+      const targetable = isTargetable(e.target);
+      el.classList.toggle("reticle--active", targetable);
+      el.classList.toggle("reticle--on-accent", targetable && isAccentBg(e.target));
+    };
     const onDown = () => el.classList.add("reticle--down");
     const onUp = () => el.classList.remove("reticle--down");
 
@@ -48,6 +68,7 @@ function CustomCursor() {
       window.removeEventListener("mousedown", onDown);
       window.removeEventListener("mouseup", onUp);
       cancelAnimationFrame(rafRef.current);
+      probe.remove();
     };
   }, []);
 
