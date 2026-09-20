@@ -39,6 +39,7 @@ window.I18N_FR = {
       title: "Un collègue numérique pour chaque tâche qui revient sans cesse.",
       sub: "Quatre familles d'agents, pensées pour vous et connectées à vos outils.",
       included: "Ce qui est inclus",
+      less: "Réduire",
       items: [
         { tag: "01 · Automatisation", title: "Automatisation de workflows",
           desc: "Vos tâches répétitives gérées de bout en bout, jour et nuit, sans que vous ayez à y penser.",
@@ -425,6 +426,7 @@ window.I18N_EN = {
       title: "A digital teammate for every repetitive workflow.",
       sub: "Four agent families, deployed bespoke and wired into your tools.",
       included: "What's included",
+      less: "Show less",
       items: [
         { tag: "01 · Automation", title: "Workflow automation",
           desc: "Your repetitive processes run end-to-end, 24/7, with no supervision.",
@@ -811,6 +813,7 @@ window.I18N_AR = {
       title: "زميل رقمي لكل سير عمل متكرر.",
       sub: "أربع عائلات من الوكلاء، تُطلق حسب الطلب وتتصل بأدواتك.",
       included: "ما الذي يشمله",
+      less: "عرض أقل",
       items: [
         { tag: "٠١ · الأتمتة", title: "أتمتة سير العمل",
           desc: "تنفيذ عملياتك المتكررة من البداية للنهاية، على مدار الساعة، دون إشراف.",

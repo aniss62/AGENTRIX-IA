@@ -52,7 +52,7 @@ function PageHome({ go }) {
             <h2 className="h-1">{t("home.pillars.title")}</h2>
             <p className="lead">{t("home.pillars.sub")}</p>
           </div>
-          <Reveal><ServicesExplorer /></Reveal>
+          <Reveal><ServicesBento /></Reveal>
         </div>
       </section>
 
