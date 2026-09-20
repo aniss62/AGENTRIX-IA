@@ -470,7 +470,7 @@ a.info-card__big:hover { color: var(--accent); }
    ============================================================ */
 .ceo {
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 22.5% 1fr;
   gap: clamp(24px, 3vw, 40px);
   align-items: stretch;
 }
@@ -496,7 +496,7 @@ a.info-card__big:hover { color: var(--accent); }
 :root[lang="ar"] .ceo__note { line-height: 1.9; }
 .ceo__name { font-family: var(--font-display); font-weight: 600; font-size: 18px; }
 .ceo__role { color: var(--muted); font-size: 14.5px; margin-block-start: 2px; }
-@media (max-width: 760px) { .ceo { grid-template-columns: 1fr; } .ceo__photo { width: 60%; height: auto; aspect-ratio: 3 / 4; } }
+@media (max-width: 760px) { .ceo { grid-template-columns: 1fr; } .ceo__photo { width: 45%; height: auto; aspect-ratio: 3 / 4; } }
 
 /* ============================================================
    Services — bento grid (local test alternative to ServicesExplorer)
