@@ -1,9 +1,10 @@
 // Agentrix-IA — Page À propos / Équipe
 
-/* Mission illustration: a clock reclaiming time, with automated tasks
-   (checkmarked satellites) orbiting it — reuses the homepage's orbit
+/* Mission illustration: an hourglass reclaiming time — sand keeps
+   flowing, but automated tasks (checkmarked satellites) orbit around
+   the neck, "catching" the drain. Reuses the homepage hero's orbit
    animation classes (.ann/.anl/.anpulse) for a consistent feel. */
-function MissionClock() {
+function MissionHourglass() {
   return (
     <div className="agentnet missionclock" aria-hidden="true">
       <svg viewBox="0 0 420 420" className="agentnet__svg">
@@ -15,15 +16,22 @@ function MissionClock() {
           <line className="anl" x1="210" y1="210" x2="45" y2="210" />
         </g>
 
-        {/* clock face + "time reclaimed" arc */}
-        <circle cx="210" cy="210" r="108" fill="var(--bg-2)" stroke="var(--line-2)" strokeWidth="1.5" />
-        <circle
-          cx="210" cy="210" r="108" fill="none" stroke="var(--accent)" strokeWidth="4"
-          strokeLinecap="round" strokeDasharray="220 900" transform="rotate(-95 210 210)" opacity="0.9"
+        {/* hourglass frame */}
+        <path
+          d="M150,135 L270,135 L217,210 L270,285 L150,285 L203,210 Z"
+          fill="var(--bg-2)" stroke="var(--line-2)" strokeWidth="1.5" strokeLinejoin="round"
         />
-        <line x1="210" y1="210" x2="210" y2="145" stroke="var(--text)" strokeWidth="5" strokeLinecap="round" />
-        <line x1="210" y1="210" x2="258" y2="182" stroke="var(--accent)" strokeWidth="5" strokeLinecap="round" />
-        <circle cx="210" cy="210" r="7" fill="var(--text)" />
+        <line x1="138" y1="135" x2="282" y2="135" stroke="var(--text)" strokeWidth="6" strokeLinecap="round" />
+        <line x1="138" y1="285" x2="282" y2="285" stroke="var(--text)" strokeWidth="6" strokeLinecap="round" />
+
+        {/* sand — top empties, bottom fills, loops */}
+        <path className="hg-sand-top" d="M158,142 L262,142 L208,206 Z" fill="var(--accent)" opacity="0.9" />
+        <path className="hg-sand-bot" d="M212,214 L158,278 L262,278 Z" fill="var(--accent)" opacity="0.9" />
+        <g className="hg-stream" fill="var(--accent)">
+          <circle className="hg-grain" cx="209" cy="208" r="2.6" />
+          <circle className="hg-grain" cx="211" cy="208" r="2.2" style={{ animationDelay: "-0.4s" }} />
+          <circle className="hg-grain" cx="210" cy="208" r="2.4" style={{ animationDelay: "-0.8s" }} />
+        </g>
 
         {/* automated-task satellites */}
         <g className="ann">
@@ -72,7 +80,7 @@ function PageAbout({ go }) {
               <Reveal className="lead mt-m" delay="1">{t("about.story.body")}</Reveal>
             </div>
             <Reveal className="story__right" delay="1">
-              <MissionClock />
+              <MissionHourglass />
             </Reveal>
           </div>
         </div>
