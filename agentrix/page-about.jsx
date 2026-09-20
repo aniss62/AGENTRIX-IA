@@ -1,51 +1,66 @@
 // Agentrix-IA — Page À propos / Équipe
 
-/* Mission illustration: an hourglass reclaiming time — sand keeps
-   flowing, but automated tasks (checkmarked satellites) orbit around
-   the neck, "catching" the drain. Reuses the homepage hero's orbit
-   animation classes (.ann/.anl/.anpulse) for a consistent feel. */
+/* Mission illustration: an hourglass reclaiming time. Sand keeps
+   draining, but three "agent" satellites around the neck actively
+   catch grains before they're lost — each catch flashes the
+   satellite's checkmark, so the "agents intercept the time-drain"
+   idea reads directly instead of just decorating the scene. */
 function MissionHourglass() {
+  const sats = [
+    { x: 293, y: 67, delay: 0 },
+    { x: 293, y: 353, delay: -1.1 },
+    { x: 45, y: 210, delay: -2.2 },
+  ];
   return (
     <div className="agentnet missionclock" aria-hidden="true">
       <svg viewBox="0 0 420 420" className="agentnet__svg">
         <circle cx="210" cy="210" r="170" fill="none" stroke="var(--line-2)" strokeWidth="1" />
 
         <g stroke="var(--accent)" strokeWidth="1" opacity="0.4">
-          <line className="anl" x1="210" y1="210" x2="293" y2="67" />
-          <line className="anl" x1="210" y1="210" x2="293" y2="353" />
-          <line className="anl" x1="210" y1="210" x2="45" y2="210" />
+          {sats.map((s, i) => (
+            <line key={i} className="anl" x1="210" y1="210" x2={s.x} y2={s.y} />
+          ))}
         </g>
 
-        {/* hourglass frame */}
+        {/* hourglass frame — symmetric curved glass, pinched at the neck (210,210) */}
         <path
-          d="M150,135 L270,135 L217,210 L270,285 L150,285 L203,210 Z"
+          d="M150,130 L270,130
+             C270,172 224,184 218,210
+             C224,236 270,248 270,290
+             L150,290
+             C150,248 196,236 202,210
+             C196,184 150,172 150,130 Z"
           fill="var(--bg-2)" stroke="var(--line-2)" strokeWidth="1.5" strokeLinejoin="round"
         />
-        <line x1="138" y1="135" x2="282" y2="135" stroke="var(--text)" strokeWidth="6" strokeLinecap="round" />
-        <line x1="138" y1="285" x2="282" y2="285" stroke="var(--text)" strokeWidth="6" strokeLinecap="round" />
+        <line x1="144" y1="130" x2="276" y2="130" stroke="var(--text)" strokeWidth="7" strokeLinecap="round" />
+        <line x1="144" y1="290" x2="276" y2="290" stroke="var(--text)" strokeWidth="7" strokeLinecap="round" />
 
         {/* sand — top empties, bottom fills, loops */}
-        <path className="hg-sand-top" d="M158,142 L262,142 L208,206 Z" fill="var(--accent)" opacity="0.9" />
-        <path className="hg-sand-bot" d="M212,214 L158,278 L262,278 Z" fill="var(--accent)" opacity="0.9" />
+        <path className="hg-sand-top" d="M162,140 L258,140 L210,206 Z" fill="var(--accent)" opacity="0.9" />
+        <path className="hg-sand-bot" d="M210,214 L162,280 L258,280 Z" fill="var(--accent)" opacity="0.9" />
         <g className="hg-stream" fill="var(--accent)">
           <circle className="hg-grain" cx="209" cy="208" r="2.6" />
           <circle className="hg-grain" cx="211" cy="208" r="2.2" style={{ animationDelay: "-0.4s" }} />
           <circle className="hg-grain" cx="210" cy="208" r="2.4" style={{ animationDelay: "-0.8s" }} />
         </g>
 
+        {/* grains the agents catch before they're lost — travel from the
+            neck out to each satellite instead of falling */}
+        {sats.map((s, i) => (
+          <circle
+            key={i} className="hg-catch" r="3" fill="var(--accent)"
+            cx="210" cy="210"
+            style={{ "--cx": `${s.x - 210}px`, "--cy": `${s.y - 210}px`, animationDelay: `${s.delay}s` }}
+          />
+        ))}
+
         {/* automated-task satellites */}
-        <g className="ann">
-          <circle cx="293" cy="67" r="15" fill="var(--surface)" stroke="var(--accent)" strokeWidth="1.4" />
-          <path d="M287 67l4 4 8-8" stroke="var(--accent)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        </g>
-        <g className="ann" style={{ animationDelay: "-2s" }}>
-          <circle cx="293" cy="353" r="15" fill="var(--surface)" stroke="var(--accent)" strokeWidth="1.4" />
-          <path d="M287 353l4 4 8-8" stroke="var(--accent)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        </g>
-        <g className="ann" style={{ animationDelay: "-4s" }}>
-          <circle cx="45" cy="210" r="15" fill="var(--surface)" stroke="var(--accent)" strokeWidth="1.4" />
-          <path d="M39 210l4 4 8-8" stroke="var(--accent)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        </g>
+        {sats.map((s, i) => (
+          <g key={i} className="ann hg-sat" style={{ animationDelay: `${s.delay - 2}s` }}>
+            <circle className="hg-sat-ring" cx={s.x} cy={s.y} r="15" fill="var(--surface)" stroke="var(--accent)" strokeWidth="1.4" style={{ animationDelay: `${s.delay}s` }} />
+            <path d={`M${s.x - 6} ${s.y}l4 4 8-8`} stroke="var(--accent)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          </g>
+        ))}
 
         <circle className="anpulse" cx="210" cy="210" r="12" fill="none" stroke="var(--accent)" strokeWidth="1.5" />
       </svg>

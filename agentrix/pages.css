@@ -117,9 +117,23 @@
   85%  { opacity: 1; }
   100% { transform: translateY(58px); opacity: 0; }
 }
+.hg-catch { opacity: 0; animation: hgCatch 2.4s ease-in infinite; }
+@keyframes hgCatch {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  8%   { opacity: 1; }
+  52%  { transform: translate(var(--cx), var(--cy)); opacity: 1; }
+  60%  { opacity: 0; transform: translate(var(--cx), var(--cy)); }
+  100% { opacity: 0; transform: translate(0, 0); }
+}
+.hg-sat-ring { animation: hgSatFlash 2.4s ease-out infinite; }
+@keyframes hgSatFlash {
+  0%, 50%  { fill: var(--surface); stroke: var(--accent); }
+  58%      { fill: var(--accent); stroke: var(--text); }
+  72%, 100% { fill: var(--surface); stroke: var(--accent); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .hg-sand-top, .hg-sand-bot, .hg-grain { animation: none; }
-  .hg-grain { opacity: 0; }
+  .hg-sand-top, .hg-sand-bot, .hg-grain, .hg-catch, .hg-sat-ring { animation: none; }
+  .hg-grain, .hg-catch { opacity: 0; }
 }
 
 /* --- Team members --- */
