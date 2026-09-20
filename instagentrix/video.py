@@ -51,12 +51,12 @@ def build_video(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     total_duration = len(text_lines) * seconds_per_line
 
-    escaped_font = brand.FONT_DISPLAY_BOLD.replace(":", r"\:")
+    escaped_font = brand.FONT_DISPLAY_BOLD.replace("'", "'\\''")
     drawtext_filters = []
     for i, line in enumerate(text_lines):
         start = i * seconds_per_line
         end = start + seconds_per_line
-        safe_text = line.replace("'", r"\'").replace(":", r"\:")
+        safe_text = line.replace("'", "'\\''")
         drawtext_filters.append(
             "drawtext="
             f"fontfile='{escaped_font}':text='{safe_text}':"
