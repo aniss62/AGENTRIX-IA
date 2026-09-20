@@ -3,7 +3,7 @@ function SvcOrb({ size = 22 }) {
   return <span className="svcb__orb" style={{ width: size, height: size }}></span>;
 }
 
-function SvcCardShell({ className = "", art, title, desc, metric, points }) {
+function SvcCardShell({ className = "", art, title, desc, long, metric, points }) {
   const { t } = useT();
   const [open, setOpen] = React.useState(false);
   return (
@@ -37,6 +37,7 @@ function SvcCardShell({ className = "", art, title, desc, metric, points }) {
         </div>
         <div className="svcb__points">
           <div className="svcb__points-inner">
+            <p className="svcb__long">{long}</p>
             {points.map((pt, j) => (
               <div key={j} className="svcb__point"><Icon name="check" size={13} />{pt}</div>
             ))}
@@ -56,7 +57,7 @@ function ServicesBento() {
     <div className="svcb">
       <SvcCardShell
         className="svcb__card--wide"
-        title={a.title} desc={a.desc} metric={a.metric} points={a.points}
+        title={a.title} desc={a.desc} long={a.long} metric={a.metric} points={a.points}
         art={
           <div className="svcb__scene">
             <div className="svcb__chip svcb__chip--ghost svcb__chip--1">
@@ -72,7 +73,7 @@ function ServicesBento() {
         }
       />
       <SvcCardShell
-        title={d.title} desc={d.desc} metric={d.metric} points={d.points}
+        title={d.title} desc={d.desc} long={d.long} metric={d.metric} points={d.points}
         art={
           <div className="svcb__scene svcb__scene--chat">
             <div className="svcb__chip svcb__chip--bot">
@@ -83,7 +84,7 @@ function ServicesBento() {
         }
       />
       <SvcCardShell
-        title={b.title} desc={b.desc} metric={b.metric} points={b.points}
+        title={b.title} desc={b.desc} long={b.long} metric={b.metric} points={b.points}
         art={
           <div className="svcb__scene svcb__scene--leads">
             <div className="svcb__chip svcb__chip--ghost svcb__chip--lead2">
@@ -98,7 +99,7 @@ function ServicesBento() {
       />
       <SvcCardShell
         className="svcb__card--wide"
-        title={c.title} desc={c.desc} metric={c.metric} points={c.points}
+        title={c.title} desc={c.desc} long={c.long} metric={c.metric} points={c.points}
         art={
           <div className="svcb__scene svcb__scene--browser">
             <div className="svcb__browser">

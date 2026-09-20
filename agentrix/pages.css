@@ -528,9 +528,10 @@ a.info-card__big:hover { color: var(--accent); }
 }
 .svcb__minus:hover { background: var(--accent); color: var(--accent-ink); transform: scale(1.1); }
 
-.svcb__points { max-height: 0; overflow: hidden; transition: max-height .45s var(--ease); }
-.svcb__card.open .svcb__points { max-height: 240px; }
+.svcb__points { max-height: 0; overflow: hidden; transition: max-height .5s var(--ease); }
+.svcb__card.open .svcb__points { max-height: 360px; }
 .svcb__points-inner { display: flex; flex-direction: column; gap: 9px; padding-block-start: 14px; }
+.svcb__long { color: var(--muted); font-size: 13.5px; line-height: 1.55; margin-block-end: 4px; }
 .svcb__point { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: var(--text); }
 .svcb__point svg { color: var(--accent); flex-shrink: 0; margin-block-start: 2px; }
 
