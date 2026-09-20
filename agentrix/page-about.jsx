@@ -1,4 +1,50 @@
 // Agentrix-IA — Page À propos / Équipe
+
+/* Mission illustration: a clock reclaiming time, with automated tasks
+   (checkmarked satellites) orbiting it — reuses the homepage's orbit
+   animation classes (.ann/.anl/.anpulse) for a consistent feel. */
+function MissionClock() {
+  return (
+    <div className="agentnet missionclock" aria-hidden="true">
+      <svg viewBox="0 0 420 420" className="agentnet__svg">
+        <circle cx="210" cy="210" r="170" fill="none" stroke="var(--line-2)" strokeWidth="1" />
+
+        <g stroke="var(--accent)" strokeWidth="1" opacity="0.4">
+          <line className="anl" x1="210" y1="210" x2="293" y2="67" />
+          <line className="anl" x1="210" y1="210" x2="293" y2="353" />
+          <line className="anl" x1="210" y1="210" x2="45" y2="210" />
+        </g>
+
+        {/* clock face + "time reclaimed" arc */}
+        <circle cx="210" cy="210" r="108" fill="var(--bg-2)" stroke="var(--line-2)" strokeWidth="1.5" />
+        <circle
+          cx="210" cy="210" r="108" fill="none" stroke="var(--accent)" strokeWidth="4"
+          strokeLinecap="round" strokeDasharray="220 900" transform="rotate(-95 210 210)" opacity="0.9"
+        />
+        <line x1="210" y1="210" x2="210" y2="145" stroke="var(--text)" strokeWidth="5" strokeLinecap="round" />
+        <line x1="210" y1="210" x2="258" y2="182" stroke="var(--accent)" strokeWidth="5" strokeLinecap="round" />
+        <circle cx="210" cy="210" r="7" fill="var(--text)" />
+
+        {/* automated-task satellites */}
+        <g className="ann">
+          <circle cx="293" cy="67" r="15" fill="var(--surface)" stroke="var(--accent)" strokeWidth="1.4" />
+          <path d="M287 67l4 4 8-8" stroke="var(--accent)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+        <g className="ann" style={{ animationDelay: "-2s" }}>
+          <circle cx="293" cy="353" r="15" fill="var(--surface)" stroke="var(--accent)" strokeWidth="1.4" />
+          <path d="M287 353l4 4 8-8" stroke="var(--accent)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+        <g className="ann" style={{ animationDelay: "-4s" }}>
+          <circle cx="45" cy="210" r="15" fill="var(--surface)" stroke="var(--accent)" strokeWidth="1.4" />
+          <path d="M39 210l4 4 8-8" stroke="var(--accent)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+
+        <circle className="anpulse" cx="210" cy="210" r="12" fill="none" stroke="var(--accent)" strokeWidth="1.5" />
+      </svg>
+    </div>
+  );
+}
+
 function PageAbout({ go }) {
   const { t } = useT();
   const values = t("about.values.items");
@@ -23,9 +69,10 @@ function PageAbout({ go }) {
             <div className="story__left">
               <Eyebrow>{t("about.story.eyebrow")}</Eyebrow>
               <Reveal as="h2" className="h-2 mt-s">{t("about.story.title")}</Reveal>
+              <Reveal className="lead mt-m" delay="1">{t("about.story.body")}</Reveal>
             </div>
             <Reveal className="story__right" delay="1">
-              <p className="lead">{t("about.story.body")}</p>
+              <MissionClock />
             </Reveal>
           </div>
         </div>
