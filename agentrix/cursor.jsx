@@ -12,17 +12,19 @@ function CustomCursor() {
     const el = ref.current;
     document.documentElement.classList.add("has-reticle");
 
-    // Probe element used to resolve --accent to a comparable computed color,
-    // so we can detect "pointing at a same-colored button" regardless of
-    // theme (dark vs light accent values differ).
+    // Probe element used to resolve --reticle-color to a comparable computed
+    // color, so we can detect "pointing at a same-colored element" — the
+    // reticle's own color flips between themes (bright green on dark,
+    // dark ink on light), so the "blends in" check has to be re-read live
+    // rather than hardcoded to one color.
     const probe = document.createElement("span");
-    probe.style.cssText = "position:fixed;top:-999px;left:-999px;pointer-events:none;background:var(--accent);";
+    probe.style.cssText = "position:fixed;top:-999px;left:-999px;pointer-events:none;background:var(--reticle-color);";
     document.body.appendChild(probe);
-    const isAccentBg = (t) => {
-      const accentColor = getComputedStyle(probe).backgroundColor;
+    const isSameAsReticle = (t) => {
+      const reticleColor = getComputedStyle(probe).backgroundColor;
       let node = t;
       for (let i = 0; i < 5 && node; i++) {
-        if (getComputedStyle(node).backgroundColor === accentColor) return true;
+        if (getComputedStyle(node).backgroundColor === reticleColor) return true;
         node = node.parentElement;
       }
       return false;
@@ -38,7 +40,9 @@ function CustomCursor() {
     const onOver = (e) => {
       const targetable = isTargetable(e.target);
       el.classList.toggle("reticle--active", targetable);
-      el.classList.toggle("reticle--on-accent", targetable && isAccentBg(e.target));
+      // Contrast swap applies to any element the reticle blends into, not
+      // just clickable ones (e.g. the dark badge chips in light mode).
+      el.classList.toggle("reticle--on-accent", isSameAsReticle(e.target));
     };
     const onDown = () => el.classList.add("reticle--down");
     const onUp = () => el.classList.remove("reticle--down");
