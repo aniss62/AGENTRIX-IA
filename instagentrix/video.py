@@ -28,12 +28,17 @@ def search_broll(query: str, api_key: str) -> str:
     hits = data.get("hits", [])
     if not hits:
         raise RuntimeError(f"No Pixabay b-roll found for query: {query!r}")
-    return hits[0]["videos"]["medium"]["url"]
+    videos = hits[0]["videos"]
+    for quality in ("medium", "small", "tiny", "large"):
+        if quality in videos:
+            return videos[quality]["url"]
+    raise RuntimeError(f"Pixabay hit for {query!r} has no usable video quality: {list(videos)}")
 
 
 def download_file(url: str, dest: Path) -> Path:
     dest.parent.mkdir(parents=True, exist_ok=True)
-    urllib.request.urlretrieve(url, dest)
+    with urllib.request.urlopen(url, timeout=20) as resp, open(dest, "wb") as f:
+        f.write(resp.read())
     return dest
 
 
@@ -47,6 +52,9 @@ def build_video(
     """Scale/crop b-roll to 1080x1920, overlay each text line in sequence (timed), mix in music
     at low volume, and write a vertical MP4 to output_path.
     """
+    if not text_lines:
+        raise ValueError("text_lines must not be empty")
+
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     total_duration = len(text_lines) * seconds_per_line
@@ -85,5 +93,10 @@ def build_video(
         "-shortest",
         str(output_path),
     ]
-    subprocess.run(cmd, check=True, capture_output=True)
+    try:
+        subprocess.run(cmd, check=True, capture_output=True)
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(
+            f"ffmpeg failed (exit {e.returncode}):\n{e.stderr.decode(errors='replace')}"
+        ) from e
     return output_path
