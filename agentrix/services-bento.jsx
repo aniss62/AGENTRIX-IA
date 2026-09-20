@@ -56,7 +56,6 @@ function ServicesBento() {
   return (
     <div className="svcb">
       <SvcCardShell
-        className="svcb__card--wide"
         title={a.title} desc={a.desc} long={a.long} metric={a.metric} points={a.points}
         art={
           <div className="svcb__scene">
@@ -98,7 +97,6 @@ function ServicesBento() {
         }
       />
       <SvcCardShell
-        className="svcb__card--wide"
         title={c.title} desc={c.desc} long={c.long} metric={c.metric} points={c.points}
         art={
           <div className="svcb__scene svcb__scene--browser">

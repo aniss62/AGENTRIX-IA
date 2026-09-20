@@ -471,7 +471,7 @@ a.info-card__big:hover { color: var(--accent); }
 /* ============================================================
    Services — bento grid (local test alternative to ServicesExplorer)
    ============================================================ */
-.svcb { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; }
+.svcb { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .svcb__card {
   grid-column: span 1;
   border: 1px solid var(--line); border-radius: var(--radius-lg);
@@ -495,7 +495,6 @@ a.info-card__big:hover { color: var(--accent); }
 }
 @keyframes svcbRingSpin { to { --svcb-angle: 360deg; } }
 @media (prefers-reduced-motion: reduce) { .svcb__card::before { animation: none; opacity: 0.35; } }
-.svcb__card--wide { grid-column: span 1; }
 .svcb__art { height: 130px; position: relative; }
 .svcb__title { font-size: 19px; margin-block-end: 8px; }
 .svcb__desc { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
