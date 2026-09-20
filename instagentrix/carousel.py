@@ -1,5 +1,4 @@
 """Branded carousel slide generator — 4-8 slides, illustration+text, Agentrix visual identity."""
-import textwrap
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -9,11 +8,27 @@ from instagentrix import brand
 
 def _load_font(path: str, size: int, bold_axis: bool = False) -> ImageFont.FreeTypeFont:
     font = ImageFont.truetype(path, size)
-    try:
-        if bold_axis and "wght" in {a["tag"] for a in font.get_variation_axes()}:
-            font.set_variation_by_axes([700])
-    except Exception:
-        pass  # static (non-variable) font fallback — already at its only weight
+    if bold_axis:
+        try:
+            axes = font.get_variation_axes()
+        except (OSError, NotImplementedError):
+            # OSError: static (non-variable) font — no variation axes to query.
+            # NotImplementedError: FreeType build too old to support variations.
+            # Either way, the font falls back to its only weight.
+            axes = []
+        # Pillow's axis dicts expose "name" (e.g. b"Weight"), not an OpenType
+        # axis tag — match on that to find the weight axis.
+        weight_index = next(
+            (i for i, axis in enumerate(axes) if (axis.get("name") or b"").strip().lower() == b"weight"),
+            None,
+        )
+        if weight_index is not None:
+            # set_variation_by_axes takes one value per axis, positionally —
+            # keep every other axis at its default and only override weight.
+            values = [axis["default"] for axis in axes]
+            axis = axes[weight_index]
+            values[weight_index] = max(axis["minimum"], min(700, axis["maximum"]))
+            font.set_variation_by_axes(values)
     return font
 
 
