@@ -477,10 +477,24 @@ a.info-card__big:hover { color: var(--accent); }
   border: 1px solid var(--line); border-radius: var(--radius-lg);
   background: linear-gradient(165deg, var(--surface), var(--bg-2));
   padding: 26px; display: flex; flex-direction: column; gap: 22px;
-  overflow: hidden; position: relative;
+  overflow: hidden; position: relative; cursor: pointer;
   transition: border-color .35s, transform .45s var(--ease);
 }
 .svcb__card:hover { border-color: var(--line-2); transform: translateY(-3px); }
+/* Moving light-chase border — a quiet, always-on cue that the card is
+   clickable, same technique as the product page's dash-mock ring. */
+@property --svcb-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.svcb__card::before {
+  content: ""; position: absolute; inset: 0; z-index: 3; border-radius: var(--radius-lg);
+  padding: 1.5px; pointer-events: none;
+  background: conic-gradient(from var(--svcb-angle, 0deg), transparent 0deg, transparent 270deg, var(--accent) 310deg, var(--text) 330deg, var(--accent) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: svcbRingSpin 6s linear infinite;
+}
+@keyframes svcbRingSpin { to { --svcb-angle: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .svcb__card::before { animation: none; opacity: 0.35; } }
 .svcb__card--wide { grid-column: span 1; }
 .svcb__art { height: 130px; position: relative; }
 .svcb__title { font-size: 19px; margin-block-end: 8px; }

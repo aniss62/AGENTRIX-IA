@@ -7,7 +7,12 @@ function SvcCardShell({ className = "", art, title, desc, metric, points }) {
   const { t } = useT();
   const [open, setOpen] = React.useState(false);
   return (
-    <div className={`svcb__card ${className} ${open ? "open" : ""}`}>
+    <div
+      className={`svcb__card ${className} ${open ? "open" : ""}`}
+      onClick={() => setOpen((o) => !o)}
+      role="button" tabIndex={0} aria-expanded={open}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen((o) => !o); } }}
+    >
       <div className="svcb__metric">
         <CountUp value={metric.value} />
         <small>{metric.label}</small>
@@ -16,7 +21,7 @@ function SvcCardShell({ className = "", art, title, desc, metric, points }) {
       <div className="svcb__body">
         <h3 className="svcb__title">{title}</h3>
         <p className="svcb__desc">{desc}</p>
-        <button className="svcb__toggle" onClick={() => setOpen((o) => !o)} aria-expanded={open}>
+        <button className="svcb__toggle" aria-expanded={open} tabIndex={-1}>
           {open ? t("home.pillars.less") : t("home.pillars.included")}
           <span className="svcb__toggle-ic"><Icon name="plus" size={14} /></span>
         </button>
