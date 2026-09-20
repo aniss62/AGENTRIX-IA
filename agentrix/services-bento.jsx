@@ -21,10 +21,20 @@ function SvcCardShell({ className = "", art, title, desc, metric, points }) {
       <div className="svcb__body">
         <h3 className="svcb__title">{title}</h3>
         <p className="svcb__desc">{desc}</p>
-        <button className="svcb__toggle" aria-expanded={open} tabIndex={-1}>
-          {open ? t("home.pillars.less") : t("home.pillars.included")}
-          <span className="svcb__toggle-ic"><Icon name="plus" size={14} /></span>
-        </button>
+        <div className="svcb__toggle" aria-expanded={open}>
+          <span className="svcb__toggle-label">{t("home.pillars.included")}</span>
+          {open ? (
+            <button
+              className="svcb__minus"
+              aria-label={t("home.pillars.less")}
+              onClick={(e) => { e.stopPropagation(); setOpen(false); }}
+            >
+              <Icon name="minus" size={13} />
+            </button>
+          ) : (
+            <span className="svcb__toggle-ic"><Icon name="plus" size={14} /></span>
+          )}
+        </div>
         <div className="svcb__points">
           <div className="svcb__points-inner">
             {points.map((pt, j) => (
