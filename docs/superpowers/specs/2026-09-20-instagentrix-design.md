@@ -81,10 +81,20 @@ La routine fait tourner les 5 piliers pour qu'aucun ne domine ni ne soit oublié
 ## Formats de contenu
 
 **Vidéo** (15-30s, 9:16 vertical) :
-- Texte animé à l'écran sur fond de b-roll libre de droits (Pexels/Pixabay vidéo)
+- Texte animé à l'écran sur fond visuel, deux sources possibles (les deux actives, à choisir par
+  sujet — mis à jour 2026-09-22 suite à une demande de l'utilisateur, qui dispose de crédits
+  Nano Banana) :
+  - **Pixabay** : b-roll vidéo réel libre de droits, via `instagentrix/video.py::search_broll`
+    (appel Python direct, clé API requise).
+  - **Nano Banana** (Gemini image gen, via le connecteur Zapier Google AI Studio) : une image de
+    fond générée par IA, animée en zoom/pan Ken Burns via
+    `instagentrix/video.py::build_video_from_image` (ffmpeg `zoompan`), au lieu d'un vrai clip
+    vidéo. Cette génération passe par l'outil Zapier depuis une session agent — impossible depuis
+    la routine cloud texte-only.
 - Musique de fond libre de droits
 - Pas de voix off (choix validé — coût nul, pas de dépendance à un moteur de synthèse vocale)
-- Sous-titres/texte incrustés via ffmpeg en local
+- Sous-titres/texte incrustés via ffmpeg en local (nécessite un ffmpeg avec support `drawtext`,
+  voir Prérequis)
 
 **Carrousel** (4-8 slides) :
 - Illustration + texte, aux couleurs/police de la charte Agentrix (`agentrix/pages.css`)

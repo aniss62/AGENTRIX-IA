@@ -31,15 +31,30 @@ Base Airtable `agentrix` (`appcoqhKXGbCttULR`), table `Instagram Content Pipelin
    hashtags a la main. Calcule la ville du jour avec `instagentrix.geo.city_for_day(date)`.
 4. **Production media** :
    - Carrousel : `instagentrix.carousel.generate_carousel(slides, Path("instagentrix/output"), slug)`
-   - Video : `instagentrix.video.search_broll(...)` puis `build_video(...)` — necessite
-     `PIXABAY_API_KEY` dans `.env`. Choisis une musique libre de droits adaptee au ton du sujet
-     (recherche-la via WebSearch/WebFetch, par exemple sur pixabay.com/music, et telecharge le
-     fichier localement dans `instagentrix/output/`) avant d'appeler `build_video`. Note : le
-     `ffmpeg` par defaut de cette machine n'a pas le filtre `drawtext` (build Homebrew sans
-     freetype) — si `build_video` echoue avec une erreur "Unknown filter 'drawtext'", previens
-     l'utilisateur qu'un ffmpeg complet (ex. `ffmpeg-full`) doit etre installe/lie avant que la
-     production video fonctionne, plutot que de modifier la configuration systeme toi-meme sans
-     lui demander.
+   - Video, deux sources possibles pour le fond visuel — demande a l'utilisateur laquelle utiliser
+     si ce n'est pas deja precise (les deux sont actives, cf. design) :
+     - **Pixabay (b-roll reel)** : `instagentrix.video.search_broll(...)` puis `build_video(...)`
+       — necessite `PIXABAY_API_KEY` dans `.env`.
+     - **Nano Banana (image IA animee)** : genere une image de fond via l'outil Zapier
+       `execute_zapier_write_action` (`selected_api: "GoogleMakerSuiteCLIAPI"`,
+       `action: "generate_image"`, `model: "gemini-3.1-flash-image-preview"` — "Nano Banana 2" ;
+       `"gemini-3-pro-image-preview"` = "Nano Banana Pro", plus cher, si l'utilisateur le demande
+       explicitement). Le prompt doit rester coherent avec la charte Agentrix (fond sombre,
+       accents lime, pas de visage, pas de texte incruste par le modele — le texte est ajoute
+       ensuite par ffmpeg). Recupere l'image renvoyee (URL ou base64 selon la reponse de l'outil)
+       et sauvegarde-la localement dans `instagentrix/output/`, puis appelle
+       `instagentrix.video.build_video_from_image(...)` (anime l'image en zoom/pan Ken Burns au
+       lieu d'un vrai b-roll). Cette generation passe par l'outil Zapier directement — ce n'est
+       PAS un appel Python autonome comme pour Pixabay, donc elle ne peut se faire que depuis une
+       session agent (jamais depuis la routine cloud texte-only).
+     - Pour les deux : choisis une musique libre de droits adaptee au ton du sujet (recherche-la
+       via WebSearch/WebFetch, par exemple sur pixabay.com/music, et telecharge le fichier
+       localement dans `instagentrix/output/`) avant d'appeler `build_video`/`build_video_from_image`.
+     - Note : le `ffmpeg` par defaut de cette machine n'a pas le filtre `drawtext` (build Homebrew
+       sans freetype) — si `build_video`/`build_video_from_image` echoue avec une erreur
+       "Unknown filter 'drawtext'", previens l'utilisateur qu'un ffmpeg complet (ex. `ffmpeg-full`)
+       doit etre installe/lie avant que la production video fonctionne, plutot que de modifier la
+       configuration systeme toi-meme sans lui demander.
 5. **Auto-QA avant email/validation** : aucune statistique non sourcee pour `actu-tendances`,
    hashtags = exactement la sortie de `select_hashtags` (pas de modification manuelle), legende
    sans tiret cadratin/demi-cadratin, fichier media genere et non vide.
