@@ -192,12 +192,17 @@ def _render_slide(background_fn: callable, text: str, index: int, total: int) ->
     draw = ImageDraw.Draw(img)
 
     # Wordmark, top-left, with a soft lime glow behind it for the neon-accent feel.
+    # "-IA" renders in plain white, breaking it out from the "Agentrix" accent color.
     wordmark_font = _load_font(brand.FONT_DISPLAY_BOLD, 38, bold_axis=True)
+    wordmark_name, _, wordmark_suffix = brand.WORDMARK.partition("-")
+    wordmark_suffix = f"-{wordmark_suffix}"
     glow_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
     ImageDraw.Draw(glow_layer).text((pad, 68), brand.WORDMARK, font=wordmark_font, fill=(*ACCENT_RGB, 160))
     glow_layer = glow_layer.filter(ImageFilter.GaussianBlur(10))
     img.alpha_composite(glow_layer)
-    draw.text((pad, 68), brand.WORDMARK, font=wordmark_font, fill=brand.ACCENT)
+    draw.text((pad, 68), wordmark_name, font=wordmark_font, fill=brand.ACCENT)
+    name_w = draw.textlength(wordmark_name, font=wordmark_font)
+    draw.text((pad + name_w, 68), wordmark_suffix, font=wordmark_font, fill=brand.TEXT)
 
     # Slide-counter pill, top-right — accent-soft fill + accent text, same chip language as the
     # site's icon badges (.chatsec__hint-ic { background: var(--accent-soft); color: var(--accent) }).

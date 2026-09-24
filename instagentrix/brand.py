@@ -6,7 +6,7 @@ from pathlib import Path
 ASSETS_DIR = Path(__file__).parent / "assets"
 FONTS_DIR = ASSETS_DIR / "fonts"
 
-FONT_DISPLAY_BOLD = str(FONTS_DIR / "BricolageGrotesque-Bold.ttf")
+FONT_DISPLAY_BOLD = str(FONTS_DIR / "SpaceGrotesk-Bold.ttf")
 FONT_BODY = str(FONTS_DIR / "Manrope-Regular.ttf")
 FONT_BODY_BOLD = str(FONTS_DIR / "Manrope-Bold.ttf")
 
