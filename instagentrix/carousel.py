@@ -7,6 +7,7 @@ from the slide text — drawn in-house (not fetched third-party art) so licensin
 and the style always matches the brand exactly.
 """
 import math
+import random
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
@@ -224,46 +225,92 @@ def _pick_illustration(text: str) -> callable:
     return _icon_robot
 
 
+_TRACE_RNG_SEED = 7  # fixed seed: background pattern is deterministic/reproducible, not random per run
+
+
+def _draw_circuit_traces(w: int, h: int) -> Image.Image:
+    """PCB-style traces: right-angle paths with node dots, a few brighter than the rest — the
+    "high-tech" texture requested to replace the plain hairline grid, which read as too flat."""
+    rng = random.Random(_TRACE_RNG_SEED)
+    layer = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(layer)
+
+    for i in range(13):
+        hot = i % 4 == 0  # every 4th trace is a brighter "active" line
+        alpha = 70 if hot else 34
+        edge = rng.choice(["left", "right", "top"])
+        if edge == "left":
+            x, y = 0, rng.randint(0, h)
+        elif edge == "right":
+            x, y = w, rng.randint(0, h)
+        else:
+            x, y = rng.randint(0, w), 0
+        points = [(x, y)]
+        for _ in range(rng.randint(2, 3)):
+            if rng.random() < 0.5:
+                x = max(0, min(w, x + rng.choice([-1, 1]) * rng.randint(80, 220)))
+            else:
+                y = max(0, min(h, y + rng.choice([-1, 1]) * rng.randint(80, 220)))
+            points.append((x, y))
+        draw.line(points, fill=(*ACCENT_RGB, alpha), width=3 if hot else 2)
+        for px, py in points[1:]:
+            r = 5 if hot else 3
+            draw.ellipse([px - r, py - r, px + r, py + r], fill=(*ACCENT_RGB, alpha + 40))
+        if hot:
+            # A small glow at the trace's endpoint, like an active data point / LED.
+            glow_r = 22
+            end_x, end_y = points[-1]
+            node_glow = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+            ImageDraw.Draw(node_glow).ellipse(
+                [end_x - glow_r, end_y - glow_r, end_x + glow_r, end_y + glow_r], fill=(*ACCENT_RGB, 130)
+            )
+            node_glow = node_glow.filter(ImageFilter.GaussianBlur(14))
+            layer.alpha_composite(node_glow)
+
+    return layer
+
+
+def _draw_hud_corners(w: int, h: int) -> Image.Image:
+    """Small L-shaped corner brackets, like a viewfinder/HUD frame — a common sci-fi/interface
+    shorthand for "high-tech" that reads instantly even at a glance."""
+    layer = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(layer)
+    inset, arm, lw, color = 44, 56, 4, (*ACCENT_RGB, 130)
+    corners = [
+        ((inset, inset), (1, 1)),
+        ((w - inset, inset), (-1, 1)),
+        ((inset, h - inset), (1, -1)),
+        ((w - inset, h - inset), (-1, -1)),
+    ]
+    for (cx, cy), (dx, dy) in corners:
+        draw.line([(cx, cy), (cx + arm * dx, cy)], fill=color, width=lw)
+        draw.line([(cx, cy), (cx, cy + arm * dy)], fill=color, width=lw)
+    return layer
+
+
 def _build_background() -> Image.Image:
-    """Dark base + hairline grid (fading toward the bottom) + two soft radial accent glows —
-    the same recipe as the site's own hero background (agentrix/styles.css .hero__grid /
-    .hero__aura), rendered as a flat raster instead of CSS layers.
+    """Dark base + circuit-trace texture + HUD corner brackets + layered accent glows — a more
+    deliberately "high-tech" treatment than the earlier plain hairline grid, which read as flat
+    and low-impact once posted for real.
     """
     w, h = brand.CAROUSEL_W, brand.CAROUSEL_H
     img = Image.new("RGB", (w, h), brand.BG)
 
-    # Glow layer: a lime blob top-right, a cooler dim blob bottom-left, both heavily blurred.
-    # Kept deliberately faint (this is a background wash, not a spotlight) — matches the site's
-    # own --accent-soft (12% opacity) rather than a saturated corner wash.
+    # Glow layer: a lime blob top-right, a cooler blob bottom-left, plus a smaller bright
+    # accent point for a "light source" feel — stronger than a purely decorative wash so the
+    # slide reads as punchy at thumbnail size, not just moody.
     glow = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     glow_draw = ImageDraw.Draw(glow)
-    glow_draw.ellipse([w * 0.55, -h * 0.25, w * 1.25, h * 0.35], fill=(*ACCENT_RGB, 26))
-    glow_draw.ellipse([-w * 0.35, h * 0.60, w * 0.45, h * 1.20], fill=(70, 90, 140, 22))
+    glow_draw.ellipse([w * 0.55, -h * 0.25, w * 1.25, h * 0.35], fill=(*ACCENT_RGB, 42))
+    glow_draw.ellipse([-w * 0.35, h * 0.60, w * 0.45, h * 1.20], fill=(70, 110, 200, 34))
     glow = glow.filter(ImageFilter.GaussianBlur(130))
     img.paste(glow, (0, 0), glow)
 
-    # Hairline grid, masked so it fades out by the lower third (mirrors the site's
-    # mask-image: linear-gradient(180deg, black 0%, black 55%, transparent 100%)).
-    grid = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    grid_draw = ImageDraw.Draw(grid)
-    step = 72
-    line_rgba = (255, 255, 255, 18)
-    for x in range(0, w, step):
-        grid_draw.line([(x, 0), (x, h)], fill=line_rgba, width=1)
-    for y in range(0, h, step):
-        grid_draw.line([(0, y), (w, y)], fill=line_rgba, width=1)
+    traces = _draw_circuit_traces(w, h)
+    img.paste(traces, (0, 0), traces)
 
-    mask = Image.new("L", (1, h), color=0)
-    fade_start = int(h * 0.55)
-    for y in range(h):
-        if y < fade_start:
-            mask.putpixel((0, y), 255)
-        else:
-            t = (y - fade_start) / max(1, (h - fade_start))
-            mask.putpixel((0, y), int(255 * (1 - t)))
-    mask = mask.resize((w, h))
-    grid.putalpha(Image.composite(grid.getchannel("A"), Image.new("L", (w, h), 0), mask))
-    img.paste(grid, (0, 0), grid)
+    corners = _draw_hud_corners(w, h)
+    img.paste(corners, (0, 0), corners)
 
     return img
 
