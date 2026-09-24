@@ -22,7 +22,7 @@ ACCENT = "#aeec46"
 ACCENT_DIM = "#98cb46"
 ACCENT_INK = "#121f00"
 
-WORDMARK = "Agentrix"
+WORDMARK = "Agentrix-IA"
 
 # Carousel canvas — Instagram-recommended portrait 4:5
 CAROUSEL_W = 1080
