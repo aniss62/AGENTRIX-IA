@@ -30,9 +30,23 @@ Base Airtable `agentrix` (`appcoqhKXGbCttULR`), table `Instagram Content Pipelin
    `instagentrix.hashtags.select_hashtags(pillar, day_index)` — ne jamais ecrire une liste de
    hashtags a la main. Calcule la ville du jour avec `instagentrix.geo.city_for_day(date)`.
 4. **Production media** :
-   - Carrousel : `instagentrix.carousel.generate_carousel(slides, Path("instagentrix/output"), slug)`
-   - Video, deux sources possibles pour le fond visuel — demande a l'utilisateur laquelle utiliser
-     si ce n'est pas deja precise (les deux sont actives, cf. design) :
+   - **Musique, pour tout format (carrousel ET video)** : utilise
+     `instagentrix.music.track_for_day(date)` pour la piste du jour (4 pistes Mixkit libres de
+     droits, licence commerciale sans attribution, validees par l'utilisateur le 2026-09-25 apres
+     ecoute, en rotation fixe -- ne recherche plus une musique au cas par cas, et ne repasse jamais
+     par Pixabay Music : pas d'API, telechargement bloque). Telecharge le fichier depuis son `url`
+     (mp3 direct, `curl`/`urllib` suffit) dans `instagentrix/output/` avant d'appeler
+     `build_video`/`build_video_from_image`/`build_video_from_slides`.
+   - **Carrousel** : `instagentrix.carousel.generate_carousel(slides, Path("instagentrix/output"), slug)`
+     pour les images, PUIS transforme-les systematiquement en Reel avec la musique du jour
+     incrustee via `instagentrix.video.build_video_from_slides(slide_paths, music_path,
+     output_path)` -- c'est ce fichier video qui est publie, pas les images seules. Raison :
+     Instagram n'expose aucun parametre audio pour un post carrousel/photo via l'API, donc c'est
+     le seul chemin automatise qui garantit un son sur le post final. Publier ce fichier utilise
+     donc l'action Zapier video (`publish_video`), pas `publish_media_v2`, meme si le champ
+     `Format` Airtable de la ligne reste `carrousel`.
+   - **Video**, deux sources possibles pour le fond visuel — demande a l'utilisateur laquelle
+     utiliser si ce n'est pas deja precise (les deux sont actives, cf. design) :
      - **Pixabay (b-roll reel)** : `instagentrix.video.search_broll(...)` puis `build_video(...)`
        — necessite `PIXABAY_API_KEY` dans `.env`.
      - **Nano Banana (image IA animee)** : genere une image de fond via l'outil Zapier
@@ -47,20 +61,13 @@ Base Airtable `agentrix` (`appcoqhKXGbCttULR`), table `Instagram Content Pipelin
        lieu d'un vrai b-roll). Cette generation passe par l'outil Zapier directement — ce n'est
        PAS un appel Python autonome comme pour Pixabay, donc elle ne peut se faire que depuis une
        session agent (jamais depuis la routine cloud texte-only).
-     - Pour les deux : utilise `instagentrix.music.track_for_day(date)` pour la piste du jour (4
-       pistes libres de droits validees par l'utilisateur le 2026-09-25, en rotation fixe -- ne
-       recherche plus une musique au cas par cas). Telecharge le fichier depuis son `url` dans
-       `instagentrix/output/` avant d'appeler `build_video`/`build_video_from_image`.
-     - Pour un **carrousel** : Instagram ne permet d'attacher une musique a un post carrousel que
-       depuis l'app (aucun parametre audio dans l'action Zapier `Publish Photo(s)`). Indique quand
-       meme la piste du jour (`instagentrix.music.track_for_day`) dans le commentaire Airtable et
-       dans l'email de proposition, pour que l'utilisateur puisse la chercher manuellement dans le
-       catalogue Instagram au moment de publier -- ne telecharge rien dans ce cas.
      - Note : le `ffmpeg` par defaut de cette machine n'a pas le filtre `drawtext` (build Homebrew
        sans freetype) — si `build_video`/`build_video_from_image` echoue avec une erreur
        "Unknown filter 'drawtext'", previens l'utilisateur qu'un ffmpeg complet (ex. `ffmpeg-full`)
        doit etre installe/lie avant que la production video fonctionne, plutot que de modifier la
-       configuration systeme toi-meme sans lui demander.
+       configuration systeme toi-meme sans lui demander. `build_video_from_slides` n'utilise pas
+       `drawtext` (le texte est deja incruste dans les slides du carrousel), donc pas concerne par
+       cette limitation.
 5. **Auto-QA avant email/validation** : aucune statistique non sourcee pour `actu-tendances`,
    hashtags = exactement la sortie de `select_hashtags` (pas de modification manuelle), legende
    sans tiret cadratin/demi-cadratin, fichier media genere et non vide.

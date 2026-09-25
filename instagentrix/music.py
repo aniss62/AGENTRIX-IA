@@ -1,46 +1,53 @@
 """Background-music pool and per-post rotation for Instagentrix.
 
-4 royalty-free Pixabay tracks, validated by the user 2026-09-25, cycled in a fixed rotation
-so consecutive posts don't repeat the same track. Same epoch-based determinism as
-`geo.city_for_day` so the cloud routine and a local session always agree without shared state.
+4 royalty-free Mixkit tracks, validated by the user 2026-09-25 (after listening to previews),
+cycled in a fixed rotation so consecutive posts don't repeat the same track. Same epoch-based
+determinism as `geo.city_for_day` so the cloud routine and a local session always agree without
+shared state.
 
-IMPORTANT: Instagram's Graph API (and therefore the Zapier "Publish Photo(s)" action this
-pipeline uses) has no audio parameter for carousel/photo posts -- that catalog is only reachable
-from Instagram's own app UI. For a carousel, `track_for_day` gives the *direction* to search for
-manually in Instagram's in-app music picker when publishing; it does not get attached
-automatically. For a video/Reel produced via `video.py`, the returned `url` can be downloaded and
-baked into the file with ffmpeg like any other royalty-free track.
+IMPORTANT (superseded a first attempt with Pixabay Music, 2026-09-25): Pixabay Music has no public
+API and blocks programmatic downloads (403 on any non-browser request) -- unusable for
+automation. Mixkit's tracks have stable, directly-downloadable mp3 URLs (`url` below), free for
+commercial use, no attribution required -- confirmed working via plain `curl`/`urllib`.
+
+Also (separate finding, same day): Instagram's Graph API has no audio parameter for
+carousel/photo posts at all, and adding music to an already-published carousel from the app is
+unreliable. So `track_for_day`'s track is not meant to sit next to a still carousel -- it's meant
+to be downloaded and baked into a video with `video.build_video_from_slides` (turns the carousel's
+own slide images into a Reels-format slideshow with this track mixed in), which is then published
+via Zapier's video/Reels action instead of the photo/carousel action. That's the only fully
+automated path that reliably ships with music.
 """
 import datetime
 
 TRACKS = [
     {
-        "title": "Corporate Upbeat Tech",
-        "artist": "SoulProdMusic",
-        "duration": "2:01",
-        "mood": "energique, rythme EDM — actu-tendances, annonces produit",
-        "url": "https://pixabay.com/music/corporate-corporate-upbeat-tech-208855/",
+        "title": "Close Up",
+        "artist": "Michael Ramir C.",
+        "duration": "1:35",
+        "mood": "sobre, pose — le plus proche de l'identite visuelle Agentrix",
+        "url": "https://assets.mixkit.co/music/1167/1167.mp3",
     },
     {
-        "title": "Upbeat Tech Corporate",
-        "artist": "stock_music",
-        "duration": "1:42",
-        "mood": "electronique, uplifting, medium-fast — demo-services",
-        "url": "https://pixabay.com/music/corporate-upbeat-tech-corporate-153729/",
+        "title": "Motivating Mornings",
+        "artist": "Ahjay Stelino",
+        "duration": "1:36",
+        "mood": "energique, positif — actu-tendances, annonces produit",
+        "url": "https://assets.mixkit.co/music/33/33.mp3",
     },
     {
-        "title": "Corporate Background Music",
-        "artist": "MaksymMalko",
-        "duration": "2:12",
-        "mood": "fluide, elegant, hopeful — le plus polyvalent des 4",
-        "url": "https://pixabay.com/music/upbeat-corporate-background-music-301236/",
+        "title": "Infinity",
+        "artist": "Arulo",
+        "duration": "1:43",
+        "mood": "fluide, moderne — demo-services",
+        "url": "https://assets.mixkit.co/music/440/440.mp3",
     },
     {
-        "title": "Minimal Tech Corporate",
-        "artist": "SoulProdMusic",
-        "duration": "2:42",
-        "mood": "sobre, confiant, ambient — le plus proche de l'identite visuelle Agentrix",
-        "url": "https://pixabay.com/music/corporate-minimal-tech-corporate-212257/",
+        "title": "Your Breath",
+        "artist": "Eugenio Mininni",
+        "duration": "3:56",
+        "mood": "atmospherique, plus long — bien pour un carrousel a 6-8 slides",
+        "url": "https://assets.mixkit.co/music/634/634.mp3",
     },
 ]
 
@@ -52,8 +59,9 @@ def track_for_day(day: datetime.date) -> dict:
     """Return the track dict (title, artist, duration, mood, url) to use for a given day.
 
     Cycles through the 4 validated tracks in order, one per day, independent of geo/hashtag
-    rotation. For a carousel this is guidance for manual selection in Instagram's music picker;
-    for a video it's the track to download and bake in with ffmpeg.
+    rotation. `url` is a direct, curl/urllib-downloadable mp3 -- download it and pass to
+    `video.build_video_from_slides` (carousel-origin content) or `video.build_video`/
+    `build_video_from_image` (b-roll/AI-image content) to bake it into the final file.
     """
     days_since_epoch = (day - _EPOCH).days
     return TRACKS[days_since_epoch % len(TRACKS)]

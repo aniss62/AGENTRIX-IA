@@ -110,6 +110,63 @@ def build_video(
     return output_path
 
 
+def build_video_from_slides(
+    slide_paths: list[Path],
+    music_path: Path,
+    output_path: Path,
+    seconds_per_slide: float = 3.0,
+    fps: int = 25,
+) -> Path:
+    """Turn already-rendered carousel slide images (from carousel.generate_carousel) into a
+    vertical Reels-format slideshow video: each slide is letterboxed onto a 1080x1920 canvas
+    (brand background fills the padding top/bottom, the slide's own text/wordmark/progress dots
+    are untouched -- no drawtext involved) shown in sequence, with music mixed in underneath.
+
+    Instagram's Graph API has no audio parameter for photo/carousel posts (confirmed against the
+    Zapier "Publish Photo(s)" action schema), and adding music to an already-published carousel
+    from the app is unreliable/not generally available. A Reel's video file carries its own
+    embedded audio instead, so publishing carousel content this way via Zapier's video action is
+    the only fully automated path that reliably ships with music -- no manual app step needed.
+    """
+    if not slide_paths:
+        raise ValueError("slide_paths must not be empty")
+
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    total_duration = len(slide_paths) * seconds_per_slide
+    bg_color = "0x" + brand.BG.lstrip("#")
+
+    inputs = []
+    for p in slide_paths:
+        inputs += ["-loop", "1", "-t", str(seconds_per_slide), "-i", str(p)]
+    music_input_index = len(slide_paths)
+    inputs += ["-stream_loop", "-1", "-i", str(music_path)]
+
+    per_slide_filters = [
+        f"[{i}:v]scale={brand.CAROUSEL_W}:{brand.CAROUSEL_H},"
+        f"pad={brand.VIDEO_W}:{brand.VIDEO_H}:(ow-iw)/2:(oh-ih)/2:color={bg_color},"
+        f"fps={fps},setsar=1[v{i}]"
+        for i in range(len(slide_paths))
+    ]
+    concat_inputs = "".join(f"[v{i}]" for i in range(len(slide_paths)))
+    filter_complex = ";".join(per_slide_filters) + f";{concat_inputs}concat=n={len(slide_paths)}:v=1:a=0[v]"
+
+    cmd = [
+        "ffmpeg", "-y",
+        *inputs,
+        "-filter_complex", filter_complex,
+        "-map", "[v]", "-map", f"{music_input_index}:a",
+        "-t", str(total_duration),
+        "-af", "volume=0.25",
+        "-c:v", "libx264", "-preset", "medium", "-crf", "23",
+        "-c:a", "aac", "-b:a", "128k",
+        "-shortest",
+        str(output_path),
+    ]
+    _run_ffmpeg(cmd)
+    return output_path
+
+
 def build_video_from_image(
     image_path: Path,
     text_lines: list[str],
