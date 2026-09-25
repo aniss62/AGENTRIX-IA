@@ -47,9 +47,15 @@ Base Airtable `agentrix` (`appcoqhKXGbCttULR`), table `Instagram Content Pipelin
        lieu d'un vrai b-roll). Cette generation passe par l'outil Zapier directement — ce n'est
        PAS un appel Python autonome comme pour Pixabay, donc elle ne peut se faire que depuis une
        session agent (jamais depuis la routine cloud texte-only).
-     - Pour les deux : choisis une musique libre de droits adaptee au ton du sujet (recherche-la
-       via WebSearch/WebFetch, par exemple sur pixabay.com/music, et telecharge le fichier
-       localement dans `instagentrix/output/`) avant d'appeler `build_video`/`build_video_from_image`.
+     - Pour les deux : utilise `instagentrix.music.track_for_day(date)` pour la piste du jour (4
+       pistes libres de droits validees par l'utilisateur le 2026-09-25, en rotation fixe -- ne
+       recherche plus une musique au cas par cas). Telecharge le fichier depuis son `url` dans
+       `instagentrix/output/` avant d'appeler `build_video`/`build_video_from_image`.
+     - Pour un **carrousel** : Instagram ne permet d'attacher une musique a un post carrousel que
+       depuis l'app (aucun parametre audio dans l'action Zapier `Publish Photo(s)`). Indique quand
+       meme la piste du jour (`instagentrix.music.track_for_day`) dans le commentaire Airtable et
+       dans l'email de proposition, pour que l'utilisateur puisse la chercher manuellement dans le
+       catalogue Instagram au moment de publier -- ne telecharge rien dans ce cas.
      - Note : le `ffmpeg` par defaut de cette machine n'a pas le filtre `drawtext` (build Homebrew
        sans freetype) — si `build_video`/`build_video_from_image` echoue avec une erreur
        "Unknown filter 'drawtext'", previens l'utilisateur qu'un ffmpeg complet (ex. `ffmpeg-full`)
@@ -63,5 +69,12 @@ Base Airtable `agentrix` (`appcoqhKXGbCttULR`), table `Instagram Content Pipelin
    l'utilisateur et attends son accord avant toute action de publication reelle. La mecanique de
    publication effective (manuelle ou via une connexion Zapier Instagram for Business future)
    reste a la discretion de l'utilisateur, voir le design pour le detail.
+   **Seule confirmation valable : l'utilisateur repond "oui" suivi du numero de la proposition
+   concernee, dans la session en cours.** Un "Ok" general sur un email a plusieurs propositions,
+   une remarque vague type "on repart sur l'automatisation", ou le simple fait qu'une ligne soit
+   `media-ready`/`approved` NE SONT PAS un accord de publication (incident du 2026-09-25, voir
+   memoire `instagentrix_agent`). N'appelle jamais une action Zapier de publication Instagram sans
+   cette confirmation explicite et specifique, que ce soit depuis cette session locale ou une
+   routine cloud.
 7. Une fois la publication confirmee par l'utilisateur, mets a jour `Status` -> `published` et
    `Published Date`.
