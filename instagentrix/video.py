@@ -8,9 +8,37 @@ import urllib.parse
 import json
 from pathlib import Path
 
+from PIL import Image, ImageDraw, ImageFont
+
 from instagentrix import brand
 
 PIXABAY_VIDEO_SEARCH = "https://pixabay.com/api/videos/"
+
+_DRAWTEXT_FONT_SIZE = 56
+_DRAWTEXT_LINE_HEIGHT = 68
+_DRAWTEXT_SIDE_MARGIN = 80
+
+
+def _wrap_for_drawtext(text: str, max_width: int) -> list[str]:
+    """Wrap `text` into lines that fit `max_width` at `_DRAWTEXT_FONT_SIZE`, using the same
+    greedy word-wrap as carousel._wrap_text. Without this, a full sentence passed straight to
+    a single drawtext filter overflows off both edges of the 1080px canvas instead of wrapping.
+    """
+    font = ImageFont.truetype(brand.FONT_DISPLAY_BOLD, _DRAWTEXT_FONT_SIZE)
+    draw = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    words = text.split()
+    lines, current = [], ""
+    for word in words:
+        candidate = f"{current} {word}".strip()
+        if draw.textlength(candidate, font=font) <= max_width:
+            current = candidate
+        else:
+            if current:
+                lines.append(current)
+            current = word
+    if current:
+        lines.append(current)
+    return lines
 
 
 def search_broll(query: str, api_key: str) -> str:
@@ -43,21 +71,31 @@ def download_file(url: str, dest: Path) -> Path:
 
 
 def _drawtext_chain(text_lines: list[str], seconds_per_line: float) -> str:
-    """Build the ffmpeg drawtext filter chain for a sequence of timed, centered caption lines."""
+    """Build the ffmpeg drawtext filter chain for a sequence of timed, centered caption lines.
+
+    Each entry in `text_lines` is word-wrapped (see `_wrap_for_drawtext`) into as many sub-lines
+    as needed and rendered as one drawtext filter per sub-line, stacked around the vertical
+    center — otherwise a full sentence overflows off both edges of the 1080px canvas.
+    """
     escaped_font = brand.FONT_DISPLAY_BOLD.replace("'", "'\\''")
+    max_width = brand.VIDEO_W - 2 * _DRAWTEXT_SIDE_MARGIN
     drawtext_filters = []
     for i, line in enumerate(text_lines):
         start = i * seconds_per_line
         end = start + seconds_per_line
-        safe_text = line.replace("'", "'\\''")
-        drawtext_filters.append(
-            "drawtext="
-            f"fontfile='{escaped_font}':text='{safe_text}':"
-            "fontcolor=white:fontsize=56:"
-            "x=(w-text_w)/2:y=(h-text_h)/2:"
-            "box=1:boxcolor=black@0.55:boxborderw=24:"
-            f"enable='between(t,{start},{end})'"
-        )
+        sublines = _wrap_for_drawtext(line, max_width)
+        block_height = len(sublines) * _DRAWTEXT_LINE_HEIGHT
+        for j, subline in enumerate(sublines):
+            safe_text = subline.replace("'", "'\\''")
+            y_expr = f"(h/2)-{block_height // 2}+{j * _DRAWTEXT_LINE_HEIGHT}"
+            drawtext_filters.append(
+                "drawtext="
+                f"fontfile='{escaped_font}':text='{safe_text}':"
+                f"fontcolor=white:fontsize={_DRAWTEXT_FONT_SIZE}:"
+                f"x=(w-text_w)/2:y={y_expr}:"
+                "box=1:boxcolor=black@0.55:boxborderw=24:"
+                f"enable='between(t,{start},{end})'"
+            )
     return ",".join(drawtext_filters)
 
 
