@@ -19,6 +19,9 @@ via Zapier's video/Reels action instead of the photo/carousel action. That's the
 automated path that reliably ships with music.
 """
 import datetime
+from pathlib import Path
+
+_MUSIC_DIR = Path(__file__).parent / "assets" / "music"
 
 TRACKS = [
     {
@@ -27,6 +30,7 @@ TRACKS = [
         "duration": "1:35",
         "mood": "sobre, pose — le plus proche de l'identite visuelle Agentrix",
         "url": "https://assets.mixkit.co/music/1167/1167.mp3",
+        "local_path": _MUSIC_DIR / "close-up.mp3",
     },
     {
         "title": "Motivating Mornings",
@@ -34,6 +38,7 @@ TRACKS = [
         "duration": "1:36",
         "mood": "energique, positif — actu-tendances, annonces produit",
         "url": "https://assets.mixkit.co/music/33/33.mp3",
+        "local_path": _MUSIC_DIR / "motivating-mornings.mp3",
     },
     {
         "title": "Infinity",
@@ -41,6 +46,7 @@ TRACKS = [
         "duration": "1:43",
         "mood": "fluide, moderne — demo-services",
         "url": "https://assets.mixkit.co/music/440/440.mp3",
+        "local_path": _MUSIC_DIR / "infinity.mp3",
     },
     {
         "title": "Your Breath",
@@ -48,6 +54,7 @@ TRACKS = [
         "duration": "3:56",
         "mood": "atmospherique, plus long — bien pour un carrousel a 6-8 slides",
         "url": "https://assets.mixkit.co/music/634/634.mp3",
+        "local_path": _MUSIC_DIR / "your-breath.mp3",
     },
 ]
 
@@ -56,12 +63,15 @@ _EPOCH = datetime.date(2026, 1, 1)
 
 
 def track_for_day(day: datetime.date) -> dict:
-    """Return the track dict (title, artist, duration, mood, url) to use for a given day.
+    """Return the track dict (title, artist, duration, mood, url, local_path) to use for a
+    given day. Cycles through the 4 validated tracks in order, one per day, independent of
+    geo/hashtag rotation.
 
-    Cycles through the 4 validated tracks in order, one per day, independent of geo/hashtag
-    rotation. `url` is a direct, curl/urllib-downloadable mp3 -- download it and pass to
-    `video.build_video_from_slides` (carousel-origin content) or `video.build_video`/
-    `build_video_from_image` (b-roll/AI-image content) to bake it into the final file.
+    `local_path` points at a copy already committed under `instagentrix/assets/music/` --
+    prefer it over `url`. The cloud routine's sandbox only confirms npm/PyPI/GitHub
+    API/Google Fonts as reachable, so a runtime `url` download (assets.mixkit.co) fails there;
+    `local_path` needs no network at all, in the cloud or locally, once the repo is checked out.
+    `url` is kept only as a provenance/attribution reference.
     """
     days_since_epoch = (day - _EPOCH).days
     return TRACKS[days_since_epoch % len(TRACKS)]
