@@ -70,33 +70,60 @@ def download_file(url: str, dest: Path) -> Path:
     return dest
 
 
-def _drawtext_chain(text_lines: list[str], seconds_per_line: float) -> str:
-    """Build the ffmpeg drawtext filter chain for a sequence of timed, centered caption lines.
-
-    Each entry in `text_lines` is word-wrapped (see `_wrap_for_drawtext`) into as many sub-lines
-    as needed and rendered as one drawtext filter per sub-line, stacked around the vertical
-    center — otherwise a full sentence overflows off both edges of the 1080px canvas.
+def _render_text_overlay(text: str, output_path: Path) -> Path:
+    """Render one full-canvas (VIDEO_W x VIDEO_H) transparent PNG with `text` word-wrapped and
+    centered, each sub-line on its own translucent black bar -- the PIL equivalent of
+    ffmpeg drawtext's `box=1:boxcolor=black@0.55`. Composited with the `overlay` filter instead
+    of using drawtext, because drawtext requires an ffmpeg build with libfreetype, which neither
+    this machine's Homebrew ffmpeg nor the cloud routine's PyPI-installed static ffmpeg has.
+    `overlay` needs no font support in ffmpeg at all -- the text is already rasterized here.
     """
-    escaped_font = brand.FONT_DISPLAY_BOLD.replace("'", "'\\''")
+    font = ImageFont.truetype(brand.FONT_DISPLAY_BOLD, _DRAWTEXT_FONT_SIZE)
+    img = Image.new("RGBA", (brand.VIDEO_W, brand.VIDEO_H), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
     max_width = brand.VIDEO_W - 2 * _DRAWTEXT_SIDE_MARGIN
-    drawtext_filters = []
+    sublines = _wrap_for_drawtext(text, max_width)
+    block_height = len(sublines) * _DRAWTEXT_LINE_HEIGHT
+    top = (brand.VIDEO_H - block_height) // 2
+    box_pad_x, box_pad_y = 24, 10
+    for j, subline in enumerate(sublines):
+        line_w = draw.textlength(subline, font=font)
+        y = top + j * _DRAWTEXT_LINE_HEIGHT
+        box = (
+            (brand.VIDEO_W - line_w) / 2 - box_pad_x,
+            y - box_pad_y,
+            (brand.VIDEO_W + line_w) / 2 + box_pad_x,
+            y + _DRAWTEXT_FONT_SIZE + box_pad_y,
+        )
+        draw.rectangle(box, fill=(0, 0, 0, 140))
+        draw.text(((brand.VIDEO_W - line_w) / 2, y), subline, font=font, fill=(255, 255, 255, 255))
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    img.save(output_path)
+    return output_path
+
+
+def _overlay_chain(
+    text_lines: list[str], seconds_per_line: float, base_input_count: int, work_dir: Path
+) -> tuple[list[str], str, str]:
+    """Render one transparent overlay PNG per text line and return
+    (extra ffmpeg -i args, filter chain string, final video label) to append after the base
+    video filter (which must end in `[v]`)."""
+    extra_inputs = []
+    overlay_filters = []
+    in_label = "[v]"
     for i, line in enumerate(text_lines):
+        png_path = work_dir / f"_overlay_{i}.png"
+        _render_text_overlay(line, png_path)
+        extra_inputs += ["-loop", "1", "-i", str(png_path)]
         start = i * seconds_per_line
         end = start + seconds_per_line
-        sublines = _wrap_for_drawtext(line, max_width)
-        block_height = len(sublines) * _DRAWTEXT_LINE_HEIGHT
-        for j, subline in enumerate(sublines):
-            safe_text = subline.replace("'", "'\\''")
-            y_expr = f"(h/2)-{block_height // 2}+{j * _DRAWTEXT_LINE_HEIGHT}"
-            drawtext_filters.append(
-                "drawtext="
-                f"fontfile='{escaped_font}':text='{safe_text}':"
-                f"fontcolor=white:fontsize={_DRAWTEXT_FONT_SIZE}:"
-                f"x=(w-text_w)/2:y={y_expr}:"
-                "box=1:boxcolor=black@0.55:boxborderw=24:"
-                f"enable='between(t,{start},{end})'"
-            )
-    return ",".join(drawtext_filters)
+        out_label = f"[vt{i}]"
+        overlay_input_idx = base_input_count + i
+        overlay_filters.append(
+            f"{in_label}[{overlay_input_idx}:v]overlay=0:0:enable='between(t,{start},{end})'{out_label}"
+        )
+        in_label = out_label
+    return extra_inputs, ";".join(overlay_filters), in_label
 
 
 def _run_ffmpeg(cmd: list[str]) -> None:
@@ -125,18 +152,22 @@ def build_video(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     total_duration = len(text_lines) * seconds_per_line
 
-    drawtext_chain = _drawtext_chain(text_lines, seconds_per_line)
-    filter_complex = (
+    base_filter = (
         f"[0:v]scale={brand.VIDEO_W}:{brand.VIDEO_H}:force_original_aspect_ratio=increase,"
-        f"crop={brand.VIDEO_W}:{brand.VIDEO_H},{drawtext_chain}[v]"
+        f"crop={brand.VIDEO_W}:{brand.VIDEO_H}[v]"
     )
+    overlay_inputs, overlay_filter, final_label = _overlay_chain(
+        text_lines, seconds_per_line, base_input_count=2, work_dir=output_path.parent
+    )
+    filter_complex = f"{base_filter};{overlay_filter}"
 
     cmd = [
         "ffmpeg", "-y",
         "-stream_loop", "-1", "-i", str(broll_path),
         "-stream_loop", "-1", "-i", str(music_path),
+        *overlay_inputs,
         "-filter_complex", filter_complex,
-        "-map", "[v]", "-map", "1:a",
+        "-map", final_label, "-map", "1:a",
         "-t", str(total_duration),
         "-af", "volume=0.25",
         "-c:v", "libx264", "-preset", "medium", "-crf", "23",
@@ -230,21 +261,25 @@ def build_video_from_image(
     total_duration = len(text_lines) * seconds_per_line
     total_frames = max(1, round(total_duration * fps))
 
-    drawtext_chain = _drawtext_chain(text_lines, seconds_per_line)
     # Upscale before zoompan to avoid visible pixelation as the zoom progresses, then zoompan
     # holds/animates the still across every output frame, then crop/scale locks the final frame.
-    filter_complex = (
+    base_filter = (
         f"[0:v]scale=8000:-2,"
         f"zoompan=z='min(zoom+0.0015,1.4)':d={total_frames}:s={brand.VIDEO_W}x{brand.VIDEO_H}:fps={fps},"
-        f"crop={brand.VIDEO_W}:{brand.VIDEO_H},{drawtext_chain}[v]"
+        f"crop={brand.VIDEO_W}:{brand.VIDEO_H}[v]"
     )
+    overlay_inputs, overlay_filter, final_label = _overlay_chain(
+        text_lines, seconds_per_line, base_input_count=2, work_dir=output_path.parent
+    )
+    filter_complex = f"{base_filter};{overlay_filter}"
 
     cmd = [
         "ffmpeg", "-y",
         "-loop", "1", "-i", str(image_path),
         "-stream_loop", "-1", "-i", str(music_path),
+        *overlay_inputs,
         "-filter_complex", filter_complex,
-        "-map", "[v]", "-map", "1:a",
+        "-map", final_label, "-map", "1:a",
         "-t", str(total_duration),
         "-af", "volume=0.25",
         "-c:v", "libx264", "-preset", "medium", "-crf", "23",
