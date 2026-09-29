@@ -10,7 +10,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-from instagentrix import brand
+from instagentrix import brand, render_utils
 
 PIXABAY_VIDEO_SEARCH = "https://pixabay.com/api/videos/"
 
@@ -24,7 +24,7 @@ def _wrap_for_drawtext(text: str, max_width: int) -> list[str]:
     greedy word-wrap as carousel._wrap_text. Without this, a full sentence passed straight to
     a single drawtext filter overflows off both edges of the 1080px canvas instead of wrapping.
     """
-    font = ImageFont.truetype(brand.FONT_DISPLAY_BOLD, _DRAWTEXT_FONT_SIZE)
+    font = render_utils.load_font(brand.FONT_DISPLAY_BOLD, _DRAWTEXT_FONT_SIZE, bold_axis=True)
     draw = ImageDraw.Draw(Image.new("RGB", (1, 1)))
     words = text.split()
     lines, current = [], ""
@@ -78,8 +78,9 @@ def _render_text_overlay(text: str, output_path: Path) -> Path:
     this machine's Homebrew ffmpeg nor the cloud routine's PyPI-installed static ffmpeg has.
     `overlay` needs no font support in ffmpeg at all -- the text is already rasterized here.
     """
-    font = ImageFont.truetype(brand.FONT_DISPLAY_BOLD, _DRAWTEXT_FONT_SIZE)
+    font = render_utils.load_font(brand.FONT_DISPLAY_BOLD, _DRAWTEXT_FONT_SIZE, bold_axis=True)
     img = Image.new("RGBA", (brand.VIDEO_W, brand.VIDEO_H), (0, 0, 0, 0))
+    render_utils.draw_wordmark(img)
     draw = ImageDraw.Draw(img)
     max_width = brand.VIDEO_W - 2 * _DRAWTEXT_SIDE_MARGIN
     sublines = _wrap_for_drawtext(text, max_width)

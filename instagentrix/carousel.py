@@ -12,42 +12,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-from instagentrix import brand
-
-
-def _hex_to_rgb(hex_color: str) -> tuple[int, int, int]:
-    hex_color = hex_color.lstrip("#")
-    return tuple(int(hex_color[i:i + 2], 16) for i in (0, 2, 4))
-
-
-ACCENT_RGB = _hex_to_rgb(brand.ACCENT)
-TEXT_RGB = _hex_to_rgb(brand.TEXT)
-
-
-def _load_font(path: str, size: int, bold_axis: bool = False) -> ImageFont.FreeTypeFont:
-    font = ImageFont.truetype(path, size)
-    if bold_axis:
-        try:
-            axes = font.get_variation_axes()
-        except (OSError, NotImplementedError):
-            # OSError: static (non-variable) font — no variation axes to query.
-            # NotImplementedError: FreeType build too old to support variations.
-            # Either way, the font falls back to its only weight.
-            axes = []
-        # Pillow's axis dicts expose "name" (e.g. b"Weight"), not an OpenType
-        # axis tag — match on that to find the weight axis.
-        weight_index = next(
-            (i for i, axis in enumerate(axes) if (axis.get("name") or b"").strip().lower() == b"weight"),
-            None,
-        )
-        if weight_index is not None:
-            # set_variation_by_axes takes one value per axis, positionally —
-            # keep every other axis at its default and only override weight.
-            values = [axis["default"] for axis in axes]
-            axis = axes[weight_index]
-            values[weight_index] = max(axis["minimum"], min(700, axis["maximum"]))
-            font.set_variation_by_axes(values)
-    return font
+from instagentrix import brand, render_utils
+from instagentrix.render_utils import ACCENT_RGB, TEXT_RGB, load_font as _load_font
 
 
 def _wrap_text(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, max_width: int) -> list[str]:
@@ -193,16 +159,7 @@ def _render_slide(background_fn: callable, text: str, index: int, total: int) ->
 
     # Wordmark, top-left, with a soft lime glow behind it for the neon-accent feel.
     # "-IA" renders in plain white, breaking it out from the "Agentrix" accent color.
-    wordmark_font = _load_font(brand.FONT_DISPLAY_BOLD, 38, bold_axis=True)
-    wordmark_name, _, wordmark_suffix = brand.WORDMARK.partition("-")
-    wordmark_suffix = f"-{wordmark_suffix}"
-    glow_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    ImageDraw.Draw(glow_layer).text((pad, 68), brand.WORDMARK, font=wordmark_font, fill=(*ACCENT_RGB, 160))
-    glow_layer = glow_layer.filter(ImageFilter.GaussianBlur(10))
-    img.alpha_composite(glow_layer)
-    draw.text((pad, 68), wordmark_name, font=wordmark_font, fill=brand.ACCENT)
-    name_w = draw.textlength(wordmark_name, font=wordmark_font)
-    draw.text((pad + name_w, 68), wordmark_suffix, font=wordmark_font, fill=brand.TEXT)
+    render_utils.draw_wordmark(img, pad=pad)
 
     # Slide-counter pill, top-right — accent-soft fill + accent text, same chip language as the
     # site's icon badges (.chatsec__hint-ic { background: var(--accent-soft); color: var(--accent) }).
