@@ -61,13 +61,21 @@ Base Airtable `agentrix` (`appcoqhKXGbCttULR`), table `Instagram Content Pipelin
        lieu d'un vrai b-roll). Cette generation passe par l'outil Zapier directement — ce n'est
        PAS un appel Python autonome comme pour Pixabay, donc elle ne peut se faire que depuis une
        session agent (jamais depuis la routine cloud texte-only).
-     - Note : le `ffmpeg` par defaut de cette machine n'a pas le filtre `drawtext` (build Homebrew
-       sans freetype) — si `build_video`/`build_video_from_image` echoue avec une erreur
-       "Unknown filter 'drawtext'", previens l'utilisateur qu'un ffmpeg complet (ex. `ffmpeg-full`)
-       doit etre installe/lie avant que la production video fonctionne, plutot que de modifier la
-       configuration systeme toi-meme sans lui demander. `build_video_from_slides` n'utilise pas
-       `drawtext` (le texte est deja incruste dans les slides du carrousel), donc pas concerne par
-       cette limitation.
+     - Note : le pipeline texte ne passe plus par le filtre ffmpeg `drawtext` depuis le 26/09/2026
+       (aucun build ffmpeg disponible ici n'a `libfreetype`) — `build_video` et
+       `build_video_from_image` pre-rendent chaque ligne de texte en PNG transparent via PIL
+       (police, wrap, box, wordmark) puis la composent avec le filtre `overlay`, qui ne demande
+       aucun support de police a ffmpeg. Un ffmpeg standard suffit donc (meme minimal, ex.
+       `imageio-ffmpeg` en environnement cloud) — pas besoin de `ffmpeg-full`/Homebrew avec
+       freetype. `build_video_from_slides` n'a jamais utilise `drawtext` (le texte est deja
+       incruste dans les slides du carrousel).
+     - Incident du 2026-09-30 (voir historique git `instagentrix/video.py`) : la box de chaque
+       ligne de texte etait plus haute que l'espacement entre lignes, ce qui faisait recouvrir les
+       descendantes (g/j/p/q) de la ligne precedente par la box suivante ; et le zoom Ken Burns de
+       `build_video_from_image` n'avait ni centre (`x`/`y`) ni sens explicites, ce qui donnait une
+       derive vers un coin puis un mouvement lu comme "vers l'exterieur". Les deux sont corriges
+       dans le code (metriques de police reelles pour la box, zoom centre et allant de 1.4x vers
+       1.0x) — ne reintroduis pas l'ancien calcul de hauteur de ligne ni un zoompan sans `x`/`y`.
 5. **Auto-QA avant email/validation** : aucune statistique non sourcee pour `actu-tendances`,
    hashtags = exactement la sortie de `select_hashtags` (pas de modification manuelle), legende
    sans tiret cadratin/demi-cadratin, fichier media genere et non vide.
