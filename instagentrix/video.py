@@ -271,12 +271,18 @@ def build_video_from_image(
     # Upscale before zoompan to avoid visible pixelation as the zoom progresses, then zoompan
     # holds/animates the still across every output frame, then crop/scale locks the final frame.
     # x/y must be pinned to the (recomputed, per-frame) center -- zoompan's default x=0:y=0
-    # anchors the crop to the top-left corner, so as z increases the visible window drifts
+    # anchors the crop to the top-left corner, so as zoom changes the visible window drifts
     # toward that corner instead of zooming in place, reading as an unwanted stretch/pan rather
-    # than a clean Ken Burns zoom (2026-09-30 incident, proposition 1 "agent-reponse-client...").
+    # than a clean Ken Burns move (2026-09-30 incident, proposition 1 "agent-reponse-client...").
+    # z starts at 1.4 and eases down to 1.0 (zoom OUT, keyed on the absolute output-frame index
+    # `on` rather than the `zoom` recurrence, since that recurrence's implicit start value is
+    # always 1.0 and can't be made to start high) -- background elements pull back from the
+    # edges toward the center as the frame widens, i.e. motion reads as inward, not the
+    # outward/expanding drift a zoom-in gives when elements grow past the frame edges (same
+    # 2026-09-30 incident, second round of feedback).
     base_filter = (
         f"[0:v]scale=8000:-2,"
-        f"zoompan=z='min(zoom+0.0015,1.4)':d={total_frames}:"
+        f"zoompan=z='max(1.4-0.0015*on,1.0)':d={total_frames}:"
         f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
         f"s={brand.VIDEO_W}x{brand.VIDEO_H}:fps={fps},"
         f"crop={brand.VIDEO_W}:{brand.VIDEO_H}[v]"
