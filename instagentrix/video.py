@@ -15,7 +15,6 @@ from instagentrix import brand, render_utils
 PIXABAY_VIDEO_SEARCH = "https://pixabay.com/api/videos/"
 
 _DRAWTEXT_FONT_SIZE = 56
-_DRAWTEXT_LINE_HEIGHT = 68
 _DRAWTEXT_SIDE_MARGIN = 80
 
 
@@ -84,17 +83,24 @@ def _render_text_overlay(text: str, output_path: Path) -> Path:
     draw = ImageDraw.Draw(img)
     max_width = brand.VIDEO_W - 2 * _DRAWTEXT_SIDE_MARGIN
     sublines = _wrap_for_drawtext(text, max_width)
-    block_height = len(sublines) * _DRAWTEXT_LINE_HEIGHT
-    top = (brand.VIDEO_H - block_height) // 2
     box_pad_x, box_pad_y = 24, 10
+    # Size each line's box on the font's real ascent+descent (not just _DRAWTEXT_FONT_SIZE) and
+    # space lines a few px past that box height -- otherwise consecutive boxes overlap and each
+    # line's black bar gets painted over the descenders (g/j/p/q/y) of the line above it (2026-09-30
+    # incident: "Un client vous ecrit..." shipped with every descender clipped by the next line).
+    ascent, descent = font.getmetrics()
+    glyph_height = ascent + descent
+    line_height = glyph_height + 2 * box_pad_y + 6
+    block_height = len(sublines) * line_height
+    top = (brand.VIDEO_H - block_height) // 2
     for j, subline in enumerate(sublines):
         line_w = draw.textlength(subline, font=font)
-        y = top + j * _DRAWTEXT_LINE_HEIGHT
+        y = top + j * line_height
         box = (
             (brand.VIDEO_W - line_w) / 2 - box_pad_x,
             y - box_pad_y,
             (brand.VIDEO_W + line_w) / 2 + box_pad_x,
-            y + _DRAWTEXT_FONT_SIZE + box_pad_y,
+            y + glyph_height + box_pad_y,
         )
         draw.rectangle(box, fill=(0, 0, 0, 140))
         draw.text(((brand.VIDEO_W - line_w) / 2, y), subline, font=font, fill=(255, 255, 255, 255))
@@ -264,9 +270,15 @@ def build_video_from_image(
 
     # Upscale before zoompan to avoid visible pixelation as the zoom progresses, then zoompan
     # holds/animates the still across every output frame, then crop/scale locks the final frame.
+    # x/y must be pinned to the (recomputed, per-frame) center -- zoompan's default x=0:y=0
+    # anchors the crop to the top-left corner, so as z increases the visible window drifts
+    # toward that corner instead of zooming in place, reading as an unwanted stretch/pan rather
+    # than a clean Ken Burns zoom (2026-09-30 incident, proposition 1 "agent-reponse-client...").
     base_filter = (
         f"[0:v]scale=8000:-2,"
-        f"zoompan=z='min(zoom+0.0015,1.4)':d={total_frames}:s={brand.VIDEO_W}x{brand.VIDEO_H}:fps={fps},"
+        f"zoompan=z='min(zoom+0.0015,1.4)':d={total_frames}:"
+        f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+        f"s={brand.VIDEO_W}x{brand.VIDEO_H}:fps={fps},"
         f"crop={brand.VIDEO_W}:{brand.VIDEO_H}[v]"
     )
     overlay_inputs, overlay_filter, final_label = _overlay_chain(
