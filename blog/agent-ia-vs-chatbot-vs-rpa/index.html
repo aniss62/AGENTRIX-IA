@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Agent IA vs chatbot vs RPA : lequel choisir en PME (2026)</title>
+<meta name="description" content="Agent IA, chatbot ou RPA : comparatif chiffré 2026 pour choisir la bonne automatisation selon le budget, l'équipe et les outils de votre PME française." />
+<link rel="canonical" href="https://www.agentrix-ia.com/blog/agent-ia-vs-chatbot-vs-rpa/" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/png" href="../../agentrix/img/favicon.png" />
+<link rel="apple-touch-icon" href="../../agentrix/img/favicon.png" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Agent IA vs chatbot vs RPA : lequel choisir en PME (2026)" />
+<meta property="og:description" content="Agent IA, chatbot ou RPA : comparatif chiffré 2026 pour choisir la bonne automatisation selon le budget, l'équipe et les outils de votre PME française." />
+<meta property="og:url" content="https://www.agentrix-ia.com/blog/agent-ia-vs-chatbot-vs-rpa/" />
+<meta property="og:image" content="https://www.agentrix-ia.com/agentrix/img/favicon.png" />
+<meta property="og:site_name" content="Agentrix" />
+<meta property="og:locale" content="fr_FR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Agent IA vs chatbot vs RPA : lequel choisir en PME (2026)" />
+<meta name="twitter:description" content="Comparatif chiffré 2026 entre agent IA, chatbot et RPA pour choisir la bonne automatisation en PME française." />
+<meta name="twitter:image" content="https://www.agentrix-ia.com/agentrix/img/favicon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="../../agentrix/styles.css" />
+<link rel="stylesheet" href="../../agentrix/components.css" />
+<link rel="stylesheet" href="../../agentrix/pages.css" />
+
+<style>
+  .post-head { padding: 120px 0 40px; }
+  .post-head__back { display:inline-flex; align-items:center; gap:8px; color:var(--muted); font-family:var(--font-mono); font-size:13px; text-decoration:none; margin-bottom:24px; }
+  .post-head__back:hover { color:var(--accent); }
+  .post-head__meta { display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-top:20px; color:var(--muted); font-family:var(--font-mono); font-size:13px; }
+  .post-head__meta .accent { color:var(--accent); }
+  .post-hero { margin: 32px 0 8px; border-radius: var(--radius-lg); overflow:hidden; border:1px solid var(--line); background:var(--surface); }
+  .post-hero svg { display:block; width:100%; height:auto; }
+
+  .post-layout { display:grid; grid-template-columns: minmax(0,1fr) 260px; gap: 48px; align-items:start; padding-bottom: 100px; }
+  article.post { max-width: 760px; }
+  article.post h2 { font-size: clamp(22px,2.8vw,30px); margin: 48px 0 16px; scroll-margin-top: 100px; }
+  article.post h3 { font-size: clamp(17px,2vw,19px); margin: 28px 0 10px; font-family:var(--font-display); font-weight:600; }
+  article.post p { color: var(--text); line-height:1.7; margin: 0 0 16px; max-width: 68ch; }
+  article.post p.muted { color: var(--muted); }
+  article.post ul, article.post ol { color: var(--text); line-height:1.7; margin: 0 0 18px; padding-left: 22px; max-width: 68ch; }
+  article.post li { margin-bottom: 6px; }
+  article.post strong { color: var(--text); font-weight:600; }
+
+  .post-toc { position:sticky; top:100px; }
+  .post-toc__inner { border:1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-2); padding: 20px 22px; }
+  .post-toc h2 { margin: 0 0 12px; font-size:12px; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); }
+  .post-toc ol { margin:0; padding-left:18px; }
+  .post-toc li { margin-bottom:9px; font-size:13.5px; line-height:1.4; }
+  .post-toc a { color: var(--text); text-decoration:none; border-left:2px solid transparent; padding-left:10px; margin-left:-12px; transition: color 0.15s var(--ease), border-color 0.15s var(--ease); }
+  .post-toc a:hover { color:var(--accent); }
+  .post-toc a.active { color:var(--accent); font-weight:600; border-left-color:var(--accent); }
+  @media (max-width: 980px) {
+    .post-layout { grid-template-columns: 1fr; }
+    .post-toc { position:static; order:-1; margin-bottom: 8px; }
+    .post-toc ol { columns: 2; column-gap: 20px; }
+  }
+
+  .keytakeaways { background: var(--surface); border:1px solid var(--line-2); border-left: 3px solid var(--accent); border-radius: var(--radius-sm); padding: 22px 24px; margin: 28px 0 36px; }
+  .keytakeaways h2 { margin:0 0 10px !important; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.04em; font-size:13px; color:var(--accent); }
+  .keytakeaways ul { margin-bottom:0; }
+
+  .chart-figure { margin: 32px 0; border:1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--surface); }
+  .chart-figure svg { width:100%; height:auto; display:block; }
+  .chart-figure figcaption { margin-top:12px; font-size:13px; color:var(--muted); font-family:var(--font-mono); }
+
+  .pillar-card { border:1px solid var(--line); border-radius: var(--radius); padding: 24px; margin: 24px 0; background: linear-gradient(180deg, var(--surface), var(--bg-2)); }
+  .pillar-card h2, .pillar-card h3 { margin-top:0 !important; }
+
+  .compare-table-wrap { margin: 24px 0 32px; border:1px solid var(--line); border-radius: var(--radius); overflow:hidden; background: var(--surface); }
+  table.compare-table { width:100%; border-collapse:collapse; font-size:14px; }
+  table.compare-table th, table.compare-table td { padding: 12px 14px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.5; }
+  table.compare-table th { font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.03em; font-size:11.5px; color:var(--muted); background:var(--bg-2); }
+  table.compare-table td { color:var(--text); }
+  table.compare-table tr:last-child td { border-bottom:none; }
+  table.compare-table td strong { color:var(--accent); }
+
+  .faq-item { border-bottom:1px solid var(--line); }
+  .faq-item summary { cursor:pointer; list-style:none; padding: 16px 28px 16px 0; font-family:var(--font-display); font-weight:600; font-size:16px; color:var(--text); position:relative; }
+  .faq-item summary::-webkit-details-marker { display:none; }
+  .faq-item summary::after { content:"+"; position:absolute; right:0; top:14px; font-size:20px; line-height:1; color:var(--accent); transition: transform 0.2s var(--ease); }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding-bottom:16px; margin:0; max-width: 68ch; }
+
+  .sources-list { list-style: decimal; font-size:14px; color:var(--muted); }
+  .sources-list a { color: var(--text); }
+  .sources-list a:hover { color: var(--accent); }
+
+  .next-list { list-style:none; padding-left:0; }
+  .next-list li { padding:10px 0; border-bottom:1px solid var(--line); color:var(--muted); }
+  .next-list li:last-child { border-bottom:none; }
+
+  .cta-final { text-align:center; padding: 44px 30px; border-radius: var(--radius-lg); border:1px solid var(--line-2); background: linear-gradient(180deg, var(--surface), var(--bg-2)); margin: 48px 0 20px; }
+  .cta-final h2 { margin-top:0 !important; }
+
+  .post-mini-header { position:relative; z-index:5; padding: 22px 0; }
+  .post-mini-header .wrap { display:flex; align-items:center; justify-content:space-between; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Agent IA vs chatbot vs RPA : lequel choisir en PME (2026)",
+  "description": "Agent IA, chatbot ou RPA : comparatif chiffré 2026 pour choisir la bonne automatisation selon le budget, l'équipe et les outils de votre PME française.",
+  "image": "https://www.agentrix-ia.com/agentrix/img/favicon.png",
+  "datePublished": "2026-10-05",
+  "dateModified": "2026-10-05",
+  "inLanguage": "fr-FR",
+  "mainEntityOfPage": "https://www.agentrix-ia.com/blog/agent-ia-vs-chatbot-vs-rpa/",
+  "author": { "@type": "Organization", "name": "Agentrix", "url": "https://www.agentrix-ia.com/" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Agentrix",
+    "url": "https://www.agentrix-ia.com/",
+    "logo": { "@type": "ImageObject", "url": "https://www.agentrix-ia.com/agentrix/img/favicon.png" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Agentrix",
+  "url": "https://www.agentrix-ia.com/",
+  "logo": "https://www.agentrix-ia.com/agentrix/img/favicon.png",
+  "email": "contact@agentrix-ia.com",
+  "telephone": "+212661151480"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Un agent IA peut-il remplacer un chatbot ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Pas totalement. Un chatbot reste moins coûteux pour absorber un fort volume de questions répétitives. Un agent IA devient utile quand une question sort du script ou exige une décision, par exemple qualifier un lead ambigu plutôt que répondre à un horaire d'ouverture." }
+    },
+    {
+      "@type": "Question",
+      "name": "RPA et agent IA peuvent-ils fonctionner ensemble ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui, et c'est souvent la combinaison la plus efficace en PME. L'agent IA décide quoi faire face à une exception, puis délègue l'exécution répétitive, comme la saisie dans un logiciel de facturation, à un scénario RPA plus rapide et moins coûteux à faire tourner." }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien coûte un agent IA par rapport à un RPA pour une PME ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Le coût dépend surtout du nombre d'outils à connecter, pas de la technologie elle-même. Un RPA reste généralement moins coûteux à l'usage sur un scénario simple et stable, tandis qu'un agent IA demande un cadrage initial plus soigné pour éviter les dérives de périmètre que Gartner (2025) cite dans 40 % des annulations de projets." }
+    },
+    {
+      "@type": "Question",
+      "name": "Le RGPD s'applique-t-il différemment à un chatbot et à un agent IA ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Le texte du règlement, l'article 83 du RGPD, s'applique de la même façon aux deux. Mais le risque pratique augmente avec l'autonomie : un agent IA qui décide seul d'agir sur une donnée personnelle a besoin de garde fous définis avant son déploiement, pas après un incident." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelle solution choisir en premier pour une petite équipe ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Commencez par la tâche la plus répétitive et la moins risquée en cas d'erreur, pas par la technologie la plus impressionnante. Un chatbot ou un RPA simple donne souvent un résultat visible en quelques semaines, avant d'envisager un agent IA sur une tâche qui exige davantage de jugement." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="post-mini-header">
+  <div class="wrap">
+    <a href="https://www.agentrix-ia.com/" class="wordmark" aria-label="Agentrix, accueil">
+      <span class="logo" aria-hidden="true" style="width:24px;height:24px">
+        <svg viewBox="0 0 32 32" width="24" height="24">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity="0.5"/>
+          <circle cx="16" cy="16" r="4.6" fill="var(--accent)"/>
+          <circle cx="16" cy="3" r="2.1" fill="var(--accent)"/>
+          <circle cx="27.3" cy="22" r="2.1" fill="var(--accent)"/>
+          <circle cx="4.7" cy="22" r="2.1" fill="var(--accent)"/>
+          <path d="M16 16L16 3M16 16l11.3 6M16 16L4.7 22" stroke="var(--accent)" stroke-width="1.1" opacity="0.55"/>
+        </svg>
+      </span>
+      <span>Agentrix<span class="accent">·IA</span></span>
+    </a>
+    <a href="../" class="mono-tag">Blog</a>
+  </div>
+</header>
+
+<div class="wrap post-head">
+  <a href="../" class="post-head__back">&larr; Retour au blog</a>
+  <span class="eyebrow">Agents de raisonnement</span>
+  <h1 class="h-1 mt-m">Agent IA vs chatbot vs RPA : lequel choisir en PME (2026)</h1>
+  <p class="lead mt-s">RPA, chatbot et agent IA promettent tous d'automatiser votre travail. Voici comment choisir le bon outil pour une PME française, sans vous tromper de périmètre.</p>
+  <div class="post-head__meta">
+    <span>Agentrix</span>
+    <span>·</span>
+    <span>5 octobre 2026</span>
+    <span>·</span>
+    <span class="accent">~8 min de lecture</span>
+  </div>
+</div>
+
+<div class="wrap post-layout">
+<article class="post">
+
+  <div class="post-hero">
+    <svg viewBox="0 0 760 320" role="img" aria-label="Illustration comparant trois technologies d'automatisation (RPA, chatbot, agent IA) autour d'une PME">
+      <rect width="760" height="320" fill="#0c0f15"/>
+      <g opacity="0.5" stroke="#b8f54a" stroke-width="1">
+        <line x1="380" y1="160" x2="190" y2="80"/>
+        <line x1="380" y1="160" x2="380" y2="250"/>
+        <line x1="380" y1="160" x2="570" y2="80"/>
+      </g>
+      <circle cx="380" cy="160" r="30" fill="#b8f54a"/>
+      <text x="380" y="166" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#0c0f15" font-weight="600">PME</text>
+      <g font-family="Manrope, sans-serif">
+        <circle cx="190" cy="80" r="26" fill="none" stroke="#b8f54a" stroke-width="1.4"/>
+        <text x="190" y="84" text-anchor="middle" font-size="12" fill="#b8f54a" font-weight="600">RPA</text>
+        <circle cx="570" cy="80" r="26" fill="none" stroke="#b8f54a" stroke-width="1.4"/>
+        <text x="570" y="84" text-anchor="middle" font-size="11" fill="#b8f54a" font-weight="600">Chatbot</text>
+        <circle cx="380" cy="250" r="26" fill="none" stroke="#b8f54a" stroke-width="1.4"/>
+        <text x="380" y="248" text-anchor="middle" font-size="10" fill="#b8f54a" font-weight="600">Agent</text>
+        <text x="380" y="260" text-anchor="middle" font-size="10" fill="#b8f54a" font-weight="600">IA</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="keytakeaways">
+    <h2>Points clés</h2>
+    <ul>
+      <li>Selon Bpifrance Le Lab (2025), 55 % des TPE-PME françaises utilisent déjà l'IA générative, contre 31 % un an plus tôt, mais seulement 17 % s'en servent régulièrement.</li>
+      <li>Le RPA reproduit une suite de clics stable, le chatbot répond à des questions prévues par un script, l'agent IA décide seul des étapes à suivre face à l'imprévu.</li>
+      <li>Gartner (2025) prévoit que plus de 40 % des projets d'IA agentique seront annulés d'ici fin 2027, le plus souvent faute d'un périmètre assez précis dès le départ.</li>
+      <li>Le bon choix dépend moins de la technologie que de la tâche : stable et répétitive, un script suffit ; avec un jugement à exercer, l'agent IA devient pertinent.</li>
+    </ul>
+  </div>
+
+  <p>Selon Bpifrance Le Lab (2025), 55 % des TPE-PME françaises utilisent désormais l'IA générative, contre 31 % un an plus tôt. Mais l'offre s'est brouillée : Gartner (2025) estime que seuls 130 des milliers de fournisseurs qui revendiquent une IA agentique livrent une vraie autonomie de décision, les autres rebaptisant un chatbot ou un RPA existant.</p>
+  <p>Trois technologies se disputent le même budget d'automatisation en PME : le RPA, le chatbot et l'agent IA. Elles ne résolvent pas le même problème, et les confondre coûte cher. Ce comparatif couvre leur différence fondamentale, leur gestion de l'imprévu, leur coût, leur délai de déploiement et leurs risques de conformité pour une PME française, à partir des déploiements que nous observons chez nos clients.</p>
+
+  <h2 id="definitions">Agent IA, chatbot et RPA : trois définitions à ne pas confondre</h2>
+  <p>Le RPA reproduit une suite de clics dans une interface stable. Le chatbot répond à des questions prévues par un script ou un arbre de décision. L'agent IA décide seul des étapes à suivre pour atteindre un objectif, y compris face à une situation non prévue.</p>
+  <ul>
+    <li><strong>RPA (robotic process automation)</strong> : automatise une tâche répétitive et visuelle, comme copier une donnée d'un écran à l'autre ou extraire une facture, sans comprendre le contenu qu'il manipule.</li>
+    <li><strong>Chatbot</strong> : conversationnel, il répond à des intentions reconnues à l'avance (horaires, suivi de commande, qualification simple d'un visiteur).</li>
+    <li><strong>Agent IA</strong> : reçoit un objectif, consulte vos outils, choisit dynamiquement les étapes à suivre et s'adapte à l'exception, y compris face à une donnée non structurée.</li>
+  </ul>
+  <p>Gartner (2025) appelle cette confusion le &laquo; agent washing &raquo; : des éditeurs rebaptisent un assistant IA, un RPA ou un chatbot existant en agent, sans lui donner de réelle autonomie de décision.</p>
+  <p>Dans la pratique, les trois se combinent souvent : un chatbot qualifie une demande simple, un agent IA tranche les cas ambigus, et un RPA exécute la saisie finale dans vos outils.</p>
+
+  <h2 id="comparatif">Comparatif rapide : RPA, chatbot et agent IA pour une PME</h2>
+  <p>Aucune des trois options n'est universellement meilleure, chacune gagne sur un terrain précis. Le tableau ci-dessous résume les écarts qui comptent le plus pour une PME française.</p>
+  <div class="compare-table-wrap">
+    <table class="compare-table">
+      <tr><th>Critère</th><th>RPA</th><th>Chatbot</th><th>Agent IA</th></tr>
+      <tr><td>Meilleur usage</td><td>Tâche répétitive dans une interface stable</td><td>Questions fréquentes, qualification simple</td><td>Tâche avec jugement ou donnée non structurée</td></tr>
+      <tr><td>Gère l'imprévu ?</td><td>Non, casse dès que l'interface change</td><td>Partiellement, transfère hors script</td><td>Oui, dans ses garde fous</td></tr>
+      <tr><td>Taille du marché mondial (2025)</td><td>4,68 milliards $ (Grand View Research, 2025)</td><td>9,56 milliards $ (Grand View Research, 2025)</td><td>Moins de 5 % des applications d'entreprise en intègrent un (Gartner, 2025)</td></tr>
+      <tr><td>Délai de mise en route</td><td>Quelques semaines pour un scénario simple</td><td>Quelques jours à quelques semaines</td><td>2 à 4 semaines pour une première tâche cadrée</td></tr>
+      <tr><td>Risque principal</td><td>Casse à la moindre évolution d'interface</td><td>Frustration client hors périmètre prévu</td><td><strong>Plus de 40 % des projets annulés d'ici 2027 faute de périmètre clair (Gartner, 2025)</strong></td></tr>
+      <tr><td>Notre constat</td><td>Fiable sur un périmètre figé</td><td>Bon premier contact, mauvais décideur</td><td>Puissant seulement si le périmètre reste étroit</td></tr>
+    </table>
+  </div>
+
+  <h2 id="imprevu">Quelle solution gère le mieux l'imprévu ?</h2>
+  <p><strong>L'agent IA gère mieux l'imprévu</strong>, parce qu'il décide, alors que le RPA et le chatbot exécutent un chemin déjà écrit.</p>
+  <p>Un RPA reproduit une suite de clics identique à chaque fois. Dès qu'un champ change de place ou qu'un fournisseur modifie son portail, le scénario casse et quelqu'un doit le corriger à la main.</p>
+  <p>Un chatbot répond bien tant que la question figure dans son script, puis transfère tout le reste à un humain. Gartner (2025) prévoit que l'IA agentique résoudra seule 80 % des demandes courantes du service client d'ici 2029. Un chatbot bien conçu absorbe malgré tout l'essentiel des questions répétitives à faible coût, suffisant pour une PME dont le volume reste prévisible.</p>
+  <p><strong>Verdict : l'agent IA gagne sur l'imprévu, le chatbot reste le choix le plus économique pour un volume de questions stable et prévisible.</strong></p>
+
+  <h2 id="cout-roi">Quel coût et quel retour sur investissement attendre ?</h2>
+  <p>Le RPA affiche aujourd'hui le retour sur investissement le mieux documenté, l'agent IA le potentiel le plus élevé mais aussi le risque d'échec le plus élevé.</p>
+  <p>Une étude Forrester Consulting commandée par SS&amp;C Blue Prism (2024) mesure un retour sur investissement de 330 % sur trois ans pour l'automatisation intelligente de type RPA, avec un délai de retour inférieur à six mois.</p>
+  <p>Pour l'agent IA, les chiffres restent plus contrastés. McKinsey (2026), à partir d'une enquête menée auprès de 1&nbsp;719 répondants dans 97 pays, observe que 23 % des organisations ont mis à l'échelle un système agentique dans au moins une fonction métier, contre 39 % qui expérimentent encore. Les grandes entreprises atteignent 40 % de mise à l'échelle, contre 22 % pour les plus petites, taille plus proche d'une PME.</p>
+  <p class="muted">Pour une PME, ce qui pèse le plus sur le budget reste le nombre d'outils à connecter (CRM, e-mail, facturation), pas l'intelligence artificielle elle-même.</p>
+  <p><strong>Verdict : le RPA reste le choix le plus prévisible sur le papier, l'agent IA promet davantage mais exige un périmètre plus étroit pour tenir sa promesse.</strong></p>
+
+  <figure class="chart-figure">
+    <svg viewBox="0 0 560 240" role="img" aria-label="Graphique en barres comparant la taille du marché mondial du RPA et du chatbot en 2025">
+      <text x="0" y="20" font-family="Bricolage Grotesque, sans-serif" font-size="15" fill="#eef0f3" font-weight="600">Taille du marché mondial en 2025 (en milliards de dollars)</text>
+      <line x1="60" y1="200" x2="540" y2="200" stroke="#3a3f4a" stroke-width="1"/>
+      <rect x="150" y="150" width="90" height="50" fill="#7a8a55" opacity="0.55"/>
+      <text x="195" y="140" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" fill="#eef0f3">4,68</text>
+      <text x="195" y="220" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" fill="#9aa0ab">RPA</text>
+      <rect x="350" y="98" width="90" height="102" fill="#b8f54a"/>
+      <text x="395" y="88" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" fill="#b8f54a" font-weight="700">9,56</text>
+      <text x="395" y="220" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" fill="#9aa0ab">Chatbot</text>
+    </svg>
+    <figcaption>Source : Grand View Research, analyses de marché RPA et chatbot (2025). Voir la section Sources en bas de page.</figcaption>
+  </figure>
+
+  <h2 id="delai">Quel délai de déploiement pour une PME ?</h2>
+  <p>Un chatbot simple se déploie en quelques jours, un scénario RPA en quelques semaines, un premier agent IA bien cadré en deux à quatre semaines.</p>
+  <p>Chez les PME que nous accompagnons, le délai dépend surtout du nombre d'outils à connecter, pas de la sophistication de l'IA. Un agent qui ne touche qu'un CRM et une boîte e-mail démarre plus vite qu'un RPA intégré à cinq applications métier. Le reste du temps se joue après la mise en service, sur l'ajustement pendant les premières semaines d'usage réel.</p>
+
+  <h2 id="conformite">Quels risques de conformité pour une PME française ?</h2>
+  <p>Les trois technologies traitent potentiellement des données personnelles, et le RGPD s'applique de la même façon, quelle que soit la technologie utilisée. Le règlement (UE) 2016/679, à son article 83, prévoit des amendes pouvant atteindre 20 millions d'euros ou 4 % du chiffre d'affaires mondial annuel pour les manquements les plus graves.</p>
+  <p>Le risque pratique augmente avec l'autonomie. Un agent IA qui décide seul d'envoyer un e-mail, de modifier une facture ou de qualifier un prospect doit avoir ses garde fous définis dès la conception, pas ajoutés après un incident.</p>
+  <p class="muted">Gardez un humain dans la boucle pour toute décision à conséquence financière, juridique ou relationnelle significative, quelle que soit la technologie, tant qu'elle n'a pas fait ses preuves sur ce cas précis.</p>
+
+  <h2 id="qui-choisir">Qui devrait choisir quoi ?</h2>
+  <p>Le bon choix dépend de la stabilité de la tâche et du jugement qu'elle exige, pas de la technologie la plus récente.</p>
+
+  <div class="pillar-card">
+    <h3>Un processus simple et stable</h3>
+    <p>Saisie récurrente, extraction de facture : choisissez le RPA, rapide à mettre en place et fiable tant que l'interface ne change pas.</p>
+  </div>
+  <div class="pillar-card">
+    <h3>Un fort volume de questions répétitives</h3>
+    <p>FAQ, suivi de commande, qualification simple : choisissez le chatbot, coût d'entrée faible sur un marché déjà mûr (9,56 milliards de dollars en 2025 selon Grand View Research).</p>
+  </div>
+  <div class="pillar-card">
+    <h3>Une tâche qui exige un jugement</h3>
+    <p>Qualifier un lead complexe, trancher une exception : choisissez l'agent IA, à condition de cadrer un périmètre étroit avant de démarrer.</p>
+  </div>
+  <p class="muted">Cas le plus fréquent : plusieurs besoins à la fois. La plupart des PME combinent les trois, un chatbot qualifie en premier contact, un agent IA tranche les cas ambigus, un RPA exécute la saisie finale.</p>
+
+  <h2 id="faq">Questions fréquentes</h2>
+
+  <details class="faq-item" name="faq">
+    <summary>Un agent IA peut-il remplacer un chatbot ?</summary>
+    <p>Pas totalement. Un chatbot reste moins coûteux pour absorber un fort volume de questions répétitives. Un agent IA devient utile quand une question sort du script ou exige une décision, par exemple qualifier un lead ambigu plutôt que répondre à un horaire d'ouverture.</p>
+  </details>
+  <details class="faq-item" name="faq">
+    <summary>RPA et agent IA peuvent-ils fonctionner ensemble ?</summary>
+    <p>Oui, et c'est souvent la combinaison la plus efficace en PME. L'agent IA décide quoi faire face à une exception, puis délègue l'exécution répétitive, comme la saisie dans un logiciel de facturation, à un scénario RPA plus rapide et moins coûteux à faire tourner.</p>
+  </details>
+  <details class="faq-item" name="faq">
+    <summary>Combien coûte un agent IA par rapport à un RPA pour une PME ?</summary>
+    <p>Le coût dépend surtout du nombre d'outils à connecter, pas de la technologie elle-même. Un RPA reste généralement moins coûteux à l'usage sur un scénario simple et stable, tandis qu'un agent IA demande un cadrage initial plus soigné pour éviter les dérives de périmètre que Gartner (2025) cite dans 40 % des annulations de projets.</p>
+  </details>
+  <details class="faq-item" name="faq">
+    <summary>Le RGPD s'applique-t-il différemment à un chatbot et à un agent IA ?</summary>
+    <p>Le texte du règlement, l'article 83 du RGPD, s'applique de la même façon aux deux. Mais le risque pratique augmente avec l'autonomie : un agent IA qui décide seul d'agir sur une donnée personnelle a besoin de garde fous définis avant son déploiement, pas après un incident.</p>
+  </details>
+  <details class="faq-item" name="faq">
+    <summary>Quelle solution choisir en premier pour une petite équipe ?</summary>
+    <p>Commencez par la tâche la plus répétitive et la moins risquée en cas d'erreur, pas par la technologie la plus impressionnante. Un chatbot ou un RPA simple donne souvent un résultat visible en quelques semaines, avant d'envisager un agent IA sur une tâche qui exige davantage de jugement.</p>
+  </details>
+
+  <h2>L'essentiel à retenir</h2>
+  <p>Le choix entre RPA, chatbot et agent IA se joue sur la nature de la tâche, pas sur la nouveauté de la technologie. Stable et répétitive, un RPA ou un chatbot suffit. Avec un jugement à exercer ou une donnée non structurée à interpréter, l'agent IA devient pertinent, à condition de cadrer un périmètre étroit.</p>
+  <p>L'écart entre les 55 % de PME qui utilisent déjà l'IA générative et les 17 % qui l'utilisent régulièrement (Bpifrance Le Lab, 2025) se referme justement sur ce type de décision concrète, pas sur l'adoption d'un outil de plus.</p>
+
+  <h3>Prochainement sur le blog</h3>
+  <ul class="next-list">
+    <li>Quand garder un humain dans la boucle avec un agent IA</li>
+    <li>Découper un objectif métier en étapes pour un agent IA</li>
+    <li>Cas où un agent de raisonnement échoue, et pourquoi</li>
+    <li>Scraping de leads et RGPD : ce qu'il faut savoir avant d'automatiser sa prospection</li>
+  </ul>
+
+  <h2 id="sources">Sources</h2>
+  <ol class="sources-list">
+    <li>Bpifrance, <a href="https://presse.bpifrance.fr/lia-dans-les-pme-et-eti-francaises-une-revolution-tranquille" target="_blank" rel="noopener noreferrer">« L'IA dans les PME et ETI françaises : une révolution tranquille »</a>, Bpifrance Le Lab, 2025.</li>
+    <li>Gartner, <a href="https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025" target="_blank" rel="noopener noreferrer">Gartner Predicts 40% of Enterprise Apps Will Feature Task-Specific AI Agents by 2026</a>, 2025.</li>
+    <li>Gartner, <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" target="_blank" rel="noopener noreferrer">Gartner Predicts Over 40% of Agentic AI Projects Will Be Canceled by End of 2027</a>, 2025.</li>
+    <li>Gartner, <a href="https://www.gartner.com/en/newsroom/press-releases/2025-03-05-gartner-predicts-agentic-ai-will-autonomously-resolve-80-percent-of-common-customer-service-issues-without-human-intervention-by-20290" target="_blank" rel="noopener noreferrer">Gartner Predicts Agentic AI Will Autonomously Resolve 80% of Common Customer Service Issues by 2029</a>, 2025.</li>
+    <li>McKinsey &amp; Company, <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener noreferrer">The State of AI: Global Survey 2026</a>.</li>
+    <li>Grand View Research, <a href="https://www.grandviewresearch.com/industry-analysis/robotic-process-automation-rpa-market" target="_blank" rel="noopener noreferrer">Robotic Process Automation (RPA) Market Size, Share, Growth Report</a>, 2025.</li>
+    <li>Grand View Research, <a href="https://www.grandviewresearch.com/industry-analysis/chatbot-market" target="_blank" rel="noopener noreferrer">Chatbot Market Size, Share &amp; Growth Report</a>, 2025.</li>
+    <li>Forrester Consulting (étude commanditée par SS&amp;C Blue Prism), <a href="https://www.blueprism.com/resources/analyst-reports/forrester-tei-2024/" target="_blank" rel="noopener noreferrer">The Total Economic Impact of Intelligent Automation</a>, 2024.</li>
+    <li>Règlement (UE) 2016/679 du Parlement européen et du Conseil (RGPD), <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32016R0679" target="_blank" rel="noopener noreferrer">article 83</a>.</li>
+  </ol>
+
+  <div class="cta-final">
+    <h2>Encore hésitant entre RPA, chatbot et agent IA ?</h2>
+    <p class="lead" style="margin:0 auto 24px">Un diagnostic gratuit de 30 minutes suffit pour cadrer la bonne solution selon votre tâche, votre budget et vos outils.</p>
+    <a class="btn btn--primary" href="https://www.agentrix-ia.com/#contact">Réserver mon diagnostic gratuit<span class="arr"> →</span></a>
+  </div>
+
+</article>
+
+<aside class="post-toc">
+  <div class="post-toc__inner">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#definitions">Trois définitions à ne pas confondre</a></li>
+      <li><a href="#comparatif">Comparatif rapide</a></li>
+      <li><a href="#imprevu">Gestion de l'imprévu</a></li>
+      <li><a href="#cout-roi">Coût et retour sur investissement</a></li>
+      <li><a href="#delai">Délai de déploiement</a></li>
+      <li><a href="#conformite">Conformité RGPD</a></li>
+      <li><a href="#qui-choisir">Qui devrait choisir quoi ?</a></li>
+      <li><a href="#faq">Questions fréquentes</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </div>
+</aside>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="https://www.agentrix-ia.com/" class="wordmark">
+          <span class="logo" aria-hidden="true" style="width:24px;height:24px">
+            <svg viewBox="0 0 32 32" width="24" height="24">
+              <circle cx="16" cy="16" r="14" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity="0.5"/>
+              <circle cx="16" cy="16" r="4.6" fill="var(--accent)"/>
+              <circle cx="16" cy="3" r="2.1" fill="var(--accent)"/>
+              <circle cx="27.3" cy="22" r="2.1" fill="var(--accent)"/>
+              <circle cx="4.7" cy="22" r="2.1" fill="var(--accent)"/>
+              <path d="M16 16L16 3M16 16l11.3 6M16 16L4.7 22" stroke="var(--accent)" stroke-width="1.1" opacity="0.55"/>
+            </svg>
+          </span>
+          <span>Agentrix<span class="accent">·IA</span></span>
+        </a>
+        <p class="lead footer__tag">Des agents IA autonomes qui vous rendent des heures chaque semaine.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4>Le blog</h4>
+          <a href="../">Tous les articles</a>
+          <a href="https://www.agentrix-ia.com/#product">Produit</a>
+        </div>
+        <div class="footer__col">
+          <h4>Entreprise</h4>
+          <a href="https://www.agentrix-ia.com/#about">À propos</a>
+          <a href="https://www.agentrix-ia.com/">Accueil</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:contact@agentrix-ia.com">contact@agentrix-ia.com</a>
+          <a href="tel:+212661151480">+212 661 151 480</a>
+        </div>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <div class="footer__bottom">
+      <span class="mono-tag">© 2026 Agentrix. Tous droits réservés.</span>
+      <span class="mono-tag footer__made">FR · EN · ع</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var tocLinks = Array.prototype.slice.call(document.querySelectorAll(".post-toc a"));
+    if (!tocLinks.length) return;
+    var sections = tocLinks
+      .map(function (a) {
+        var id = a.getAttribute("href").slice(1);
+        return document.getElementById(id);
+      })
+      .filter(Boolean);
+    if (!sections.length) return;
+
+    function setActive(id) {
+      tocLinks.forEach(function (a) {
+        a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+      });
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    sections.forEach(function (el) { observer.observe(el); });
+
+    setActive(sections[0].id);
+  })();
+</script>
+
+</body>
+</html>
