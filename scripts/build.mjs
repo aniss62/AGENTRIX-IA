@@ -111,5 +111,30 @@ html = html.replace('<div id="root"></div>', `<div id="root">${prerendered}</div
 html = html.replace(/<html lang="fr"([^>]*)>/, (m, attrs) => attrs.includes("data-theme") ? m : `<html lang="fr"${attrs} data-theme="dark">`);
 log(`Accueil pré-rendu : ${(prerendered.length / 1024).toFixed(0)} Ko de HTML, ${text.length} caractères de texte`);
 
+// ── 4. llms.txt : section Blog générée depuis blog/*/index.html ──────────────
+// Évite toute édition manuelle de llms.txt à chaque nouvel article.
+{
+  const attr = (src, re) => (src.match(re) || [])[1];
+  const entries = [];
+  for (const slug of readdirSync(join(ROOT, "blog"), { withFileTypes: true })) {
+    if (!slug.isDirectory()) continue;
+    const page = readFileSync(join(ROOT, "blog", slug.name, "index.html"), "utf8");
+    const title = attr(page, /property="og:title" content="([^"]*)"/);
+    const desc = attr(page, /name="description" content="([^"]*)"/);
+    if (title && desc) entries.push(`- [${title}](https://www.agentrix-ia.com/blog/${slug.name}/): ${desc}`);
+  }
+  const section = [
+    "## Blog",
+    "",
+    "- [Blog](https://www.agentrix-ia.com/blog/): Articles (in French) on workflow automation, lead scraping, conversion-focused websites and reasoning agents.",
+    ...entries.sort(),
+    "",
+    "",
+  ].join("\n");
+  const llms = readFileSync(join(ROOT, "llms.txt"), "utf8");
+  writeFileSync(join(DIST, "llms.txt"), llms.replace("## Contact", section + "## Contact"));
+  log(`llms.txt : ${entries.length} articles de blog ajoutés`);
+}
+
 writeFileSync(join(DIST, "index.html"), html);
 log("OK → dist/");

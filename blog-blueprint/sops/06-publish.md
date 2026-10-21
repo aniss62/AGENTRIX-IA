@@ -25,7 +25,10 @@ de la SPA — sinon ils resteraient invisibles pour le SEO/GEO.
      favicon SVG dans `index.html`).
    - Polices : Bricolage Grotesque / Sora / Manrope (mêmes imports Google Fonts que
      `index.html`).
-   - `<html lang="fr">`, meta description, Open Graph + Twitter Card, canonical.
+   - `<html lang="fr">`, meta description, Open Graph + Twitter Card, canonical. `og:image`,
+     `twitter:image` et le champ `image` du JSON-LD pointent vers
+     `https://www.agentrix-ia.com/og-image.jpg` (jamais `favicon.png`). `<title>` complet (suffixe
+     « | Agentrix » inclus) de 50 à 60 caractères.
    - Le JSON-LD rédigé en SOP 04 (`BlogPosting` + `FAQPage` + `Organization`) inséré dans le
      `<head>`.
    - Un lien de retour vers `https://www.agentrix-ia.com/` et, en pied de page, les coordonnées
@@ -45,7 +48,9 @@ de la SPA — sinon ils resteraient invisibles pour le SEO/GEO.
      `VOICE.md` (pas de remplissage pour atteindre un chiffre).
 3. **Mettre à jour `blog/index.html`** (page d'accueil du blog, à créer au premier article) pour
    lister tous les articles publiés, du plus récent au plus ancien.
-4. **Mettre à jour `sitemap.xml`** à la racine : ajouter une entrée pour
+4. **`llms.txt`** : rien à faire, la section Blog est générée au build (`scripts/build.mjs`) à partir
+   des `og:title` / meta description de chaque `blog/*/index.html`.
+   **Mettre à jour `sitemap.xml`** à la racine : ajouter une entrée pour
    `https://www.agentrix-ia.com/blog/<slug>/` (et pour `/blog/` si nouveau).
 5. **Lien depuis la SPA (optionnel, hors périmètre de ce blueprint) :** ajouter une entrée "Blog"
    dans la navigation (`agentrix/nav.jsx` + `agentrix/i18n-data.js`) pointant vers `/blog/` est
