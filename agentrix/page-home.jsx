@@ -5,7 +5,7 @@ function PageHome({ go }) {
   const pillarIcons = ["bolt", "target", "layout", "brain"];
   const steps = t("home.how.steps");
   const metrics = t("home.metrics.items");
-  const logos = ["Northwind", "Lumio", "Helios", "Atelier Vert", "Brightpath", "Vela"];
+  const logos = ["La Table Asiatique", "Les Greniers du Saiss", "Institut B", "Caftan By Nadia Benkirane", "Arena Alu", "Best Façade", "Le Comptoir"];
 
   return (
     <div className="page">
