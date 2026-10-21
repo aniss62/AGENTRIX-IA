@@ -1,12 +1,14 @@
-// Témoignages clients — UNIQUEMENT des retours réels, publiés avec l'accord écrit de la personne.
+// Témoignages clients — UNIQUEMENT des retours réels, publiés avec l'accord de la personne.
 // Ne jamais inventer, compléter ou reformuler une citation sans validation du client.
 //
 // Format d'une entrée :
-//   { quote: "Citation exacte.", name: "Prénom Nom", role: "Fonction", company: "Entreprise" }
-//
-// Tant que la liste est vide, la page /temoignages/ affiche un message d'attente, n'est pas
-// liée dans la navigation et est exclue de Google (noindex, voir scripts/build.mjs).
-// Dès qu'il y a des citations réelles : ajouter l'entrée "testimonials" dans la navigation
-// (agentrix/nav.jsx), passer `noindex: false` et ajouter un bloc `sitemap` à la page dans
-// scripts/build.mjs.
-window.TESTIMONIALS = [];
+//   { quote: "Citation exacte.", name: "Prénom N.", role: "Fonction", company: "Entreprise" }
+window.TESTIMONIALS = [
+  { quote: "Un site moderne, pensé pour être bien référencé sur Google comme dans les réponses des assistants IA : c'est ce que La Table Asiatique a obtenu. L'équipe est très professionnelle et répond toujours rapidement à nos questions. Chaque étape a été expliquée clairement, sans jargon. Je recommande sans hésiter à tout restaurateur qui veut soigner sa présence en ligne.", name: "Mei C.", role: "Chef de salle", company: "La Table Asiatique" },
+  { quote: "Notre nouveau site, clair et moderne, a été livré avec un vrai travail de référencement. Ce qui nous a marqués : le professionnalisme de l'équipe et des réponses toujours rapides, même sur les petits ajustements. Le projet s'est déroulé dans un échange simple et sérieux. Nous avons désormais une vitrine à la hauteur de notre activité.", name: "Martin S.", role: "Responsable Logistique", company: "Les Greniers du Saiss" },
+  { quote: "Prise de rendez-vous et rappels de confirmation : tout est géré par un agent IA mis en place par une équipe très professionnelle. Les réponses de l'équipe sont rapides dès qu'une question se pose. Le dispositif reste simple à utiliser au quotidien.", name: "Thomas P.", role: "Gérant", company: "Institut B" },
+  { quote: "Contenu pour nos réseaux sociaux et site de la maison : nous avons tout confié à une équipe professionnelle. Les réponses sont rapides et l'univers de la maison est bien compris.", name: "Nadia B.", role: "Gérante", company: "Caftan By Nadia Benkirane" },
+  { quote: "Le suivi de nos recouvrements demandait beaucoup de rigueur, et l'équipe a su s'en saisir avec professionnalisme. Les relances sont mieux organisées et ne reposent plus sur la mémoire de chacun. Chaque demande reçoit une réponse rapide. Une approche que je recommande aux entreprises qui veulent structurer leur suivi.", name: "Abdelkhalek L.", role: "DG", company: "Arena Alu" },
+  { quote: "Un CRM adapté à notre gestion et un agent IA pour le suivi du SAV : le projet a été mené de façon très professionnelle. Nos dossiers clients sont centralisés et le suivi après-vente est plus lisible. Les délais de réponse de l'équipe sont courts, ce qui compte beaucoup au quotidien. Un partenaire qui parle de résultats concrets plutôt que de jargon.", name: "Brahim B.", role: "DG", company: "Best Façade" },
+  { quote: "Les relances de devis et le suivi commercial par e-mail et WhatsApp partent désormais sans que nous ayons à y penser. L'équipe s'est montrée professionnelle et très rapide à répondre quand nous avons voulu ajuster les messages. C'est un vrai confort pour le suivi commercial.", name: "Alain J.", role: "Responsable Commercial", company: "Le Comptoir" }
+];

@@ -68,6 +68,7 @@ function Nav({ route, go }) {
     ["home", t("nav.home")],
     ["product", t("nav.product")],
     ["about", t("nav.about")],
+    ["testimonials", t("nav.testimonials")],
     ["blog", t("nav.blog"), "/blog/"]
   ];
 
@@ -139,6 +140,7 @@ function Footer({ go }) {
             <div className="footer__col">
               <h4>{t("footer.product")}</h4>
               <a href={routeHref("product")} onClick={(e) => { e.preventDefault(); go("product"); }}>{t("nav.product")}</a>
+              <a href={routeHref("testimonials")} onClick={(e) => { e.preventDefault(); go("testimonials"); }}>{t("nav.testimonials")}</a>
               <a href="/blog/">{t("nav.blog")}</a>
             </div>
             <div className="footer__col">

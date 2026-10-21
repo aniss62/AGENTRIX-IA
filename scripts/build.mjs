@@ -103,7 +103,7 @@ const PAGES = [
     sitemap: { priority: "0.8", changefreq: "yearly" } },
   { route: "testimonials", path: "/temoignages/", title: "Témoignages clients · Agentrix·IA",
     description: "Les retours des équipes qui ont déployé des agents Agentrix.",
-    noindex: true, sitemap: null },
+    sitemap: { priority: "0.6", changefreq: "monthly" } },
   { route: "privacy", path: "/confidentialite/", title: "Politique de confidentialité · Agentrix·IA",
     description: "Quelles données Agentrix collecte, pourquoi, et comment exercer vos droits.", sitemap: null },
   { route: "cookies", path: "/cookies/", title: "Politique de cookies · Agentrix·IA",
