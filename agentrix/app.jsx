@@ -8,6 +8,7 @@ const ROUTE_PATHS = {
   product: "/produit/",
   about: "/a-propos/",
   contact: "/contact/",
+  testimonials: "/temoignages/",
   privacy: "/confidentialite/",
   cookies: "/cookies/",
   terms: "/conditions/"
@@ -45,7 +46,6 @@ function App() {
     // Ancienne adresse en # (/#product) → nouvelle adresse (/produit/)
     const legacy = (location.hash || "").replace("#", "");
     if (ROUTE_PATHS[legacy]) history.replaceState(null, "", routeHref(legacy));
-    else if (legacy === "testimonials") history.replaceState(null, "", "/");
     const onPop = () => setRoute(getRouteFromLocation());
     window.addEventListener("popstate", onPop);
     window.addEventListener("hashchange", onPop);
@@ -79,6 +79,7 @@ function App() {
     product: window.PageProduct,
     about: window.PageAbout,
     contact: window.PageContact,
+    testimonials: window.PageTestimonials,
     privacy: window.PagePrivacy,
     cookies: window.PageCookies,
     terms: window.PageTerms

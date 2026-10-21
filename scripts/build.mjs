@@ -101,6 +101,9 @@ const PAGES = [
   { route: "contact", path: "/contact/", title: "Contact · Parlons de votre projet d'IA · Agentrix·IA",
     description: "Une question, un projet d'agent IA ? Écrivez-nous, appelez-nous ou demandez un diagnostic gratuit de 30 minutes.",
     sitemap: { priority: "0.8", changefreq: "yearly" } },
+  { route: "testimonials", path: "/temoignages/", title: "Témoignages clients · Agentrix·IA",
+    description: "Les retours des équipes qui ont déployé des agents Agentrix.",
+    noindex: true, sitemap: null },
   { route: "privacy", path: "/confidentialite/", title: "Politique de confidentialité · Agentrix·IA",
     description: "Quelles données Agentrix collecte, pourquoi, et comment exercer vos droits.", sitemap: null },
   { route: "cookies", path: "/cookies/", title: "Politique de cookies · Agentrix·IA",
@@ -165,6 +168,8 @@ for (const page of PAGES) {
       if (!re.test(out)) throw new Error(`Balise introuvable dans index.html : ${re}`);
       out = out.replace(re, rep);
     }
+    // Pages non encore publiques (ex. témoignages sans citation réelle) : hors index Google
+    if (page.noindex) out = out.replace(/(<meta name="robots" content=")[^"]*(")/, "$1noindex, nofollow$2");
     // Les données structurées Organization/WebSite restent sur l'accueil seulement
     out = out.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/, "");
   }

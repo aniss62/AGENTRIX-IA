@@ -20,6 +20,10 @@ window.I18N_FR = {
     darkMode: "Mode sombre",
     lightMode: "Mode clair"
   },
+  testimonials: {
+    hero: { eyebrow: "Témoignages", title: "Ce que disent nos clients", sub: "Les retours des équipes qui ont déployé des agents Agentrix." },
+    empty: "Les témoignages de nos clients seront publiés ici, avec leur accord."
+  },
   home: {
     hero: {
       badge: "Agence d'IA agentique",
@@ -354,6 +358,10 @@ window.I18N_EN = {
     darkMode: "Dark mode",
     lightMode: "Light mode"
   },
+  testimonials: {
+    hero: { eyebrow: "Testimonials", title: "What our clients say", sub: "Feedback from the teams that deployed Agentrix agents." },
+    empty: "Client testimonials will be published here, with their permission."
+  },
   home: {
     hero: {
       badge: "Agentic AI agency",
@@ -687,6 +695,10 @@ window.I18N_AR = {
     backHome: "العودة إلى الرئيسية",
     darkMode: "الوضع الداكن",
     lightMode: "الوضع الفاتح"
+  },
+  testimonials: {
+    hero: { eyebrow: "آراء العملاء", title: "ما يقوله عملاؤنا", sub: "آراء الفرق التي نشرت وكلاء Agentrix." },
+    empty: "ستُنشر شهادات عملائنا هنا بعد موافقتهم."
   },
   home: {
     hero: {
