@@ -68,14 +68,13 @@ function Nav({ route, go }) {
     ["home", t("nav.home")],
     ["product", t("nav.product")],
     ["about", t("nav.about")],
-    ["blog", t("nav.blog"), "/blog/"],
-    ["testimonials", t("nav.testimonials")]
+    ["blog", t("nav.blog"), "/blog/"]
   ];
 
   return (
     <header className={`nav ${scrolled ? "nav--solid" : ""}`}>
       <div className="wrap nav__inner">
-        <a className="nav__brand" href="#home" onClick={(e) => { e.preventDefault(); go("home"); }}>
+        <a className="nav__brand" href="/" onClick={(e) => { e.preventDefault(); go("home"); }}>
           <Wordmark />
         </a>
 
@@ -84,7 +83,7 @@ function Nav({ route, go }) {
             href ? (
               <a key={key} href={href} className="nav__link">{label}</a>
             ) : (
-              <a key={key} href={`#${key}`} className={`nav__link ${route === key ? "active" : ""}`}
+              <a key={key} href={routeHref(key)} className={`nav__link ${route === key ? "active" : ""}`}
                  onClick={(e) => { e.preventDefault(); go(key); }}>{label}</a>
             )
           ))}
@@ -109,7 +108,7 @@ function Nav({ route, go }) {
                 <span className="mobilemenu__idx">0{i + 1}</span>{label}
               </a>
             ) : (
-              <a key={key} href={`#${key}`} className={`mobilemenu__link ${route === key ? "active" : ""}`}
+              <a key={key} href={routeHref(key)} className={`mobilemenu__link ${route === key ? "active" : ""}`}
                  style={{ transitionDelay: `${0.04 * i + 0.05}s` }}
                  onClick={(e) => { e.preventDefault(); go(key); }}>
                 <span className="mobilemenu__idx">0{i + 1}</span>{label}
@@ -139,18 +138,18 @@ function Footer({ go }) {
           <div className="footer__cols">
             <div className="footer__col">
               <h4>{t("footer.product")}</h4>
-              <a href="#product" onClick={(e) => { e.preventDefault(); go("product"); }}>{t("nav.product")}</a>
-              <a href="#testimonials" onClick={(e) => { e.preventDefault(); go("testimonials"); }}>{t("nav.testimonials")}</a>
+              <a href={routeHref("product")} onClick={(e) => { e.preventDefault(); go("product"); }}>{t("nav.product")}</a>
+              <a href="/blog/">{t("nav.blog")}</a>
             </div>
             <div className="footer__col">
               <h4>{t("footer.company")}</h4>
-              <a href="#about" onClick={(e) => { e.preventDefault(); go("about"); }}>{t("nav.about")}</a>
-              <a href="#home" onClick={(e) => { e.preventDefault(); go("home"); }}>{t("nav.home")}</a>
+              <a href={routeHref("about")} onClick={(e) => { e.preventDefault(); go("about"); }}>{t("nav.about")}</a>
+              <a href={routeHref("home")} onClick={(e) => { e.preventDefault(); go("home"); }}>{t("nav.home")}</a>
             </div>
             <div className="footer__col">
               <h4>{t("footer.contact")}</h4>
-              <a href="#contact" onClick={(e) => { e.preventDefault(); go("contact"); }}>contact@agentrix-ia.com</a>
-              <a href="#contact" onClick={(e) => { e.preventDefault(); go("contact"); }}>{t("nav.cta")}</a>
+              <a href="mailto:contact@agentrix-ia.com">contact@agentrix-ia.com</a>
+              <a href={routeHref("contact")} onClick={(e) => { e.preventDefault(); go("contact"); }}>{t("nav.cta")}</a>
             </div>
           </div>
         </div>
@@ -158,9 +157,9 @@ function Footer({ go }) {
         <div className="footer__bottom">
           <span className="mono-tag">{t("footer.rights")}</span>
           <nav className="footer__legal">
-            <a href="#privacy" onClick={(e) => { e.preventDefault(); go("privacy"); }}>{t("footer.legal.privacy")}</a>
-            <a href="#cookies" onClick={(e) => { e.preventDefault(); go("cookies"); }}>{t("footer.legal.cookies")}</a>
-            <a href="#terms" onClick={(e) => { e.preventDefault(); go("terms"); }}>{t("footer.legal.terms")}</a>
+            <a href={routeHref("privacy")} onClick={(e) => { e.preventDefault(); go("privacy"); }}>{t("footer.legal.privacy")}</a>
+            <a href={routeHref("cookies")} onClick={(e) => { e.preventDefault(); go("cookies"); }}>{t("footer.legal.cookies")}</a>
+            <a href={routeHref("terms")} onClick={(e) => { e.preventDefault(); go("terms"); }}>{t("footer.legal.terms")}</a>
           </nav>
           <span className="mono-tag footer__made">FR · EN · ع</span>
         </div>

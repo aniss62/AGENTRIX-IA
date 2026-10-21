@@ -3,12 +3,12 @@
 **Objectif :** transformer le brouillon validé en une page HTML statique et autonome, cohérente
 avec l'identité visuelle du site, puis la déployer.
 
-**Contexte technique important :** Site Agentrix est une SPA React à routage par hash
-(`#home #product #about...`). Les sources `agentrix/*.jsx` sont compilées au déploiement par
-`npm run build` (`scripts/build.mjs`) : bundle esbuild, React production auto-hébergé, et
-pré-rendu HTML de l'accueil dans `dist/` (dossier servi par Vercel). Ne pas éditer `dist/`. `index.html` est la seule page
-HTML réellement crawlable pour les moteurs de recherche classiques. Les articles de blog doivent
-donc être des **pages HTML statiques séparées** (comme le fait ce blueprint), pas des routes hash
+**Contexte technique important :** Site Agentrix est une application React dont chaque page a
+sa propre adresse : `/`, `/produit/`, `/a-propos/`, `/contact/` (+ pages légales). Les sources
+`agentrix/*.jsx` sont compilées au déploiement par `npm run build` (`scripts/build.mjs`) : bundle
+esbuild, React production auto-hébergé, et pré-rendu HTML de chaque page dans `dist/` (dossier
+servi par Vercel). Ne pas éditer `dist/`. Dans les articles, lier ces adresses (jamais `/#product`).
+Les articles de blog restent des **pages HTML statiques séparées** (comme le fait ce blueprint), pas des routes
 de la SPA — sinon ils resteraient invisibles pour le SEO/GEO.
 
 ## Pré-requis

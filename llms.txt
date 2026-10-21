@@ -12,10 +12,9 @@
 ## Key pages
 
 - [Home](https://www.agentrix-ia.com/): Overview of Agentrix and what our autonomous AI agents do.
-- [Product](https://www.agentrix-ia.com/#product): The Agentrix agent platform and its capabilities.
-- [About](https://www.agentrix-ia.com/#about): Our mission, values, and team.
-- [Testimonials](https://www.agentrix-ia.com/#testimonials): Client results and feedback.
-- [Contact](https://www.agentrix-ia.com/#contact): Get in touch to discuss a project.
+- [Product](https://www.agentrix-ia.com/produit/): The Agentrix agent platform and its capabilities.
+- [About](https://www.agentrix-ia.com/a-propos/): Our mission, values, and team.
+- [Contact](https://www.agentrix-ia.com/contact/): Get in touch to discuss a project.
 
 ## Contact
 

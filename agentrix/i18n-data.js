@@ -7,7 +7,6 @@ window.I18N_FR = {
     product: "Produit",
     about: "À propos",
     blog: "Blog",
-    testimonials: "Témoignages",
     contact: "Contact",
     cta: "Nous contacter"
   },
@@ -29,9 +28,9 @@ window.I18N_FR = {
       sub: "Nous créons des agents IA qui réfléchissent, s'organisent et accomplissent vos tâches les plus chronophages. Vous, vous récupérez des heures chaque semaine.",
       cta1: "Nous contacter",
       cta2: "Voir le produit",
-      s1: "h récupérées / sem.",
-      s2: "agents déployés",
-      s3: "de tâches automatisées"
+      v1: "24/7", s1: "vos agents travaillent en continu",
+      v2: "30 min", s2: "de diagnostic offert",
+      v3: "3", s3: "langues : FR · EN · AR"
     },
     logos: { label: "Ils automatisent avec Agentrix" },
     pillars: {
@@ -45,22 +44,22 @@ window.I18N_FR = {
           desc: "Vos tâches répétitives gérées de bout en bout, jour et nuit, sans que vous ayez à y penser.",
           long: "Relances, saisies, rapports, synchronisations : tout ce qui vous prend du temps chaque jour est pris en charge par des agents qui travaillent en continu, sans jamais perdre le fil.",
           points: ["Relances et suivis automatiques", "Synchronisation entre vos outils", "Rapports générés sans intervention", "Déclencheurs et règles sur mesure"],
-          metric: { value: "≈16h", label: "récupérées / semaine" } },
+          metric: { value: "24/7", label: "sans pause ni oubli" } },
         { tag: "02 · Acquisition", title: "Scraping & leads qualifiés",
           desc: "On identifie, on enrichit et on qualifie vos prospects, à grande échelle.",
           long: "Des agents qui repèrent, enrichissent et qualifient vos prospects en continu, pour remplir votre pipeline de contacts qui comptent vraiment.",
           points: ["Détection de prospects ciblés", "Enrichissement des données de contact", "Qualification selon vos critères", "Export direct vers votre CRM"],
-          metric: { value: "3,4×", label: "de leads qualifiés" } },
+          metric: { value: "CRM", label: "export direct" } },
         { tag: "03 · Web", title: "Sites à forte conversion",
           desc: "Des sites modernes, rapides et soignés, faits pour transformer vos visiteurs en clients.",
           long: "Des sites modernes, rapides et bien référencés, pensés pour convertir. Notre équipe les conçoit, les développe et vous les livre clés en main.",
           points: ["Design sur mesure et responsive", "Performances et SEO optimisés", "Parcours pensés pour convertir", "Livraison en quelques semaines"],
-          metric: { value: "×2", label: "de taux de conversion" } },
+          metric: { value: "SEO", label: "pensé pour Google" } },
         { tag: "04 · Décision", title: "Agents de raisonnement",
           desc: "Des agents qui planifient, décident et s'adaptent à vos règles métier.",
           long: "Des agents capables de découper un objectif, de planifier les étapes, de décider et de s'adapter à vos règles métier. Et quand il le faut, un humain garde la main.",
           points: ["Décomposition d'objectifs complexes", "Planification et exécution autonomes", "Adaptation aux règles métier", "Validation humaine optionnelle"],
-          metric: { value: "24/7", label: "de disponibilité" } }
+          metric: { value: "100%", label: "des décisions traçables" } }
       ]
     },
     how: {
@@ -73,27 +72,20 @@ window.I18N_FR = {
       ]
     },
     metrics: {
-      eyebrow: "Impact mesurable",
-      title: "Le temps que vous récupérez, en chiffres.",
+      eyebrow: "Notre engagement",
+      title: "Ce que vous obtenez, concrètement.",
       items: [
-        { value: "≈16h", label: "récupérées par semaine et par équipe" },
-        { value: "90%", label: "des tâches répétitives automatisées" },
-        { value: "3,4×", label: "de leads qualifiés en plus" },
-        { value: "< 4 sem.", label: "du premier appel à la mise en production" }
+        { value: "30 min", label: "de diagnostic gratuit pour repérer vos premiers agents" },
+        { value: "4 sem.", label: "maximum, du premier appel à la mise en production" },
+        { value: "24/7", label: "vos agents travaillent, même la nuit et le week-end" },
+        { value: "100%", label: "des actions de vos agents visibles sur votre tableau de bord" }
       ]
     },
     cta: {
       title: "Et si vos tâches répétitives tournaient toutes seules ?",
       sub: "Demandez un diagnostic gratuit de 30 minutes. On identifie ensemble vos trois premiers agents à fort impact.",
       btn: "Demander mon diagnostic"
-    },
-    tmoni: {
-      eyebrow: "Ils nous font confiance",
-      title: "Des équipes plus légères, des résultats concrets.",
-      sub: "Ce que racontent les clients qui ont déployé nos agents.",
-      photo: "photo client"
-    },
-    faq: {
+    },    faq: {
       eyebrow: "Questions fréquentes",
       title: "Tout comprendre sur nos services agentiques.",
       sub: "On répond ici aux questions qu'on nous pose le plus souvent.",
@@ -138,7 +130,7 @@ window.I18N_FR = {
       items: [
         { q: "Que faites-vous exactement ?", a: "On conçoit et on déploie des agents IA autonomes qui automatisent vos tâches répétitives, vont chercher des leads qualifiés et créent des sites qui convertissent. Au final, vous gagnez des heures chaque semaine." },
         { q: "Combien de temps pour déployer un agent ?", a: "En général moins de 4 semaines, du premier appel à la mise en production, selon la complexité de votre workflow." },
-        { q: "Quels outils pouvez-vous intégrer ?", a: "CRM, e-mail, bases de données, Slack, Notion, Stripe… plus de 200 intégrations. Vos agents agissent là où vous travaillez déjà." },
+        { q: "Quels outils pouvez-vous intégrer ?", a: "CRM, e-mail, bases de données, Slack, Notion, Stripe… et la plupart des outils qui ont une API. Vos agents agissent là où vous travaillez déjà." },
         { q: "Mes données sont-elles en sécurité ?", a: "Oui : chiffrement de bout en bout, hébergement européen et déploiement on-premise possible pour les besoins sensibles." },
         { q: "Combien ça coûte ?", a: "Tout dépend de ce que vous voulez automatiser. Le mieux, c'est un diagnostic gratuit : on estime ensemble le périmètre et on vous donne un budget clair, sans engagement." }
       ],
@@ -159,7 +151,7 @@ window.I18N_FR = {
       title: "Tout ce dont un agent autonome a besoin.",
       items: [
         { title: "Raisonnement multi-étapes", desc: "Il découpe vos objectifs complexes en plans d'action concrets." },
-        { title: "Connecteurs natifs", desc: "CRM, e-mail, bases de données, APIs et plus de 200 intégrations." },
+        { title: "Connecteurs natifs", desc: "CRM, e-mail, bases de données, et la plupart des outils qui ont une API." },
         { title: "Mémoire persistante", desc: "Les agents se souviennent du contexte, de vos préférences et de l'historique." },
         { title: "Garde-fous & validation", desc: "Règles métier, points de contrôle humains et journaux d'audit complets." },
         { title: "Exécution parallèle", desc: "Des dizaines d'agents qui travaillent en même temps sur vos files de tâches." },
@@ -249,24 +241,7 @@ window.I18N_FR = {
       ],
       ceoNote: "On a fondé Agentrix parce qu'on en avait assez de voir des équipes brillantes s'épuiser sur des tâches qu'une machine peut faire mieux. Chaque agent qu'on construit a un seul objectif : vous rendre du temps pour ce qui compte vraiment. C'est une conviction, pas un argument de vente."
     }
-  },
-  testimonials: {
-    hero: {
-      eyebrow: "Témoignages",
-      title: "Des heures récupérées, des résultats concrets.",
-      sub: "Ce que racontent les équipes qui ont déployé des agents Agentrix."
-    },
-    items: [
-      { quote: "Nos relances commerciales tournent toutes seules. On a récupéré près de 20 heures par semaine sur l'équipe vente.", name: "Camille Durand", role: "Directrice commerciale", company: "Northwind" },
-      { quote: "Le scraping de leads qualifiés a transformé notre pipeline. Trois fois plus de prospects pertinents, sans le moindre effort manuel.", name: "Thomas Petit", role: "Head of Growth", company: "Lumio" },
-      { quote: "En moins d'un mois, notre support de niveau 1 était automatisé. Les clients n'ont rien remarqué, à part des réponses plus rapides.", name: "Aïcha Benali", role: "COO", company: "Helios" },
-      { quote: "Le nouveau site conçu par Agentrix convertit deux fois mieux que l'ancien. Et il a été livré en trois semaines.", name: "Marc Lefèvre", role: "Fondateur", company: "Atelier Vert" },
-      { quote: "Enfin une équipe qui parle impact plutôt que jargon. On voit chaque heure gagnée sur le tableau de bord.", name: "Nadia Cherif", role: "Operations Lead", company: "Brightpath" },
-      { quote: "Leurs agents s'intègrent dans nos outils existants sans la moindre friction. Le déploiement a été d'une simplicité remarquable.", name: "Julien Roy", role: "CTO", company: "Vela" }
-    ],
-    metric: "des clients renouvellent après le premier trimestre"
-  },
-  contact: {
+  },  contact: {
     hero: {
       eyebrow: "Contact",
       title: "Parlons-en.",
@@ -358,35 +333,7 @@ window.I18N_FR = {
     accept: "Accepter",
     decline: "Refuser",
     link: "En savoir plus"
-  },
-  socialProof: {
-    lead: "Une demande de",
-    verb: "pour",
-    times: ["À l'instant", "Il y a 5 minutes", "Il y a 20 minutes", "Il y a 1 heure", "Il y a 3 heures", "Il y a 12 heures", "Il y a 24 heures", "Il y a 48 heures"],
-    items: [
-      { city: "Casablanca", activity: "un site web moderne" },
-      { city: "Paris", activity: "l'automatisation de ses workflows" },
-      { city: "Abidjan", activity: "un agent IA pour le service client" },
-      { city: "Dakar", activity: "un devis pour des agents IA" },
-      { city: "Montréal", activity: "une démonstration de nos agents" },
-      { city: "Douala", activity: "la génération de leads qualifiés" },
-      { city: "Kigali", activity: "une refonte de son site web" },
-      { city: "Marrakech", activity: "l'intégration de ses outils (CRM, Slack, Gmail)" },
-      { city: "Lyon", activity: "un agent IA de facturation" },
-      { city: "Yaoundé", activity: "l'automatisation de sa prospection" },
-      { city: "Rabat", activity: "un audit de ses processus" },
-      { city: "Québec", activity: "un agent IA pour son support client" },
-      { city: "Dakar", activity: "la création d'un site vitrine" },
-      { city: "Bouaké", activity: "l'automatisation de sa facturation" },
-      { city: "Tanger", activity: "un agent IA de veille concurrentielle" },
-      { city: "Marseille", activity: "l'automatisation de ses e-mails" },
-      { city: "Kigali", activity: "un accompagnement en agents IA" },
-      { city: "Fès", activity: "un agent IA pour la prospection" },
-      { city: "Bordeaux", activity: "un devis pour un site e-commerce" },
-      { city: "Toronto", activity: "l'intégration d'un agent IA à son CRM" }
-    ]
-  }
-};
+  }};
 
 window.I18N_EN = {
   nav: {
@@ -394,7 +341,6 @@ window.I18N_EN = {
     product: "Product",
     about: "About",
     blog: "Blog",
-    testimonials: "Testimonials",
     contact: "Contact",
     cta: "Get in touch"
   },
@@ -416,9 +362,9 @@ window.I18N_EN = {
       sub: "We design and deploy AI agents that reason, plan and execute complex tasks, so you reclaim hours every single week.",
       cta1: "Get in touch",
       cta2: "See the product",
-      s1: "hrs reclaimed / week",
-      s2: "agents deployed",
-      s3: "of tasks automated"
+      v1: "24/7", s1: "your agents work around the clock",
+      v2: "30 min", s2: "free diagnostic",
+      v3: "3", s3: "languages: FR · EN · AR"
     },
     logos: { label: "Teams automating with Agentrix" },
     pillars: {
@@ -432,22 +378,22 @@ window.I18N_EN = {
           desc: "Your repetitive processes run end-to-end, 24/7, with no supervision.",
           long: "Follow-ups, data entry, reports, syncing: your repetitive tasks run end-to-end, handled by agents that work continuously and never lose the thread.",
           points: ["Automatic follow-ups & nudges", "Sync across your tools", "Reports generated hands-free", "Custom triggers & rules"],
-          metric: { value: "≈16h", label: "reclaimed / week" } },
+          metric: { value: "24/7", label: "no breaks, nothing missed" } },
         { tag: "02 · Acquisition", title: "Scraping & qualified leads",
           desc: "Identify, enrich and qualify prospects at scale, automatically.",
           long: "Agents that identify, enrich and qualify your prospects continuously, feeding your pipeline with genuinely relevant contacts.",
           points: ["Targeted prospect detection", "Contact data enrichment", "Qualification on your criteria", "Direct export to your CRM"],
-          metric: { value: "3.4×", label: "more qualified leads" } },
+          metric: { value: "CRM", label: "direct export" } },
         { tag: "03 · Web", title: "High-conversion websites",
           desc: "Modern, fast, optimized sites engineered to convert.",
           long: "Modern, fast websites optimized for SEO and conversion. Our team designs, builds and delivers them turnkey.",
           points: ["Bespoke responsive design", "Performance & SEO optimized", "Journeys built to convert", "Delivered in a few weeks"],
-          metric: { value: "×2", label: "conversion rate" } },
+          metric: { value: "SEO", label: "built for Google" } },
         { tag: "04 · Decision", title: "Reasoning agents",
           desc: "Agents that plan, decide and adapt to your business rules.",
           long: "Agents that break down an objective, plan the steps, decide and adapt to your business rules. A human stays in the loop whenever needed.",
           points: ["Break down complex objectives", "Autonomous planning & execution", "Adapts to business rules", "Optional human approval"],
-          metric: { value: "24/7", label: "availability" } }
+          metric: { value: "100%", label: "traceable decisions" } }
       ]
     },
     how: {
@@ -460,27 +406,20 @@ window.I18N_EN = {
       ]
     },
     metrics: {
-      eyebrow: "Measurable impact",
-      title: "The time you reclaim, quantified.",
+      eyebrow: "Our commitment",
+      title: "What you get, concretely.",
       items: [
-        { value: "≈16h", label: "reclaimed per week, per team" },
-        { value: "90%", label: "of repetitive tasks automated" },
-        { value: "3.4×", label: "more qualified leads" },
-        { value: "< 4 wks", label: "from first call to production" }
+        { value: "30 min", label: "free diagnostic to spot your first agents" },
+        { value: "4 wks", label: "at most, from first call to production" },
+        { value: "24/7", label: "your agents keep working, nights and weekends" },
+        { value: "100%", label: "of your agents' actions visible on your dashboard" }
       ]
     },
     cta: {
       title: "What if your repetitive tasks ran themselves?",
       sub: "Request a free 30-minute diagnostic. We'll identify your first three high-impact agents.",
       btn: "Request my diagnostic"
-    },
-    tmoni: {
-      eyebrow: "Trusted by teams",
-      title: "Lighter teams, concrete results.",
-      sub: "What clients say after deploying our agents.",
-      photo: "client photo"
-    },
-    faq: {
+    },    faq: {
       eyebrow: "Frequently asked",
       title: "Everything about our agentic services.",
       sub: "Answers to the questions we hear most often.",
@@ -525,7 +464,7 @@ window.I18N_EN = {
       items: [
         { q: "What exactly do you do?", a: "We design and deploy autonomous AI agents that automate your repetitive workflows, scrape qualified leads and build high-conversion websites, so you save hours every week." },
         { q: "How long to deploy an agent?", a: "Usually under 4 weeks from the first call to production, depending on your workflow's complexity." },
-        { q: "What tools can you integrate?", a: "CRM, email, databases, Slack, Notion, Stripe… 200+ integrations. Your agents act right where you already work." },
+        { q: "What tools can you integrate?", a: "CRM, email, databases, Slack, Notion, Stripe… and most tools with an API. Your agents act right where you already work." },
         { q: "Is my data safe?", a: "Yes: end-to-end encryption, European hosting, and on-premise deployment for sensitive needs." },
         { q: "How much does it cost?", a: "It depends on what you want to automate. The best next step is a free diagnostic: we scope it together and give you a clear budget, with no lock-in." }
       ],
@@ -546,7 +485,7 @@ window.I18N_EN = {
       title: "Everything an autonomous agent needs.",
       items: [
         { title: "Multi-step reasoning", desc: "Breaks complex objectives into executable action plans." },
-        { title: "Native connectors", desc: "CRM, email, databases, APIs and 200+ integrations." },
+        { title: "Native connectors", desc: "CRM, email, databases, and most tools with an API." },
         { title: "Persistent memory", desc: "Agents remember context, preferences and history." },
         { title: "Guardrails & approval", desc: "Business rules, human checkpoints and full audit logs." },
         { title: "Parallel execution", desc: "Dozens of agents working at once across your task queues." },
@@ -636,24 +575,7 @@ window.I18N_EN = {
       ],
       ceoNote: "We started Agentrix because we were tired of watching brilliant teams burn out on work a machine could do better. Every agent we build has one goal: give you back time for what actually matters. That's a conviction, not a pitch."
     }
-  },
-  testimonials: {
-    hero: {
-      eyebrow: "Testimonials",
-      title: "Hours reclaimed, real results.",
-      sub: "What teams say after deploying Agentrix agents."
-    },
-    items: [
-      { quote: "Our sales follow-ups run themselves. We reclaimed nearly 20 hours a week across the sales team.", name: "Camille Durand", role: "Head of Sales", company: "Northwind" },
-      { quote: "Qualified lead scraping transformed our pipeline. Three times more relevant prospects, with zero manual effort.", name: "Thomas Petit", role: "Head of Growth", company: "Lumio" },
-      { quote: "In under a month, our tier-1 support was automated. Customers noticed nothing, except faster answers.", name: "Aïcha Benali", role: "COO", company: "Helios" },
-      { quote: "The new site Agentrix built converts twice as well as the old one. And it shipped in three weeks.", name: "Marc Lefèvre", role: "Founder", company: "Atelier Vert" },
-      { quote: "Finally a team that talks impact, not jargon. We see every hour saved on the dashboard.", name: "Nadia Cherif", role: "Operations Lead", company: "Brightpath" },
-      { quote: "Their agents slot into our existing tools without friction. Deployment was remarkably simple.", name: "Julien Roy", role: "CTO", company: "Vela" }
-    ],
-    metric: "of clients renew after the first quarter"
-  },
-  contact: {
+  },  contact: {
     hero: {
       eyebrow: "Contact",
       title: "Let's talk.",
@@ -745,35 +667,7 @@ window.I18N_EN = {
     accept: "Accept",
     decline: "Decline",
     link: "Learn more"
-  },
-  socialProof: {
-    lead: "A request from",
-    verb: "for",
-    times: ["Just now", "5 minutes ago", "20 minutes ago", "1 hour ago", "3 hours ago", "12 hours ago", "24 hours ago", "48 hours ago"],
-    items: [
-      { city: "Casablanca", activity: "a modern website" },
-      { city: "Paris", activity: "workflow automation" },
-      { city: "Abidjan", activity: "an AI customer service agent" },
-      { city: "Dakar", activity: "a quote for AI agents" },
-      { city: "Montreal", activity: "a demo of our agents" },
-      { city: "Douala", activity: "qualified lead generation" },
-      { city: "Kigali", activity: "a website redesign" },
-      { city: "Marrakech", activity: "tool integrations (CRM, Slack, Gmail)" },
-      { city: "Lyon", activity: "an AI billing agent" },
-      { city: "Yaoundé", activity: "prospecting automation" },
-      { city: "Rabat", activity: "a process audit" },
-      { city: "Quebec City", activity: "an AI customer support agent" },
-      { city: "Dakar", activity: "a showcase website" },
-      { city: "Bouaké", activity: "billing automation" },
-      { city: "Tangier", activity: "a competitive-watch AI agent" },
-      { city: "Marseille", activity: "email automation" },
-      { city: "Kigali", activity: "AI agent support" },
-      { city: "Fès", activity: "an AI prospecting agent" },
-      { city: "Bordeaux", activity: "a quote for an e-commerce site" },
-      { city: "Toronto", activity: "an AI agent integrated with their CRM" }
-    ]
-  }
-};
+  }};
 
 window.I18N_AR = {
   nav: {
@@ -781,7 +675,6 @@ window.I18N_AR = {
     product: "المنتج",
     about: "من نحن",
     blog: "المدونة",
-    testimonials: "آراء العملاء",
     contact: "تواصل معنا",
     cta: "اتصل بنا"
   },
@@ -803,9 +696,9 @@ window.I18N_AR = {
       sub: "نصمّم ونطلق وكلاء ذكاء اصطناعي قادرين على التفكير والتخطيط وتنفيذ المهام المعقّدة، لتوفّر ساعات من وقتك كل أسبوع.",
       cta1: "اتصل بنا",
       cta2: "شاهد المنتج",
-      s1: "ساعة موفّرة / أسبوع",
-      s2: "وكيل تم إطلاقه",
-      s3: "من المهام مؤتمتة"
+      v1: "24/7", s1: "وكلاؤك يعملون دون توقف",
+      v2: "30 دقيقة", s2: "تشخيص مجاني",
+      v3: "3", s3: "لغات: FR · EN · AR"
     },
     logos: { label: "فرق تعمل بالأتمتة مع Agentrix" },
     pillars: {
@@ -819,22 +712,22 @@ window.I18N_AR = {
           desc: "تنفيذ عملياتك المتكررة من البداية للنهاية، على مدار الساعة، دون إشراف.",
           long: "المتابعات وإدخال البيانات والتقارير والمزامنة: تُنفَّذ مهامك المتكررة من البداية للنهاية بواسطة وكلاء يعملون باستمرار دون أن يفقدوا الخيط أبداً.",
           points: ["متابعات وتذكيرات تلقائية", "مزامنة بين أدواتك", "تقارير تُولَّد دون تدخل", "محفّزات وقواعد حسب الطلب"],
-          metric: { value: "≈16ساعة", label: "موفّرة / أسبوع" } },
+          metric: { value: "24/7", label: "دون توقف أو نسيان" } },
         { tag: "02 · الاستقطاب", title: "جمع وتأهيل العملاء المحتملين",
           desc: "تحديد وإثراء وتأهيل العملاء المحتملين على نطاق واسع وبشكل آلي.",
           long: "وكلاء يحدّدون ويُثرون ويؤهّلون عملاءك المحتملين باستمرار، لتغذية مسار مبيعاتك بجهات اتصال وثيقة الصلة فعلاً.",
           points: ["كشف العملاء المستهدفين", "إثراء بيانات الاتصال", "تأهيل وفق معاييرك", "تصدير مباشر إلى نظام CRM"],
-          metric: { value: "3.4×", label: "عملاء مؤهّلون أكثر" } },
+          metric: { value: "CRM", label: "تصدير مباشر" } },
         { tag: "03 · الويب", title: "مواقع عالية التحويل",
           desc: "مواقع عصرية وسريعة ومحسّنة، مصمّمة لتحقيق التحويل.",
           long: "مواقع عصرية وسريعة ومحسّنة لمحركات البحث والتحويل. نصمّمها ونطوّرها ونسلّمها جاهزة بالكامل.",
           points: ["تصميم مخصّص ومتجاوب", "أداء وتحسين محركات بحث", "مسارات مصمّمة للتحويل", "تسليم خلال أسابيع"],
-          metric: { value: "×2", label: "معدّل التحويل" } },
+          metric: { value: "SEO", label: "مصمَّم لـ Google" } },
         { tag: "04 · القرار", title: "وكلاء التفكير",
           desc: "وكلاء يخطّطون ويقرّرون ويتكيّفون مع قواعد عملك.",
           long: "وكلاء قادرون على تفكيك الهدف وتخطيط الخطوات واتخاذ القرار والتكيّف مع قواعد عملك. ويبقى إنسان في الحلقة عند الحاجة.",
           points: ["تفكيك الأهداف المعقّدة", "تخطيط وتنفيذ مستقلان", "تكيّف مع قواعد العمل", "موافقة بشرية اختيارية"],
-          metric: { value: "24/7", label: "جاهزية دائمة" } }
+          metric: { value: "100%", label: "قرارات قابلة للتتبّع" } }
       ]
     },
     how: {
@@ -847,27 +740,20 @@ window.I18N_AR = {
       ]
     },
     metrics: {
-      eyebrow: "أثر قابل للقياس",
-      title: "الوقت الذي تستعيده، بالأرقام.",
+      eyebrow: "التزامنا",
+      title: "ما تحصل عليه، بشكل ملموس.",
       items: [
-        { value: "≈16ساعة", label: "موفّرة أسبوعياً لكل فريق" },
-        { value: "90%", label: "من المهام المتكررة مؤتمتة" },
-        { value: "3.4×", label: "عملاء محتملون مؤهّلون أكثر" },
-        { value: "أقل من 4 أسابيع", label: "من أول مكالمة إلى الإنتاج" }
+        { value: "30 دقيقة", label: "تشخيص مجاني لتحديد أول وكلائك" },
+        { value: "4 أسابيع", label: "كحدّ أقصى، من أول مكالمة إلى الإنتاج" },
+        { value: "24/7", label: "وكلاؤك يعملون ليلاً وفي عطلة نهاية الأسبوع" },
+        { value: "100%", label: "من إجراءات وكلائك ظاهرة على لوحة التحكم" }
       ]
     },
     cta: {
       title: "ماذا لو نُفِّذت مهامك المتكررة من تلقاء نفسها؟",
       sub: "اطلب تشخيصاً مجانياً لمدة 30 دقيقة. سنحدّد أول ثلاثة وكلاء عالي الأثر.",
       btn: "اطلب تشخيصي"
-    },
-    tmoni: {
-      eyebrow: "يثقون بنا",
-      title: "فرق أخفّ عبئاً ونتائج ملموسة.",
-      sub: "ما يقوله العملاء بعد إطلاق وكلائنا.",
-      photo: "صورة عميل"
-    },
-    faq: {
+    },    faq: {
       eyebrow: "أسئلة شائعة",
       title: "كل ما تريد معرفته عن خدماتنا الوكيلة.",
       sub: "إجابات عن الأسئلة الأكثر تكراراً.",
@@ -912,7 +798,7 @@ window.I18N_AR = {
       items: [
         { q: "ماذا تفعلون بالضبط؟", a: "نصمّم ونطلق وكلاء ذكاء اصطناعي مستقلين يؤتمتون سير عملك المتكرر، ويجمعون عملاء مؤهّلين، ويبنون مواقع عالية التحويل، لتوفّر ساعات من وقتك كل أسبوع." },
         { q: "كم يستغرق إطلاق وكيل؟", a: "عادةً أقل من 4 أسابيع من أول مكالمة إلى الإنتاج، حسب تعقيد سير عملك." },
-        { q: "ما الأدوات التي يمكنكم دمجها؟", a: "إدارة علاقات العملاء، البريد، قواعد البيانات، Slack، Notion، Stripe… أكثر من 200 تكامل. يعمل وكلاؤك حيث تعمل أنت بالفعل." },
+        { q: "ما الأدوات التي يمكنكم دمجها؟", a: "إدارة علاقات العملاء، البريد، قواعد البيانات، Slack، Notion، Stripe… ومعظم الأدوات التي تملك واجهة API. يعمل وكلاؤك حيث تعمل أنت بالفعل." },
         { q: "هل بياناتي آمنة؟", a: "نعم: تشفير من طرف إلى طرف، واستضافة أوروبية، وإمكانية نشر داخلي للاحتياجات الحسّاسة." },
         { q: "كم تبلغ التكلفة؟", a: "يعتمد على ما ترغب في أتمتته. أفضل خطوة تالية هي تشخيص مجاني: نحدّد النطاق معاً ونعطيك ميزانية واضحة، دون التزام." }
       ],
@@ -933,7 +819,7 @@ window.I18N_AR = {
       title: "كل ما يحتاجه وكيل مستقل.",
       items: [
         { title: "تفكير متعدد الخطوات", desc: "تقسيم الأهداف المعقّدة إلى خطط عمل قابلة للتنفيذ." },
-        { title: "موصّلات أصلية", desc: "إدارة علاقات العملاء، البريد، قواعد البيانات، وأكثر من 200 تكامل." },
+        { title: "موصّلات أصلية", desc: "إدارة علاقات العملاء، البريد، قواعد البيانات، ومعظم الأدوات التي تملك واجهة API." },
         { title: "ذاكرة دائمة", desc: "يتذكّر الوكلاء السياق والتفضيلات والسجل." },
         { title: "ضوابط وموافقات", desc: "قواعد عمل، نقاط مراجعة بشرية، وسجلات تدقيق كاملة." },
         { title: "تنفيذ متوازٍ", desc: "عشرات الوكلاء يعملون في آنٍ واحد عبر مهامك." },
@@ -1023,24 +909,7 @@ window.I18N_AR = {
       ],
       ceoNote: "أسسنا Agentrix لأننا مللنا من رؤية فرق موهوبة تنهك في مهام يمكن لآلة أن تؤديها بشكل أفضل. كل وكيل نبنيه له هدف واحد: إعادة وقتك لما يهمّ فعلاً. هذه قناعة، لا شعار تسويقي."
     }
-  },
-  testimonials: {
-    hero: {
-      eyebrow: "آراء العملاء",
-      title: "ساعات مستعادة ونتائج ملموسة.",
-      sub: "ما تقوله الفرق بعد إطلاق وكلاء Agentrix."
-    },
-    items: [
-      { quote: "أصبحت متابعات المبيعات تعمل من تلقاء نفسها. وفّرنا نحو 20 ساعة أسبوعياً على فريق المبيعات.", name: "كاميل دوران", role: "مديرة المبيعات", company: "Northwind" },
-      { quote: "حوّل جمع العملاء المؤهّلين مسار مبيعاتنا. ثلاثة أضعاف العملاء المناسبين، دون أي جهد يدوي.", name: "توماس بوتي", role: "مدير النمو", company: "Lumio" },
-      { quote: "في أقل من شهر، أصبح دعمنا من المستوى الأول مؤتمتاً. لم يلاحظ العملاء شيئاً سوى ردود أسرع.", name: "عائشة بنعلي", role: "مديرة العمليات", company: "Helios" },
-      { quote: "الموقع الجديد الذي بنته Agentrix يحقّق تحويلاً ضعف القديم. وتم تسليمه في ثلاثة أسابيع.", name: "مارك لوفيفر", role: "مؤسّس", company: "Atelier Vert" },
-      { quote: "أخيراً فريق يتحدّث عن الأثر لا عن المصطلحات. نرى كل ساعة موفّرة على لوحة التحكّم.", name: "نادية شريف", role: "مديرة العمليات", company: "Brightpath" },
-      { quote: "يندمج وكلاؤهم مع أدواتنا الحالية دون احتكاك. كان الإطلاق بسيطاً بشكل لافت.", name: "جوليان روا", role: "المدير التقني", company: "Vela" }
-    ],
-    metric: "من العملاء يجدّدون بعد الربع الأول"
-  },
-  contact: {
+  },  contact: {
     hero: {
       eyebrow: "تواصل معنا",
       title: "لنتحدّث.",
@@ -1132,35 +1001,7 @@ window.I18N_AR = {
     accept: "قبول",
     decline: "رفض",
     link: "معرفة المزيد"
-  },
-  socialProof: {
-    lead: "طلب من",
-    verb: "من أجل",
-    times: ["الآن", "قبل 5 دقائق", "قبل 20 دقيقة", "قبل ساعة", "قبل 3 ساعات", "قبل 12 ساعة", "قبل 24 ساعة", "قبل 48 ساعة"],
-    items: [
-      { city: "الدار البيضاء", activity: "موقع إلكتروني عصري" },
-      { city: "باريس", activity: "أتمتة سير عملها" },
-      { city: "أبيدجان", activity: "وكيل ذكاء اصطناعي لخدمة العملاء" },
-      { city: "داكار", activity: "عرض سعر لوكلاء الذكاء الاصطناعي" },
-      { city: "مونتريال", activity: "عرض توضيحي لوكلائنا" },
-      { city: "دوالا", activity: "توليد عملاء مؤهلين" },
-      { city: "كيغالي", activity: "إعادة تصميم موقعها الإلكتروني" },
-      { city: "مراكش", activity: "دمج أدواتها (CRM، Slack، Gmail)" },
-      { city: "ليون", activity: "وكيل ذكاء اصطناعي للفوترة" },
-      { city: "ياوندي", activity: "أتمتة عملية التنقيب عن العملاء" },
-      { city: "الرباط", activity: "تدقيق في عملياتها" },
-      { city: "كيبيك", activity: "وكيل ذكاء اصطناعي لدعم العملاء" },
-      { city: "داكار", activity: "إنشاء موقع تعريفي" },
-      { city: "بواكي", activity: "أتمتة الفوترة" },
-      { city: "طنجة", activity: "وكيل ذكاء اصطناعي لمراقبة المنافسين" },
-      { city: "مرسيليا", activity: "أتمتة بريدها الإلكتروني" },
-      { city: "كيغالي", activity: "مرافقة في وكلاء الذكاء الاصطناعي" },
-      { city: "فاس", activity: "وكيل ذكاء اصطناعي للتنقيب عن العملاء" },
-      { city: "بوردو", activity: "عرض سعر لموقع تجارة إلكترونية" },
-      { city: "تورونتو", activity: "دمج وكيل ذكاء اصطناعي مع نظام CRM" }
-    ]
-  }
-};
+  }};
 
 // Table consolidée + registre des langues
 window.I18N = { fr: window.I18N_FR, en: window.I18N_EN, ar: window.I18N_AR };

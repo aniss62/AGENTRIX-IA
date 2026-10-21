@@ -18,6 +18,8 @@ function PageContact() {
       <section className="hero hero--inner">
         <div className="wrap">
           <Eyebrow>{t("contact.hero.eyebrow")}</Eyebrow>
+          <Reveal as="h1" className="h-1 mt-m maxw-xl">{t("contact.hero.title")}</Reveal>
+          <Reveal className="lead mt-s" delay="1">{t("contact.hero.sub")}</Reveal>
         </div>
       </section>
 

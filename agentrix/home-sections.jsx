@@ -1,4 +1,4 @@
-// Agentrix-IA — Lead form (reusable) + Home testimonials + Home FAQ
+// Agentrix-IA — Lead form (reusable) + Home FAQ
 const { useState: useStateHS } = React;
 
 /* ---------- Reusable lead-capture form ---------- */
@@ -124,41 +124,6 @@ function LeadSection() {
   );
 }
 
-/* ---------- Home: testimonials with photos ---------- */
-function HomeTestimonials({ go }) {
-  const { t } = useT();
-  const all = t("testimonials.items");
-  const featured = all.slice(0, 3);
-  return (
-    <section className="section section--tight">
-      <div className="wrap">
-        <div className="shead">
-          <Eyebrow>{t("home.tmoni.eyebrow")}</Eyebrow>
-          <h2 className="h-1">{t("home.tmoni.title")}</h2>
-          <p className="lead">{t("home.tmoni.sub")}</p>
-        </div>
-        <div className="grid cols-3">
-          {featured.map((q, i) => (
-            <Reveal key={i} delay={String(i + 1)}>
-              <figure className="ftm">
-                <blockquote className="ftm__quote">{q.quote}</blockquote>
-                <figcaption className="ftm__by">
-                  <span className="ftm__name">{q.name}</span>
-                  <span className="ftm__role">{q.role}</span>
-                  <span className="ftm__co">{q.company}</span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal className="ftm__more" delay="2">
-          <Btn variant="ghost" onClick={() => go("testimonials")} arrow>{t("nav.testimonials")}</Btn>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- Home: FAQ accordion ---------- */
 function HomeFAQ() {
   const { t } = useT();
@@ -190,4 +155,4 @@ function HomeFAQ() {
   );
 }
 
-Object.assign(window, { LeadForm, LeadSection, HomeTestimonials, HomeFAQ });
+Object.assign(window, { LeadForm, LeadSection, HomeFAQ });

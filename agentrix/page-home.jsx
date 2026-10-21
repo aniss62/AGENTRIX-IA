@@ -24,9 +24,9 @@ function PageHome({ go }) {
                 <Btn variant="ghost" lg onClick={() => go("product")}>{t("home.hero.cta2")}</Btn>
               </Reveal>
               <Reveal className="hero__stats" delay="3">
-                <div className="hero__stat"><div className="num"><CountUp value="≈16h" /></div><div className="lbl">{t("home.hero.s1")}</div></div>
-                <div className="hero__stat"><div className="num"><CountUp value="120+" /></div><div className="lbl">{t("home.hero.s2")}</div></div>
-                <div className="hero__stat"><div className="num"><CountUp value="90%" /></div><div className="lbl">{t("home.hero.s3")}</div></div>
+                <div className="hero__stat"><div className="num"><CountUp value={t("home.hero.v1")} /></div><div className="lbl">{t("home.hero.s1")}</div></div>
+                <div className="hero__stat"><div className="num"><CountUp value={t("home.hero.v2")} /></div><div className="lbl">{t("home.hero.s2")}</div></div>
+                <div className="hero__stat"><div className="num"><CountUp value={t("home.hero.v3")} /></div><div className="lbl">{t("home.hero.s3")}</div></div>
               </Reveal>
             </div>
             <div className="hero__visual">
@@ -98,8 +98,20 @@ function PageHome({ go }) {
         </div>
       </section>
 
-      {/* Testimonials with photos */}
-      <HomeTestimonials go={go} />
+      {/* Appel à l'action : diagnostic gratuit */}
+      <section className="section section--tight">
+        <div className="wrap">
+          <Reveal>
+            <div className="ctaband">
+              <div className="ctaband__inner">
+                <h2 className="h-1">{t("home.cta.title")}</h2>
+                <p className="lead">{t("home.cta.sub")}</p>
+                <Btn variant="primary" lg onClick={() => go("contact")} arrow>{t("home.cta.btn")}</Btn>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* FAQ — explains the activity */}
       <HomeFAQ />

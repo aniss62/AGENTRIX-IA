@@ -4,8 +4,10 @@
 // 2. Compile tous les <script type="text/babel"> de index.html en un seul
 //    bundle (esbuild) → plus de Babel ni de compilation dans le navigateur
 // 3. Sert React en version production depuis le site (plus de unpkg)
-// 4. Pré-rend la page d'accueil en HTML statique dans <div id="root">
-//    → les robots (Google, GPTBot, ClaudeBot…) lisent le contenu sans JS
+// 4. Pré-rend chaque page (/, /produit/, /a-propos/, /contact/, pages légales)
+//    en HTML statique → les robots (Google, GPTBot, ClaudeBot…) lisent le
+//    contenu sans JS, et chaque page a sa propre adresse indexable
+// 5. Complète llms.txt (articles du blog) et sitemap.xml (pages du site)
 //
 // Les sources (index.html + agentrix/*.jsx) restent inchangées : on continue
 // à les modifier comme avant, le build s'occupe du reste.
@@ -80,38 +82,114 @@ for (const [name, file] of vendor) {
 }
 html = html.replace(/\s*<script src="https:\/\/unpkg\.com\/@babel\/standalone@[^"]+"[^>]*><\/script>/, "");
 
-// ── 4. Pré-rendu de l'accueil ───────────────────────────────────────────────
+// ── 4. Pré-rendu : une vraie page HTML par adresse ──────────────────────────
+// Chaque route du site (voir ROUTE_PATHS dans agentrix/app.jsx) devient un
+// fichier dist/<chemin>/index.html avec son propre titre, sa description,
+// sa canonical et son contenu déjà rendu → indexable séparément par Google.
 const React = require("react");
 const ReactDOMServer = require("react-dom/server");
+const SITE = SITE_URL.replace(/\/$/, "");
 
-const dom = new JSDOM(`<!DOCTYPE html><html lang="fr"><head></head><body><div id="root"></div></body></html>`, {
-  url: SITE_URL, runScripts: "outside-only", pretendToBeVisual: true
-});
-const w = dom.window;
-w.matchMedia = w.matchMedia || ((q) => ({ matches: false, media: q, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {} }));
-w.scrollTo = () => {};
-w.React = React;
-let rootElement = null;
-w.ReactDOM = { createRoot: () => ({ render: (el) => { rootElement = el; } }) };
+const PAGES = [
+  { route: "home", path: "/", title: null, description: null, sitemap: { priority: "1.0", changefreq: "weekly" } },
+  { route: "product", path: "/produit/", title: "Plateforme d'agents IA autonomes · Agentrix·IA",
+    description: "Des agents IA qui observent, planifient et agissent dans vos outils : CRM, e-mail, bases de données. Découvrez la plateforme Agentrix.",
+    sitemap: { priority: "0.9", changefreq: "monthly" } },
+  { route: "about", path: "/a-propos/", title: "À propos · Agentrix·IA, agence d'IA agentique",
+    description: "Agentrix rend l'automatisation autonome accessible à toutes les équipes. Notre mission, nos valeurs et l'équipe derrière nos agents IA.",
+    sitemap: { priority: "0.7", changefreq: "monthly" } },
+  { route: "contact", path: "/contact/", title: "Contact · Parlons de votre projet d'IA · Agentrix·IA",
+    description: "Une question, un projet d'agent IA ? Écrivez-nous, appelez-nous ou demandez un diagnostic gratuit de 30 minutes.",
+    sitemap: { priority: "0.8", changefreq: "yearly" } },
+  { route: "privacy", path: "/confidentialite/", title: "Politique de confidentialité · Agentrix·IA",
+    description: "Quelles données Agentrix collecte, pourquoi, et comment exercer vos droits.", sitemap: null },
+  { route: "cookies", path: "/cookies/", title: "Politique de cookies · Agentrix·IA",
+    description: "Les cookies utilisés sur agentrix-ia.com et comment gérer vos préférences.", sitemap: null },
+  { route: "terms", path: "/conditions/", title: "Conditions d'utilisation · Agentrix·IA",
+    description: "Les conditions qui régissent l'utilisation du site agentrix-ia.com.", sitemap: null }
+];
 
-// Scripts JS classiques (traductions, photo, web component) puis le bundle
-for (const [, src] of html.matchAll(/<script src="(agentrix\/(?!vendor\/|app\.)[^"]+)"><\/script>/g)) {
-  w.eval(readFileSync(join(ROOT, src), "utf8"));
+const classicScripts = [...html.matchAll(/<script src="(agentrix\/(?!vendor\/|app\.)[^"]+)"><\/script>/g)]
+  .map(([, src]) => readFileSync(join(ROOT, src), "utf8"));
+
+function renderRoute(path) {
+  const dom = new JSDOM(`<!DOCTYPE html><html lang="fr"><head></head><body><div id="root"></div></body></html>`, {
+    url: SITE + path, runScripts: "outside-only", pretendToBeVisual: true
+  });
+  const w = dom.window;
+  w.matchMedia = w.matchMedia || ((q) => ({ matches: false, media: q, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {} }));
+  w.scrollTo = () => {};
+  w.React = React;
+  let rootElement = null;
+  w.ReactDOM = { createRoot: () => ({ render: (el) => { rootElement = el; } }) };
+  for (const code of classicScripts) w.eval(code);
+  w.eval(bundle);
+  if (!rootElement) throw new Error("Le bundle n'a pas appelé createRoot().render()");
+  if (!w.ROUTE_PATHS) throw new Error("ROUTE_PATHS introuvable dans le bundle");
+  const out = ReactDOMServer.renderToString(rootElement);
+  dom.window.close();
+  return { markup: out, routePaths: w.ROUTE_PATHS };
 }
-w.eval(bundle);
-if (!rootElement) throw new Error("Le bundle n'a pas appelé createRoot().render()");
 
-const prerendered = ReactDOMServer.renderToString(rootElement);
-const text = new JSDOM(prerendered).window.document.body.textContent.replace(/\s+/g, " ").trim();
-if (text.length < 1000) throw new Error(`Pré-rendu trop court (${text.length} caractères) — vérifier le rendu`);
-if (!/<h1[\s>]/.test(prerendered)) throw new Error("Pré-rendu sans <h1>");
-
+const esc = (v) => v.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 if (!html.includes('<div id="root"></div>')) throw new Error('<div id="root"></div> introuvable');
-html = html.replace('<div id="root"></div>', `<div id="root">${prerendered}</div>`);
 html = html.replace(/<html lang="fr"([^>]*)>/, (m, attrs) => attrs.includes("data-theme") ? m : `<html lang="fr"${attrs} data-theme="dark">`);
-log(`Accueil pré-rendu : ${(prerendered.length / 1024).toFixed(0)} Ko de HTML, ${text.length} caractères de texte`);
 
-// ── 4. llms.txt : section Blog générée depuis blog/*/index.html ──────────────
+// Titres d'onglet par page, utilisés par le routeur côté navigateur
+const titles = Object.fromEntries(PAGES.map((p) => [p.route, p.title || (html.match(/<title>([^<]*)<\/title>/) || [])[1]]));
+html = html.replace("</head>", `  <script>window.PAGE_TITLES = ${JSON.stringify(titles).replace(/</g, "\\u003c")};</script>\n</head>`);
+
+const sitemapUrls = [];
+for (const page of PAGES) {
+  const { markup, routePaths } = renderRoute(page.path);
+  if (routePaths[page.route] !== page.path) throw new Error(`Chemin incohérent pour ${page.route} : ${routePaths[page.route]} (app.jsx) ≠ ${page.path} (build)`);
+  const text = new JSDOM(markup).window.document.body.textContent.replace(/\s+/g, " ").trim();
+  const minText = page.route === "home" ? 1000 : 150;
+  if (text.length < minText) throw new Error(`Pré-rendu trop court pour ${page.path} (${text.length} caractères)`);
+  if (!/<h1[\s>]/.test(markup)) throw new Error(`Pré-rendu sans <h1> pour ${page.path}`);
+
+  let out = html.replace('<div id="root"></div>', `<div id="root">${markup}</div>`);
+  if (page.route !== "home") {
+    const url = SITE + page.path;
+    const swaps = [
+      [/<title>[^<]*<\/title>/, `<title>${esc(page.title)}</title>`],
+      [/(<meta name="description" content=")[^"]*(")/, `$1${esc(page.description)}$2`],
+      [/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`],
+      [/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`],
+      [/(<meta property="og:title" content=")[^"]*(")/, `$1${esc(page.title)}$2`],
+      [/(<meta property="og:description" content=")[^"]*(")/, `$1${esc(page.description)}$2`],
+      [/(<meta name="twitter:title" content=")[^"]*(")/, `$1${esc(page.title)}$2`],
+      [/(<meta name="twitter:description" content=")[^"]*(")/, `$1${esc(page.description)}$2`]
+    ];
+    for (const [re, rep] of swaps) {
+      if (!re.test(out)) throw new Error(`Balise introuvable dans index.html : ${re}`);
+      out = out.replace(re, rep);
+    }
+    // Les données structurées Organization/WebSite restent sur l'accueil seulement
+    out = out.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/, "");
+  }
+  // Chemins relatifs (agentrix/…) → absolus : les pages sont dans des sous-dossiers
+  // et le routeur change d'adresse sans recharger la page
+  out = out.replace(/(href|src)="(agentrix\/[^"]+)"/g, '$1="/$2"');
+  mkdirSync(join(DIST, page.path), { recursive: true });
+  writeFileSync(join(DIST, page.path, "index.html"), out);
+  if (page.sitemap) sitemapUrls.push({ loc: SITE + page.path, ...page.sitemap });
+  log(`${page.path.padEnd(18)} pré-rendu : ${(markup.length / 1024).toFixed(0)} Ko, ${text.length} caractères`);
+}
+
+// Sitemap : pages du site ajoutées à celles déjà listées (blog…)
+{
+  let sm = readFileSync(join(ROOT, "sitemap.xml"), "utf8");
+  const add = sitemapUrls
+    .filter((u) => !sm.includes(`<loc>${u.loc}</loc>`))
+    .map((u) => `  <url>\n    <loc>${u.loc}</loc>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>\n`)
+    .join("");
+  sm = sm.replace(/(<urlset[^>]*>\n)/, `$1${add}`);
+  writeFileSync(join(DIST, "sitemap.xml"), sm);
+  log(`sitemap.xml : ${sitemapUrls.length} pages du site`);
+}
+
+// ── 5. llms.txt : section Blog générée depuis blog/*/index.html ──────────────
 // Évite toute édition manuelle de llms.txt à chaque nouvel article.
 {
   const attr = (src, re) => (src.match(re) || [])[1];
@@ -136,5 +214,4 @@ log(`Accueil pré-rendu : ${(prerendered.length / 1024).toFixed(0)} Ko de HTML, 
   log(`llms.txt : ${entries.length} articles de blog ajoutés`);
 }
 
-writeFileSync(join(DIST, "index.html"), html);
 log("OK → dist/");

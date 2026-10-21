@@ -21,7 +21,7 @@ function CookieConsent({ go }) {
         <p className="cookiebanner__title">{t("cookieBanner.title")}</p>
         <p className="cookiebanner__text">
           {t("cookieBanner.text")}{" "}
-          <a href="#cookies" onClick={(e) => { e.preventDefault(); go("cookies"); }}>{t("cookieBanner.link")}</a>
+          <a href={routeHref("cookies")} onClick={(e) => { e.preventDefault(); go("cookies"); }}>{t("cookieBanner.link")}</a>
         </p>
       </div>
       <div className="cookiebanner__actions">
