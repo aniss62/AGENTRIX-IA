@@ -28,7 +28,7 @@ function PageTestimonials({ go }) {
                     <figcaption className="quote__by">
                       <span>
                         <span className="quote__name">{q.name}</span>
-                        <span className="quote__role">{q.role} · {q.company}</span>
+                        <span className="quote__role">{q.role ? `${q.role} · ${q.company}` : q.company}</span>
                       </span>
                     </figcaption>
                   </figure>
