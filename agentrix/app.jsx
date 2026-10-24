@@ -97,6 +97,7 @@ function App() {
       <AgentrixTweaks />
       <ChatAgent />
       <CookieConsent go={go} />
+      <InfoToast route={route} go={go} />
       <CustomCursor />
     </>
   );

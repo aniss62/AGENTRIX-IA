@@ -21,6 +21,12 @@ window.I18N_FR = {
     darkMode: "Mode sombre",
     lightMode: "Mode clair"
   },
+  infoToast: {
+    diag: { text: "Diagnostic gratuit de 30 minutes", sub: "Identifiez votre première tâche à automatiser.", cta: "Réserver" },
+    call: { text: "Un expert vous rappelle sous 24 h", sub: "Laissez vos coordonnées, on revient vers vous.", cta: "Être recontacté" },
+    post: { sub: "Dernier article du blog", cta: "Lire" },
+    close: "Fermer"
+  },
   testimonials: {
     hero: { eyebrow: "Témoignages", title: "Ce que disent nos clients", sub: "Les retours des équipes qui ont déployé des agents Agentrix." },
     empty: "Les témoignages de nos clients seront publiés ici, avec leur accord."
@@ -361,6 +367,12 @@ window.I18N_EN = {
     darkMode: "Dark mode",
     lightMode: "Light mode"
   },
+  infoToast: {
+    diag: { text: "Free 30-minute diagnostic", sub: "Identify your first task to automate.", cta: "Book it" },
+    call: { text: "An expert calls you back within 24 h", sub: "Leave your details and we will get back to you.", cta: "Get a call" },
+    post: { sub: "Latest blog article", cta: "Read" },
+    close: "Close"
+  },
   testimonials: {
     hero: { eyebrow: "Testimonials", title: "What our clients say", sub: "Feedback from the teams that deployed Agentrix agents." },
     empty: "Client testimonials will be published here, with their permission."
@@ -700,6 +712,12 @@ window.I18N_AR = {
     backHome: "العودة إلى الرئيسية",
     darkMode: "الوضع الداكن",
     lightMode: "الوضع الفاتح"
+  },
+  infoToast: {
+    diag: { text: "تشخيص مجاني لمدة 30 دقيقة", sub: "حدّد أول مهمة تريد أتمتتها.", cta: "احجز" },
+    call: { text: "يتصل بك خبير خلال 24 ساعة", sub: "اترك بياناتك وسنعاود الاتصال بك.", cta: "اطلب اتصالاً" },
+    post: { sub: "آخر مقال في المدونة", cta: "اقرأ" },
+    close: "إغلاق"
   },
   testimonials: {
     hero: { eyebrow: "آراء العملاء", title: "ما يقوله عملاؤنا", sub: "آراء الفرق التي نشرت وكلاء Agentrix." },

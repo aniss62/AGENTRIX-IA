@@ -140,7 +140,14 @@ html = html.replace(/<html lang="fr"([^>]*)>/, (m, attrs) => attrs.includes("dat
 
 // Titres d'onglet par page, utilisés par le routeur côté navigateur
 const titles = Object.fromEntries(PAGES.map((p) => [p.route, p.title || (html.match(/<title>([^<]*)<\/title>/) || [])[1]]));
-html = html.replace("</head>", `  <script>window.PAGE_TITLES = ${JSON.stringify(titles).replace(/</g, "\\u003c")};</script>\n</head>`);
+// Dernier article du blog (bulle d'information) : première carte de blog/index.html
+let latestPost = null;
+{
+  const idx = readFileSync(join(ROOT, "blog", "index.html"), "utf8");
+  const m = idx.match(/<a class="blog-card" href="([^"]+)"[\s\S]*?<h2>([\s\S]*?)<\/h2>/);
+  if (m) latestPost = { url: `/blog/${m[1]}`, title: m[2].replace(/&amp;/g, "&").replace(/&#39;|&#x27;/g, "'").trim() };
+}
+html = html.replace("</head>", `  <script>window.LATEST_POST = ${JSON.stringify(latestPost).replace(/</g, "\\u003c")}; window.PAGE_TITLES = ${JSON.stringify(titles).replace(/</g, "\\u003c")};</script>\n</head>`);
 
 const sitemapUrls = [];
 for (const page of PAGES) {
