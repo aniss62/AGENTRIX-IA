@@ -54,25 +54,35 @@
 
 /* Light theme — light neutral gray canvas (not stark white) so the same
    neon accent from dark mode still pops instead of reading too harsh. */
+/* Light theme — palette des visuels Instagram Agentrix : fond crème chaud,
+   texte bleu nuit, vert feuille en accent, pastilles vert pâle. */
 :root[data-theme="light"] {
-  --bg:        oklch(0.93 0.006 264);
-  --bg-2:      oklch(0.95 0.005 264);
-  --surface:   oklch(0.975 0.003 264);
-  --surface-2: oklch(0.99 0.002 264);
+  --bg:        #f6f0e3;
+  --bg-2:      #faf6ec;
+  --surface:   #fcf9f2;
+  --surface-2: #ffffff;
 
-  --line:   oklch(0 0 0 / 0.09);
-  --line-2: oklch(0 0 0 / 0.15);
+  --line:   rgba(15, 27, 45, 0.10);
+  --line-2: rgba(15, 27, 45, 0.18);
 
-  --hairline:  oklch(0 0 0 / 0.055);
-  --tint-soft: oklch(0 0 0 / 0.025);
-  --tint-mid:  oklch(0 0 0 / 0.05);
+  --hairline:  rgba(15, 27, 45, 0.06);
+  --tint-soft: rgba(15, 27, 45, 0.025);
+  --tint-mid:  rgba(15, 27, 45, 0.05);
 
-  --text:  oklch(0.22 0.012 264);
-  --muted: oklch(0.44 0.014 264);
-  --faint: oklch(0.58 0.014 264);
+  --text:  #0f1b2d;
+  --muted: #4d5a6b;
+  --faint: #7a8594;
 
-  --reticle-color: var(--accent-ink);
-  --reticle-alt:   var(--accent);
+  --accent:      #6fa83a;
+  --accent-dim:  #5a9230;
+  --accent-ink:  #0f1b2d;
+  --accent-soft: rgba(111, 168, 58, 0.14);
+  --accent-glow: rgba(111, 168, 58, 0.28);
+  --accent-text: #4f8426;   /* vert plus profond pour le petit texte sur fond crème */
+  --accent-pale: #dce8c8;   /* pastilles type « ACTU · TENDANCES » */
+
+  --reticle-color: var(--accent-dim);
+  --reticle-alt:   var(--text);
 
   color-scheme: light;
 }

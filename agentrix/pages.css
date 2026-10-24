@@ -641,3 +641,37 @@ a.info-card__big:hover { color: var(--accent); }
 .legal__item h3 { margin-block-end: 8px; }
 .legal__item p { color: var(--muted); line-height: 1.65; }
 :root[lang="ar"] .legal__item p { line-height: 1.9; }
+
+/* ============================================================
+   Thème clair — habillage « visuels Instagram Agentrix »
+   Pastilles vert pâle + texte vert au lieu des pastilles sombres/néon.
+   ============================================================ */
+:root[data-theme="light"] .eyebrow {
+  background: var(--accent-pale);
+  color: var(--accent-text);
+}
+:root[data-theme="light"] .eyebrow::before,
+:root[data-theme="light"] .eyebrow .dot { background: var(--accent-dim); }
+:root[data-theme="light"] .wordmark .accent {
+  background: none; padding: 0; border-radius: 0; color: var(--accent);
+}
+:root[data-theme="light"] .logo::before { background: none; }
+:root[data-theme="light"] .hero h1 .hi {
+  background: none; padding: 0; border-radius: 0; color: var(--accent);
+}
+:root[data-theme="light"] .pcard__icon,
+:root[data-theme="light"] .cookiebanner__ic,
+:root[data-theme="light"] .svc__tab.active .svc__tab-ic,
+:root[data-theme="light"] .svc__panel-ic,
+:root[data-theme="light"] .chatsec__hint-ic,
+:root[data-theme="light"] .detail__ic,
+:root[data-theme="light"] .chat__avatar,
+:root[data-theme="light"] .chat__msg-av,
+:root[data-theme="light"] .dash-mock__check.done {
+  background: var(--accent-pale);
+  color: var(--accent-text);
+}
+:root[data-theme="light"] .svcb__metric {
+  background: var(--accent-pale); border-color: var(--accent-pale); color: var(--accent-text);
+}
+:root[data-theme="light"] .btn--primary:hover { background: var(--accent-dim); }
