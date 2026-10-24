@@ -219,4 +219,25 @@ for (const page of PAGES) {
   log(`llms.txt : ${entries.length} articles de blog ajoutés`);
 }
 
+// ── 6. Blog : thème clair/sombre partagé avec le site ────────────────────────
+// Les pages du blog sont des HTML statiques (publiés par les routines AIBlogs) :
+// on y injecte au build la lecture du thème choisi sur le site (localStorage
+// "agentrix_theme") et un bouton clair/sombre, sans toucher aux sources.
+{
+  const themeInit = `<script>(function(){try{var t=localStorage.getItem("agentrix_theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>`;
+  const toggle = `<button class="themesw" type="button" aria-label="Changer de thème" onclick="(function(){var r=document.documentElement,n=r.getAttribute('data-theme')==='light'?'dark':'light';r.setAttribute('data-theme',n);try{localStorage.setItem('agentrix_theme',n)}catch(e){}})()"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg></button>`;
+  const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walk(join(dir, e.name)) : e.name === "index.html" ? [join(dir, e.name)] : []);
+  let n = 0;
+  for (const f of walk(join(DIST, "blog"))) {
+    let page = readFileSync(f, "utf8");
+    if (page.includes('localStorage.getItem("agentrix_theme")')) continue;
+    page = page.replace("</head>", `${themeInit}\n</head>`);
+    page = page.replace(/(<header class="post-mini-header">[\s\S]*?)(\n\s*<\/div>\s*<\/header>)/, `$1\n    ${toggle}$2`);
+    writeFileSync(f, page);
+    n++;
+  }
+  log(`blog : thème clair/sombre injecté dans ${n} pages`);
+}
+
 log("OK → dist/");

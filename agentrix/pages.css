@@ -675,3 +675,20 @@ a.info-card__big:hover { color: var(--accent); }
   background: var(--accent-pale); border-color: var(--accent-pale); color: var(--accent-text);
 }
 :root[data-theme="light"] .btn--primary:hover { background: var(--accent-dim); }
+
+/* Blog — graphiques SVG : couleurs codées pour le fond sombre, remappées en thème clair */
+:root[data-theme="light"] .post-hero svg [fill="#eef0f3"],
+:root[data-theme="light"] .chart-figure svg [fill="#eef0f3"] { fill: var(--text); }
+:root[data-theme="light"] .post-hero svg [fill="#9aa0ab"],
+:root[data-theme="light"] .chart-figure svg [fill="#9aa0ab"] { fill: var(--muted); }
+:root[data-theme="light"] .post-hero svg [fill="#7a8a55"],
+:root[data-theme="light"] .chart-figure svg [fill="#7a8a55"] { fill: var(--faint); }
+:root[data-theme="light"] .post-hero svg [fill="#b8f54a"],
+:root[data-theme="light"] .chart-figure svg [fill="#b8f54a"] { fill: var(--accent); }
+:root[data-theme="light"] .post-hero svg [stroke="#b8f54a"],
+:root[data-theme="light"] .chart-figure svg [stroke="#b8f54a"] { stroke: var(--accent); }
+:root[data-theme="light"] .post-hero svg [stroke="#3a3f4a"],
+:root[data-theme="light"] .chart-figure svg [stroke="#3a3f4a"] { stroke: var(--line-2); }
+.post-mini-header .wrap { gap: 14px; }
+.post-mini-header .themesw { margin-inline-start: auto; }
+:root[data-theme="light"] .post-hero svg > rect:first-child[fill="#0c0f15"] { fill: var(--surface); }
