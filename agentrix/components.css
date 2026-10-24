@@ -388,3 +388,47 @@
   background: var(--accent-ink);
   color: var(--accent);
 }
+
+/* --- Bandeau clients cliquable + carte des travaux --- */
+.marquee__item--btn {
+  background: none; border: 0; padding: 4px 2px; cursor: pointer;
+  font: inherit; font-family: var(--font-display); font-weight: 600; font-size: 22px;
+  color: var(--faint); letter-spacing: -0.01em; white-space: nowrap;
+  border-bottom: 1px solid transparent; transition: color .25s, border-color .25s;
+}
+.marquee__item--btn:hover, .marquee__item--btn:focus-visible { color: var(--accent); border-bottom-color: var(--accent); outline: none; }
+.marquee:hover .marquee__item--btn { color: var(--muted); }
+.marquee:hover .marquee__item--btn:hover { color: var(--accent); }
+.logos-band.is-paused .marquee__track { animation-play-state: paused; }
+.logos-band__hint { text-align: center; margin-block-start: 14px; font-size: 11.5px; }
+
+.clientcard__backdrop {
+  position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; padding: 20px;
+  background: rgba(10, 14, 22, 0.55); backdrop-filter: blur(4px);
+  animation: clientcard-fade .2s var(--ease);
+}
+.clientcard {
+  position: relative; width: min(520px, 100%); max-height: 86vh; overflow: auto;
+  background: var(--surface-2); border: 1px solid var(--line-2); border-radius: var(--radius-lg);
+  padding: 34px 32px 30px; box-shadow: 0 30px 80px -20px rgba(0,0,0,.45);
+  animation: clientcard-pop .28s var(--ease);
+}
+.clientcard__close {
+  position: absolute; inset-block-start: 14px; inset-inline-end: 14px; width: 34px; height: 34px;
+  display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line-2);
+  background: transparent; color: var(--muted); cursor: pointer; transition: color .2s, border-color .2s;
+}
+.clientcard__close:hover, .clientcard__close:focus-visible { color: var(--accent); border-color: var(--accent); outline: none; }
+.clientcard__name { font-family: var(--font-display); font-size: clamp(24px, 3vw, 30px); letter-spacing: -0.02em; margin-block: 14px 18px; }
+.clientcard__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.clientcard__list li { display: flex; gap: 12px; align-items: flex-start; color: var(--text); line-height: 1.5; font-size: 15.5px; }
+.clientcard__list li svg { flex-shrink: 0; margin-block-start: 2px; color: var(--accent); }
+.clientcard__link { display: inline-flex; gap: 8px; margin-block-start: 22px; color: var(--accent); font-weight: 600; font-size: 15px; }
+.clientcard__link:hover { text-decoration: underline; }
+:root[dir="rtl"] .clientcard__link .arr { display: inline-block; transform: scaleX(-1); }
+@keyframes clientcard-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes clientcard-pop { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+:root[data-theme="light"] .clientcard__backdrop { background: rgba(15, 27, 45, 0.4); }
+:root[data-theme="light"] .marquee__item--btn:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
+:root[data-theme="light"] .clientcard__link, :root[data-theme="light"] .clientcard__list li svg { color: var(--accent-text); }
+@media (prefers-reduced-motion: reduce) { .clientcard, .clientcard__backdrop { animation: none; } }

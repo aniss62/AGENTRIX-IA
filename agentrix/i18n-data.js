@@ -38,6 +38,7 @@ window.I18N_FR = {
       v3: "4", s3: "familles d'agents : workflows, raisonnement, leads, sites"
     },
     logos: { label: "Ils automatisent avec Agentrix" },
+    clients: { works: "Travaux réalisés", close: "Fermer", testimonial: "Lire son témoignage", hint: "Cliquez sur un client pour voir ce que nous avons réalisé" },
     pillars: {
       eyebrow: "Ce que font nos agents",
       title: "Un collègue numérique pour chaque tâche qui revient sans cesse.",
@@ -377,6 +378,7 @@ window.I18N_EN = {
       v3: "4", s3: "agent families: workflows, reasoning, leads, websites"
     },
     logos: { label: "Teams automating with Agentrix" },
+    clients: { works: "Work delivered", close: "Close", testimonial: "Read their testimonial", hint: "Click a client to see what we built" },
     pillars: {
       eyebrow: "What our agents do",
       title: "A digital teammate for every repetitive workflow.",
@@ -716,6 +718,7 @@ window.I18N_AR = {
       v3: "4", s3: "عائلات من الوكلاء: سير العمل، الاستدلال، العملاء المحتملون، المواقع"
     },
     logos: { label: "فرق تعمل بالأتمتة مع Agentrix" },
+    clients: { works: "الأعمال المنجزة", close: "إغلاق", testimonial: "اقرأ شهادته", hint: "اضغط على عميل لمعرفة ما أنجزناه" },
     pillars: {
       eyebrow: "ماذا يفعل وكلاؤنا",
       title: "زميل رقمي لكل سير عمل متكرر.",

@@ -5,7 +5,6 @@ function PageHome({ go }) {
   const pillarIcons = ["bolt", "target", "layout", "brain"];
   const steps = t("home.how.steps");
   const metrics = t("home.metrics.items");
-  const logos = ["La Table Asiatique", "Les Greniers du Saiss", "Institut B", "Caftan By Nadia Benkirane", "Arena Alu", "Best Façade", "Le Comptoir", "École Art'Dent"];
 
   return (
     <div className="page">
@@ -31,13 +30,8 @@ function PageHome({ go }) {
         </div>
       </section>
 
-      {/* Logos marquee */}
-      <div className="logos-band">
-        <div className="wrap">
-          <div className="logos-band__label mono-tag">{t("home.logos.label")}</div>
-        </div>
-        <Marquee items={logos} />
-      </div>
+      {/* Clients : défilement continu, carte des travaux au clic */}
+      <ClientsBand go={go} />
 
       {/* Pillars — interactive services explorer */}
       <section className="section">
