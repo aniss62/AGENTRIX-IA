@@ -365,7 +365,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 .marquee__track { display: flex; gap: 56px; width: max-content; animation: scroll-x 32s linear infinite; }
 .marquee:hover .marquee__track { animation-play-state: paused; }
 @keyframes scroll-x { to { transform: translateX(-50%); } }
-:root[dir="rtl"] .marquee__track { animation-direction: reverse; }
+:root[dir="rtl"] .marquee__track { animation-name: scroll-x-rtl; }
+@keyframes scroll-x-rtl { to { transform: translateX(50%); } }
 
 /* ----------------------------------------------------------
    Grid utilities
