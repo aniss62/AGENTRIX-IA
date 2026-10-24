@@ -30,9 +30,6 @@ function PageHome({ go }) {
         </div>
       </section>
 
-      {/* Clients : défilement continu, carte des travaux au clic */}
-      <ClientsBand />
-
       {/* Pillars — interactive services explorer */}
       <section className="section">
         <div className="wrap">
@@ -110,6 +107,9 @@ function PageHome({ go }) {
 
       {/* Lead capture (Nom / Prénom / Email / Projet) */}
       <LeadSection />
+
+      {/* Clients : défilement continu, carte des travaux au clic */}
+      <ClientsBand />
     </div>
   );
 }

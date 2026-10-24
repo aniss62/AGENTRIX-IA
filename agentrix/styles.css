@@ -387,7 +387,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 .wrap-f { flex-wrap: wrap; }
 
 /* App fade transition between routes */
-.page { animation: pageIn .55s var(--ease) both; }
+.page { position: relative; z-index: 2; animation: pageIn .55s var(--ease) both; }
 @keyframes pageIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
 /* Utility */
