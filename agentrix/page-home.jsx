@@ -23,11 +23,6 @@ function PageHome({ go }) {
                 <Btn variant="primary" lg onClick={() => go("contact")} arrow>{t("home.hero.cta1")}</Btn>
                 <Btn variant="ghost" lg onClick={() => go("product")}>{t("home.hero.cta2")}</Btn>
               </Reveal>
-              <Reveal className="hero__stats" delay="3">
-                <div className="hero__stat"><div className="num"><CountUp value={t("home.hero.v1")} /></div><div className="lbl">{t("home.hero.s1")}</div></div>
-                <div className="hero__stat"><div className="num"><CountUp value={t("home.hero.v2")} /></div><div className="lbl">{t("home.hero.s2")}</div></div>
-                <div className="hero__stat"><div className="num"><CountUp value={t("home.hero.v3")} /></div><div className="lbl">{t("home.hero.s3")}</div></div>
-              </Reveal>
             </div>
             <div className="hero__visual">
               <AgentNetwork />
