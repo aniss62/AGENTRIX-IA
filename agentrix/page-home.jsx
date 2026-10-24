@@ -31,7 +31,7 @@ function PageHome({ go }) {
       </section>
 
       {/* Clients : défilement continu, carte des travaux au clic */}
-      <ClientsBand go={go} />
+      <ClientsBand />
 
       {/* Pillars — interactive services explorer */}
       <section className="section">
