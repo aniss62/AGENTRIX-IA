@@ -431,25 +431,3 @@
 :root[data-theme="light"] .marquee__item--btn:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
 :root[data-theme="light"] .clientcard__eyebrow, :root[data-theme="light"] .clientcard__list li svg { color: var(--accent-text); }
 @media (prefers-reduced-motion: reduce) { .clientcard { animation: none; } }
-
-/* Thème clair : bandeau clients mis en relief (fond blanc, ombre, noms en pastilles) */
-:root[data-theme="light"] .logos-band {
-  background: var(--surface-2);
-  border-color: var(--line-2);
-  box-shadow: 0 18px 40px -26px rgba(15, 27, 45, .45), 0 2px 6px -2px rgba(15, 27, 45, .08);
-  padding-block: 30px 24px;
-}
-:root[data-theme="light"] .logos-band__label { color: var(--accent-text); font-weight: 500; }
-:root[data-theme="light"] .marquee__track { gap: 18px; }
-:root[data-theme="light"] .marquee__item--btn,
-:root[data-theme="light"] .marquee:hover .marquee__item--btn {
-  color: var(--text); font-size: 17px; padding: 9px 20px; border-radius: 999px;
-  background: var(--bg-2); border: 1px solid var(--line-2);
-  box-shadow: 0 6px 14px -8px rgba(15, 27, 45, .4);
-}
-:root[data-theme="light"] .marquee__item--btn:hover,
-:root[data-theme="light"] .marquee:hover .marquee__item--btn:hover,
-:root[data-theme="light"] .marquee__item--btn:focus-visible {
-  color: var(--accent-text); background: var(--accent-pale); border-color: var(--accent);
-  box-shadow: 0 10px 20px -10px rgba(79, 132, 38, .55); transform: translateY(-1px);
-}
