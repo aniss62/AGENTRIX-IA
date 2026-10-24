@@ -136,10 +136,10 @@
 }
 
 /* --- Hero --- */
-.hero { position: relative; padding-block: clamp(120px, 17vh, 200px) clamp(60px, 9vw, 110px); overflow: hidden; }
+.hero { position: relative; padding-block: clamp(100px, 13vh, 150px) clamp(32px, 5vw, 64px); overflow: hidden; }
 .hero__grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(30px, 5vw, 70px); align-items: center; }
-.hero__badge { margin-block-end: 26px; }
-.hero h1 { margin-block-end: 24px; }
+.hero__badge { margin-block-end: 20px; }
+.hero h1 { margin-block-end: 20px; }
 .hero h1 .hi { color: var(--accent); display: block; }
 :root[data-theme="light"] .hero h1 .hi {
   display: inline-block;
@@ -147,7 +147,7 @@
   padding: 4px 18px;
   border-radius: 16px;
 }
-.hero__sub { margin-block-end: 34px; }
+.hero__sub { margin-block-end: 26px; }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
 .hero__stats { display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 48px); margin-block-start: 52px; padding-block-start: 32px; border-block-start: 1px solid var(--line); }
 .hero__stat .num { font-family: var(--font-display); font-size: clamp(28px, 3.6vw, 40px); font-weight: 600; letter-spacing: -0.02em; }
@@ -175,11 +175,11 @@
   white-space: nowrap; transition: color .3s;
 }
 .marquee:hover .marquee__item { color: var(--muted); }
-.logos-band { padding-block: 40px; border-block: 1px solid var(--line); }
-.logos-band__label { text-align: center; margin-block-end: 24px; }
+.logos-band { padding-block: 28px; border-block: 1px solid var(--line); }
+.logos-band__label { text-align: center; margin-block-end: 16px; }
 
 /* --- Section heading block --- */
-.shead { max-width: 680px; margin-block-end: clamp(36px, 5vw, 60px); }
+.shead { max-width: 680px; margin-block-end: clamp(24px, 3vw, 40px); }
 .shead .eyebrow { margin-block-end: 18px; }
 .shead h2 { margin-block-end: 16px; }
 .shead--center { margin-inline: auto; text-align: center; }
@@ -219,8 +219,8 @@
 .ctaband .lead { margin-block-end: 30px; }
 
 /* --- Footer --- */
-.footer { border-block-start: 1px solid var(--line); padding-block: clamp(56px, 8vw, 88px) 36px; margin-block-start: 40px; }
-.footer__top { display: grid; grid-template-columns: 1.3fr 1.7fr; gap: clamp(34px, 6vw, 80px); margin-block-end: 48px; }
+.footer { border-block-start: 1px solid var(--line); padding-block: clamp(40px, 6vw, 64px) 28px; margin-block-start: 16px; }
+.footer__top { display: grid; grid-template-columns: 1.3fr 1.7fr; gap: clamp(28px, 5vw, 64px); margin-block-end: 36px; }
 .footer__tag { margin-block: 22px 26px; font-size: 16px; max-width: 38ch; }
 .footer__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .footer__col { display: flex; flex-direction: column; gap: 12px; }

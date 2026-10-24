@@ -3,7 +3,7 @@
    ============================================================ */
 
 /* Inner page hero (no full visual) */
-.hero--inner { padding-block: clamp(120px, 18vh, 190px) clamp(30px, 5vw, 56px); }
+.hero--inner { padding-block: clamp(100px, 14vh, 150px) clamp(16px, 3vw, 32px); }
 .hero--inner .lead { max-width: 60ch; }
 /* Centered inner hero — fills the width with intent instead of a left-anchored void */
 .hero--center { text-align: center; }
@@ -692,3 +692,17 @@ a.info-card__big:hover { color: var(--accent); }
 .post-mini-header .wrap { gap: 14px; }
 .post-mini-header .themesw { margin-inline-start: auto; }
 :root[data-theme="light"] .post-hero svg > rect:first-child[fill="#0c0f15"] { fill: var(--surface); }
+
+/* Blog — espacements resserrés (les styles d'article sont inline, d'où le préfixe body) */
+body .post-head { padding: 96px 0 20px; }
+body .post-layout { padding-bottom: 56px; }
+body article.post h2 { margin: 34px 0 12px; }
+body article.post h3 { margin: 22px 0 8px; }
+body article.post p { margin: 0 0 14px; line-height: 1.65; }
+body article.post ul, body article.post ol { margin: 0 0 14px; }
+body .chart-figure { margin: 22px 0; }
+body .keytakeaways { margin: 20px 0 26px; }
+body .cta-final { margin: 32px 0 12px; padding: 34px 26px; }
+body .post-hero { margin: 20px 0 4px; }
+body .blog-head { padding: 100px 0 20px; }
+body .blog-grid { gap: 18px; padding-bottom: 56px; }
