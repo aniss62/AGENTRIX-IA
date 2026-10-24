@@ -2,16 +2,15 @@
 // N'affiche que des informations vraies et permanentes : le diagnostic gratuit, le rappel sous 24 h
 // et le dernier article du blog (window.LATEST_POST, injecté au build depuis blog/index.html).
 const INFO_TOAST_GATE_KEY = "agentrix_cookie_consent";
-const INFO_TOAST_START_MS = 6000;
-const INFO_TOAST_VISIBLE_MS = 8000;
-const INFO_TOAST_GAP_MS = 22000;
+const INFO_TOAST_START_MS = 4000;
+const INFO_TOAST_VISIBLE_MS = 7000;
+const INFO_TOAST_GAP_MS = 5000;
 
 function InfoToast({ route, go }) {
   const { t } = useT();
   const [gateOpen, setGateOpen] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
   const [idx, setIdx] = React.useState(0);
-  const [dismissed, setDismissed] = React.useState(false);
 
   const post = window.LATEST_POST;
   const items = [
@@ -30,7 +29,7 @@ function InfoToast({ route, go }) {
     return () => clearInterval(iv);
   }, []);
 
-  const hidden = dismissed || route === "contact";
+  const hidden = route === "contact";
   React.useEffect(() => {
     if (!gateOpen || hidden) { setVisible(false); return; }
     let cancelled = false;
@@ -63,7 +62,7 @@ function InfoToast({ route, go }) {
         <span className="socialproof__sub">{item.sub}</span>
         <a className="socialproof__cta" href={item.href || routeHref(item.to)} onClick={onCta}>{item.cta} <span className="arr">→</span></a>
       </div>
-      <button className="socialproof__close" aria-label={t("infoToast.close")} onClick={() => { setVisible(false); setDismissed(true); }}>
+      <button className="socialproof__close" aria-label={t("infoToast.close")} onClick={() => setVisible(false)}>
         <Icon name="close" size={12} />
       </button>
     </div>
