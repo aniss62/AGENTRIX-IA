@@ -33,9 +33,9 @@ window.I18N_FR = {
       sub: "Nous créons des agents IA qui réfléchissent, s'organisent et accomplissent vos tâches les plus chronophages. Vous, vous récupérez des heures chaque semaine.",
       cta1: "Nous contacter",
       cta2: "Voir le produit",
-      v1: "24/7", s1: "vos agents travaillent en continu",
-      v2: "30 min", s2: "de diagnostic offert",
-      v3: "3", s3: "langues : FR · EN · AR"
+      v1: "7", s1: "entreprises qui automatisent déjà avec nous",
+      v2: "< 4", s2: "semaines du premier appel à la mise en production",
+      v3: "4", s3: "familles d'agents : workflows, raisonnement, leads, sites"
     },
     logos: { label: "Ils automatisent avec Agentrix" },
     pillars: {
@@ -372,9 +372,9 @@ window.I18N_EN = {
       sub: "We design and deploy AI agents that reason, plan and execute complex tasks, so you reclaim hours every single week.",
       cta1: "Get in touch",
       cta2: "See the product",
-      v1: "24/7", s1: "your agents work around the clock",
-      v2: "30 min", s2: "free diagnostic",
-      v3: "3", s3: "languages: FR · EN · AR"
+      v1: "7", s1: "companies already automating with us",
+      v2: "< 4", s2: "weeks from first call to production",
+      v3: "4", s3: "agent families: workflows, reasoning, leads, websites"
     },
     logos: { label: "Teams automating with Agentrix" },
     pillars: {
@@ -711,9 +711,9 @@ window.I18N_AR = {
       sub: "نصمّم ونطلق وكلاء ذكاء اصطناعي قادرين على التفكير والتخطيط وتنفيذ المهام المعقّدة، لتوفّر ساعات من وقتك كل أسبوع.",
       cta1: "اتصل بنا",
       cta2: "شاهد المنتج",
-      v1: "24/7", s1: "وكلاؤك يعملون دون توقف",
-      v2: "30 دقيقة", s2: "تشخيص مجاني",
-      v3: "3", s3: "لغات: FR · EN · AR"
+      v1: "7", s1: "شركات تعمل بالأتمتة معنا بالفعل",
+      v2: "أقل من 4", s2: "أسابيع من أول مكالمة إلى الإنتاج",
+      v3: "4", s3: "عائلات من الوكلاء: سير العمل، الاستدلال، العملاء المحتملون، المواقع"
     },
     logos: { label: "فرق تعمل بالأتمتة مع Agentrix" },
     pillars: {
