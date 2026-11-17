@@ -11,7 +11,7 @@ Charge toujours ces fichiers avant d'écrire, ne t'appuie pas sur ta mémoire d'
 précédente :
 - `blog-blueprint/brand/BRAND.md` et `blog-blueprint/brand/VOICE.md`
 - `blog-blueprint/calendar.md`
-- `blog-blueprint/sops/00-skill-routing.md` à `06-publish.md` (dans l'ordre)
+- `blog-blueprint/sops/00-skill-routing.md` à `06-publish.md` (dans l'ordre, dont `03b-illustrations.md`)
 - `blog-blueprint/templates/<template>.md` correspondant au format choisi
 - Référence de structure HTML/CSS/JS à répliquer : `blog/automatisation-ia-pme-guide-complet/index.html`
 
@@ -34,6 +34,11 @@ outils MCP Airtable pour lire/écrire ces tables au lieu du fichier plat
    page pilier (moins pour les autres formats). Reproduis la structure HTML/CSS/JS de référence :
    sommaire latéral droit avec scroll-spy, FAQ en `<details name="faq">`, section Sources en bas
    avec liens réels, JSON-LD (BlogPosting + Organization + FAQPage), un seul CTA final.
+   **Illustrations** (`sops/03b-illustrations.md`) : chaque article reçoit une illustration
+   d'en-tête SVG unique et riche (métaphore propre au sujet, ≥ 4 couches de profondeur, palette
+   de marque), différente de celles de tous les articles déjà publiés (lis les `<svg>` d'en-tête
+   de `blog/*/index.html` avant de dessiner), plus au moins un graphique sourcé. Ne réutilise
+   jamais le schéma "cercles reliés par des traits" des anciens articles.
 4. **Auto-QA** (`sops/05-qa.md`) : aucune statistique non sourcée, aucun paragraphe > 150 mots,
    aucun saut de niveau de titre, aucun tiret cadratin/demi-cadratin/`--`, ≤1 mention promotionnelle
    en fin d'article, JSON-LD valide, titre 50-60 caractères, meta description 150-160 caractères.

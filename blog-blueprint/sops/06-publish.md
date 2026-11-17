@@ -48,6 +48,10 @@ de la SPA — sinon ils resteraient invisibles pour le SEO/GEO.
      `VOICE.md` (pas de remplissage pour atteindre un chiffre).
 3. **Mettre à jour `blog/index.html`** (page d'accueil du blog, à créer au premier article) pour
    lister tous les articles publiés, du plus récent au plus ancien.
+   Chaque carte `.blog-card` commence par `<div class="card-thumb">` contenant une **copie de
+   l'illustration d'en-tête SVG de l'article** (celle de `.post-hero`), avec `aria-hidden="true"` à la
+   place de `role="img"` + `aria-label`. Les identifiants (`id=`) du SVG sont déjà préfixés par
+   article (SOP 03b), donc la copie ne crée pas de conflit.
 4. **`llms.txt`** : rien à faire, la section Blog est générée au build (`scripts/build.mjs`) à partir
    des `og:title` / meta description de chaque `blog/*/index.html`.
    **Mettre à jour `sitemap.xml`** à la racine : ajouter une entrée pour
