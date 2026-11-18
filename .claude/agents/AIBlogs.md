@@ -37,7 +37,10 @@ outils MCP Airtable pour lire/écrire ces tables au lieu du fichier plat
    **Illustrations** (`sops/03b-illustrations.md`) : chaque article reçoit une illustration
    d'en-tête SVG unique et riche (métaphore propre au sujet, ≥ 4 couches de profondeur, palette
    de marque), différente de celles de tous les articles déjà publiés (lis les `<svg>` d'en-tête
-   de `blog/*/index.html` avant de dessiner), plus au moins un graphique sourcé. Ne réutilise
+   de `blog/*/index.html` avant de dessiner), **plus au moins 4 schémas SVG dans le corps de
+   l'article** (`<figure class="chart-figure">`, un par grande section, types différents,
+   libellés et chiffres tirés uniquement du texte, légendes sourcées, texte jamais modifié).
+   Modèle de présentation : `blog/enrichissement-donnees-prospects/index.html`. Ne réutilise
    jamais le schéma "cercles reliés par des traits" des anciens articles.
 4. **Auto-QA** (`sops/05-qa.md`) : aucune statistique non sourcée, aucun paragraphe > 150 mots,
    aucun saut de niveau de titre, aucun tiret cadratin/demi-cadratin/`--`, ≤1 mention promotionnelle
