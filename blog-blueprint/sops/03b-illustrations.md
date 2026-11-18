@@ -33,8 +33,18 @@ séparé).
      arrondies pour la richesse ; pas de bitmap embarqué, pas de police externe autre que
      Manrope / JetBrains Mono / Bricolage Grotesque.
    - Lisible en 320 px de large (texte ≥ 10 unités du viewBox, contraste suffisant).
-4. **Un second visuel** de type graphique en barres ou schéma (`.chart-figure` + `figcaption`
-   citant la source) basé sur une statistique vérifiée, comme dans les articles existants.
+4. **Des visuels dans le corps de l'article, pas seulement en en-tête** (règle ajoutée le
+   2026-11-18 : un article dont seul l'en-tête est illustré est refusé). Au minimum **4 schémas
+   SVG** répartis dans les sections, en plus de l'en-tête, chacun dans
+   `<figure class="chart-figure">` + `<figcaption>`, viewBox `0 0 760 260`, mêmes conventions
+   que l'en-tête (palette, couches de profondeur, `id` préfixés, `aria-label`). Choisir à chaque
+   fois le bon type de visuel : comparaison côte à côte (A contre B), processus en étapes
+   (une carte par étape), familles ou catégories (colonnes avec icônes), chiffre clé en barres
+   ou jauge, chronologie. Un schéma par grande section (définition, méthode, cadre légal ou
+   risque, chiffre clé), jamais deux schémas du même type à la suite. **Chaque libellé et chaque
+   chiffre d'un schéma vient du texte de l'article** (aucune information nouvelle) et un
+   graphique chiffré cite sa source dans la légende. Ne jamais modifier le texte pour caser un
+   visuel : le visuel s'insère entre deux blocs existants.
 5. **Accessibilité** : `aria-label` sur chaque `<svg>`, `figcaption` pour les graphiques, aucune
    information portée uniquement par la couleur.
 6. **Enregistrer la métaphore choisie** dans la note de QA (une ligne : "Illustration : balance
@@ -42,9 +52,10 @@ séparé).
 
 ## Terminé quand
 L'article contient une illustration d'en-tête reconnaissable en un coup d'œil comme propre à son
-sujet, différente de toutes celles déjà publiées, et au moins un graphique sourcé.
+sujet, différente de toutes celles déjà publiées, et au moins 4 schémas dans le corps.
 
 ## Contrôle qualité (ajouté à la SOP 05)
 - [ ] Illustration d'en-tête distincte de celles des articles déjà publiés (métaphore + composition).
 - [ ] ≥ 4 couches de profondeur, palette de marque, aucun chiffre décoratif inventé.
+- [ ] ≥ 4 schémas dans le corps de l'article, libellés issus du texte, légendes sourcées.
 - [ ] `aria-label` descriptif sur chaque SVG, lisible en mobile.
