@@ -77,7 +77,10 @@ module.exports = async function handler(req, res) {
   var origin = req.headers.origin;
   if (origin && ALLOWED_ORIGINS.indexOf(origin) === -1) return res.status(403).json({ error: "origin" });
 
-  var body = req.body || {};
+  // Lire req.body lève une exception si le Content-Type est invalide : on répond 400 au lieu de planter.
+  var body;
+  try { body = req.body || {}; } catch (err) { return res.status(400).json({ error: "body" }); }
+  if (typeof body !== "object") return res.status(400).json({ error: "body" });
   var nom     = body.nom;
   var email   = body.email;
   var message = body.message;
