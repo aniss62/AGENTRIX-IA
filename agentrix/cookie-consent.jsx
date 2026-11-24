@@ -10,6 +10,7 @@ function CookieConsent({ go }) {
   const decide = (value) => {
     setChoice(value);
     try { localStorage.setItem(COOKIE_CONSENT_KEY, value); } catch (e) {}
+    if (value === "accepted" && window.MetaPixel) window.MetaPixel.pageView();
   };
 
   if (choice) return null;

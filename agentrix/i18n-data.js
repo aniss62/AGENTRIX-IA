@@ -296,14 +296,14 @@ window.I18N_FR = {
     privacy: {
       eyebrow: "Confidentialité",
       title: "Politique de confidentialité",
-      updated: "Dernière mise à jour : 18 septembre 2026",
+      updated: "Dernière mise à jour : 24 novembre 2026",
       intro: "Agentrix-IA accorde une attention particulière à la protection de vos données personnelles. Cette politique explique quelles données nous collectons, pourquoi, et comment vous pouvez exercer vos droits.",
       sections: [
         { h: "Responsable de traitement", body: "Agentrix-IA, Avenue Hassane Rue Boundoukia, 30050 Fès, Maroc — contact@agentrix-ia.com — est responsable du traitement des données collectées via ce site." },
         { h: "Données que nous collectons", body: "Lorsque vous remplissez notre formulaire de contact : nom, e-mail professionnel, entreprise, nature de votre besoin et message. Nous collectons également des données techniques de navigation (langue choisie, informations de connexion basiques) nécessaires au bon fonctionnement du site — voir notre Politique de cookies pour le détail." },
-        { h: "Pourquoi nous les utilisons", body: "Répondre à vos demandes de contact ou de devis, vous fournir et améliorer nos agents IA, assurer la sécurité du site, et respecter nos obligations légales. Nous n'utilisons jamais vos données à des fins de publicité tierce." },
+        { h: "Pourquoi nous les utilisons", body: "Répondre à vos demandes de contact ou de devis, vous fournir et améliorer nos agents IA, assurer la sécurité du site, et respecter nos obligations légales. Si vous acceptez les cookies, nous mesurons l'audience du site et la performance de nos publicités sur Facebook et Instagram (Meta). Nous ne vendons jamais vos données." },
         { h: "Base légale", body: "Le traitement repose sur votre consentement (formulaire de contact), l'exécution de mesures précontractuelles à votre demande, et notre intérêt légitime à assurer la sécurité et le bon fonctionnement du site." },
-        { h: "Partage des données", body: "Vos données ne sont jamais vendues. Elles peuvent être transmises à des prestataires techniques strictement nécessaires (hébergement, messagerie) agissant sous nos instructions et dans le respect de la confidentialité." },
+        { h: "Partage des données", body: "Vos données ne sont jamais vendues. Elles peuvent être transmises à des prestataires techniques strictement nécessaires (hébergement, messagerie) agissant sous nos instructions et dans le respect de la confidentialité. Si vous acceptez les cookies, des données de navigation sont aussi transmises à Meta Platforms Ireland Ltd. (pixel Meta)." },
         { h: "Durée de conservation", body: "Les données issues d'une demande de contact sont conservées 24 mois maximum en l'absence de relation commerciale, puis supprimées ou anonymisées." },
         { h: "Vos droits", body: "Vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition et de portabilité sur vos données. Pour les exercer, écrivez-nous à contact@agentrix-ia.com. Vous pouvez également saisir la Commission Nationale de contrôle de la protection des Données à caractère Personnel (CNDP) au Maroc, ou l'autorité de protection des données compétente si vous résidez dans l'Union européenne." },
         { h: "Sécurité", body: "Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables pour protéger vos données contre la perte, l'accès non autorisé ou la divulgation." },
@@ -313,14 +313,14 @@ window.I18N_FR = {
     cookies: {
       eyebrow: "Cookies",
       title: "Politique de cookies",
-      updated: "Dernière mise à jour : 18 septembre 2026",
+      updated: "Dernière mise à jour : 24 novembre 2026",
       intro: "Cette page explique ce que sont les cookies, lesquels nous utilisons sur agentrix-ia.com, et comment vous pouvez gérer vos préférences.",
       sections: [
         { h: "Qu'est-ce qu'un cookie ?", body: "Un cookie (ou traceur similaire, comme le stockage local du navigateur) est un petit fichier déposé sur votre appareil lors de votre visite, qui permet de mémoriser des informations d'une visite à l'autre." },
-        { h: "Les cookies que nous utilisons", body: "Notre site utilise uniquement des traceurs essentiels : votre langue d'affichage préférée (FR/EN/AR) et votre choix de consentement aux cookies. Aucun cookie publicitaire ou de mesure d'audience n'est déposé à ce jour." },
-        { h: "Services tiers", body: "La page Contact intègre une carte OpenStreetMap. Ce service tiers peut déposer ses propres cookies techniques lorsque la carte est affichée, indépendamment de notre site. Nous n'avons pas de contrôle sur ces cookies." },
-        { h: "Gérer vos préférences", body: "Vous pouvez accepter ou refuser les cookies non essentiels via le bandeau affiché lors de votre première visite. Vous pouvez également supprimer les cookies et le stockage local à tout moment depuis les réglages de votre navigateur." },
-        { h: "Mise à jour de cette politique", body: "Si notre usage des cookies évolue (par exemple l'ajout d'un outil de mesure d'audience), cette page sera mise à jour et, si nécessaire, un nouveau consentement vous sera demandé." }
+        { h: "Les cookies que nous utilisons", body: "Par défaut, notre site utilise uniquement des traceurs essentiels : votre langue d'affichage préférée (FR/EN/AR) et votre choix de consentement. Si vous cliquez sur « Accepter », nous activons le pixel Meta (Facebook / Instagram), qui dépose des cookies pour mesurer les visites et les demandes de contact issues de nos publicités. Si vous cliquez sur « Refuser », aucun pixel n'est chargé." },
+        { h: "Services tiers", body: "Le pixel Meta (Meta Platforms Ireland Ltd.) n'est chargé qu'après votre accord. La page Contact intègre une carte OpenStreetMap. Ce service tiers peut déposer ses propres cookies techniques lorsque la carte est affichée, indépendamment de notre site. Nous n'avons pas de contrôle sur ces cookies." },
+        { h: "Gérer vos préférences", body: "Vous pouvez accepter ou refuser les cookies non essentiels via le bandeau affiché lors de votre première visite. Pour changer d'avis, supprimez le stockage local du site depuis les réglages de votre navigateur : le bandeau s'affichera à nouveau. Vous pouvez aussi gérer vos préférences publicitaires dans les paramètres de votre compte Facebook ou Instagram." },
+        { h: "Mise à jour de cette politique", body: "Si notre usage des cookies évolue, cette page sera mise à jour et, si nécessaire, un nouveau consentement vous sera demandé." }
       ]
     },
     terms: {
@@ -340,8 +340,8 @@ window.I18N_FR = {
     }
   },
   cookieBanner: {
-    title: "Nous utilisons des cookies essentiels",
-    text: "Uniquement pour mémoriser votre langue et votre choix ci-dessous — aucun traceur publicitaire.",
+    title: "Cookies : essentiels, et publicité si vous acceptez",
+    text: "Les cookies essentiels mémorisent votre langue. Avec « Accepter », nous activons aussi le pixel Meta pour mesurer nos publicités. « Refuser » ne charge aucun traceur.",
     accept: "Accepter",
     decline: "Refuser",
     link: "En savoir plus"
@@ -642,14 +642,14 @@ window.I18N_EN = {
     privacy: {
       eyebrow: "Privacy",
       title: "Privacy Policy",
-      updated: "Last updated: September 18, 2026",
+      updated: "Last updated: November 24, 2026",
       intro: "Agentrix-IA takes the protection of your personal data seriously. This policy explains what data we collect, why, and how you can exercise your rights.",
       sections: [
         { h: "Data controller", body: "Agentrix-IA, Avenue Hassane Rue Boundoukia, 30050 Fès, Morocco — contact@agentrix-ia.com — is the data controller for the data collected through this site." },
         { h: "Data we collect", body: "When you fill in our contact form: your name, professional email, company, the nature of your need, and your message. We also collect basic technical browsing data (your chosen language, basic connection information) needed to run the site — see our Cookie Policy for details." },
-        { h: "Why we use it", body: "To respond to your contact or quote requests, to deliver and improve our AI agents, to keep the site secure, and to meet our legal obligations. We never use your data for third-party advertising." },
+        { h: "Why we use it", body: "To respond to your contact or quote requests, to deliver and improve our AI agents, to keep the site secure, and to meet our legal obligations. If you accept cookies, we measure site audience and the performance of our ads on Facebook and Instagram (Meta). We never sell your data." },
         { h: "Legal basis", body: "Processing relies on your consent (contact form), pre-contractual steps taken at your request, and our legitimate interest in keeping the site secure and functional." },
-        { h: "Data sharing", body: "Your data is never sold. It may be shared with technical service providers strictly required for our operations (hosting, email), acting on our instructions and bound by confidentiality." },
+        { h: "Data sharing", body: "Your data is never sold. It may be shared with technical service providers strictly required for our operations (hosting, email), acting on our instructions and bound by confidentiality. If you accept cookies, browsing data is also sent to Meta Platforms Ireland Ltd. (Meta pixel)." },
         { h: "Retention period", body: "Data from a contact request is kept for a maximum of 24 months in the absence of a business relationship, then deleted or anonymized." },
         { h: "Your rights", body: "You have the right to access, correct, erase, object to, and port your data. To exercise these rights, write to contact@agentrix-ia.com. You may also contact Morocco's National Commission for the Control of Personal Data Protection (CNDP), or your competent data protection authority if you are based in the European Union." },
         { h: "Security", body: "We apply reasonable technical and organizational measures to protect your data against loss, unauthorized access, or disclosure." },
@@ -659,14 +659,14 @@ window.I18N_EN = {
     cookies: {
       eyebrow: "Cookies",
       title: "Cookie Policy",
-      updated: "Last updated: September 18, 2026",
+      updated: "Last updated: November 24, 2026",
       intro: "This page explains what cookies are, which ones we use on agentrix-ia.com, and how you can manage your preferences.",
       sections: [
         { h: "What is a cookie?", body: "A cookie (or similar tracker, such as browser local storage) is a small file placed on your device during your visit, used to remember information between visits." },
-        { h: "The cookies we use", body: "Our site only uses essential trackers: your preferred display language (FR/EN/AR) and your cookie consent choice. No advertising or audience-measurement cookie is set at this time." },
-        { h: "Third-party services", body: "The Contact page embeds an OpenStreetMap map. This third-party service may set its own technical cookies when the map is displayed, independently of our site. We have no control over these cookies." },
-        { h: "Managing your preferences", body: "You can accept or decline non-essential cookies via the banner shown on your first visit. You can also delete cookies and local storage at any time from your browser settings." },
-        { h: "Updates to this policy", body: "If our use of cookies changes (for example, adding an audience-measurement tool), this page will be updated and, if needed, your consent will be requested again." }
+        { h: "The cookies we use", body: "By default, our site only uses essential trackers: your preferred display language (FR/EN/AR) and your consent choice. If you click “Accept”, we enable the Meta pixel (Facebook / Instagram), which sets cookies to measure visits and contact requests coming from our ads. If you click “Decline”, no pixel is loaded." },
+        { h: "Third-party services", body: "The Meta pixel (Meta Platforms Ireland Ltd.) is loaded only after you accept. The Contact page embeds an OpenStreetMap map. This third-party service may set its own technical cookies when the map is displayed, independently of our site. We have no control over these cookies." },
+        { h: "Managing your preferences", body: "You can accept or decline non-essential cookies via the banner shown on your first visit. To change your mind, clear the site's local storage in your browser settings: the banner will show again. You can also manage your ad preferences in your Facebook or Instagram account settings." },
+        { h: "Updates to this policy", body: "If our use of cookies changes, this page will be updated and, if needed, your consent will be requested again." }
       ]
     },
     terms: {
@@ -686,8 +686,8 @@ window.I18N_EN = {
     }
   },
   cookieBanner: {
-    title: "We use essential cookies",
-    text: "Only to remember your language and your choice below — no advertising trackers.",
+    title: "Cookies: essential, plus ads if you accept",
+    text: "Essential cookies remember your language. With “Accept”, we also enable the Meta pixel to measure our ads. “Decline” loads no tracker.",
     accept: "Accept",
     decline: "Decline",
     link: "Learn more"
@@ -988,14 +988,14 @@ window.I18N_AR = {
     privacy: {
       eyebrow: "الخصوصية",
       title: "سياسة الخصوصية",
-      updated: "آخر تحديث: 18 سبتمبر 2026",
+      updated: "آخر تحديث: 24 نوفمبر 2026",
       intro: "تولي Agentrix-IA أهمية خاصة لحماية بياناتك الشخصية. توضح هذه السياسة البيانات التي نجمعها، ولماذا، وكيف يمكنك ممارسة حقوقك.",
       sections: [
         { h: "المسؤول عن المعالجة", body: "شركة Agentrix-IA، الكائنة بـ Avenue Hassane Rue Boundoukia، 30050 فاس، المغرب — contact@agentrix-ia.com — هي المسؤولة عن معالجة البيانات المجمّعة عبر هذا الموقع." },
         { h: "البيانات التي نجمعها", body: "عند تعبئة نموذج الاتصال: الاسم، البريد الإلكتروني المهني، الشركة، طبيعة طلبك ورسالتك. كما نجمع بيانات تصفح تقنية أساسية (اللغة المختارة، معلومات اتصال بسيطة) ضرورية لتشغيل الموقع — راجع سياسة ملفات تعريف الارتباط لمزيد من التفاصيل." },
-        { h: "لماذا نستخدمها", body: "للرد على طلبات الاتصال أو عروض الأسعار، لتقديم وتحسين وكلائنا للذكاء الاصطناعي، لضمان أمان الموقع، والامتثال لالتزاماتنا القانونية. لا نستخدم بياناتك أبدًا لأغراض إعلانية لدى أطراف ثالثة." },
+        { h: "لماذا نستخدمها", body: "للرد على طلبات الاتصال أو عروض الأسعار، لتقديم وتحسين وكلائنا للذكاء الاصطناعي، لضمان أمان الموقع، والامتثال لالتزاماتنا القانونية. إذا قبلت ملفات تعريف الارتباط، فإننا نقيس جمهور الموقع وأداء إعلاناتنا على فيسبوك وإنستغرام (Meta). لا نبيع بياناتك أبدًا." },
         { h: "الأساس القانوني", body: "تستند المعالجة إلى موافقتك (نموذج الاتصال)، والإجراءات السابقة للتعاقد بناءً على طلبك، ومصلحتنا المشروعة في ضمان أمان الموقع وحسن سيره." },
-        { h: "مشاركة البيانات", body: "لا تُباع بياناتك أبدًا. يمكن مشاركتها مع مزودي خدمات تقنيين ضروريين فقط (الاستضافة، البريد الإلكتروني) يعملون بتعليماتنا وفي إطار احترام السرية." },
+        { h: "مشاركة البيانات", body: "لا تُباع بياناتك أبدًا. يمكن مشاركتها مع مزودي خدمات تقنيين ضروريين فقط (الاستضافة، البريد الإلكتروني) يعملون بتعليماتنا وفي إطار احترام السرية. وإذا قبلت ملفات تعريف الارتباط، تُرسل أيضًا بيانات التصفح إلى Meta Platforms Ireland Ltd. (بكسل Meta)." },
         { h: "مدة الاحتفاظ", body: "يتم الاحتفاظ بالبيانات الناتجة عن طلب اتصال لمدة 24 شهرًا كحد أقصى في غياب علاقة تجارية، ثم تُحذف أو تُجهّل." },
         { h: "حقوقك", body: "لديك الحق في الوصول إلى بياناتك وتصحيحها ومحوها والاعتراض عليها ونقلها. لممارسة هذه الحقوق، راسلنا على contact@agentrix-ia.com. يمكنك أيضًا التواصل مع اللجنة الوطنية لمراقبة حماية المعطيات ذات الطابع الشخصي (CNDP) بالمغرب، أو السلطة المختصة بحماية البيانات إذا كنت مقيمًا في الاتحاد الأوروبي." },
         { h: "الأمان", body: "نطبّق تدابير تقنية وتنظيمية معقولة لحماية بياناتك من الفقدان أو الوصول غير المصرح به أو الإفشاء." },
@@ -1005,14 +1005,14 @@ window.I18N_AR = {
     cookies: {
       eyebrow: "ملفات تعريف الارتباط",
       title: "سياسة ملفات تعريف الارتباط",
-      updated: "آخر تحديث: 18 سبتمبر 2026",
+      updated: "آخر تحديث: 24 نوفمبر 2026",
       intro: "توضح هذه الصفحة ما هي ملفات تعريف الارتباط، وأيها نستخدمه على agentrix-ia.com، وكيف يمكنك إدارة تفضيلاتك.",
       sections: [
         { h: "ما هو ملف تعريف الارتباط؟", body: "ملف تعريف الارتباط (أو متتبع مشابه، مثل التخزين المحلي للمتصفح) هو ملف صغير يُوضع على جهازك أثناء زيارتك، يتيح حفظ معلومات من زيارة إلى أخرى." },
-        { h: "ملفات تعريف الارتباط التي نستخدمها", body: "يستخدم موقعنا فقط متتبعات أساسية: لغة العرض المفضلة لديك (FR/EN/AR) واختيارك بخصوص الموافقة على ملفات تعريف الارتباط. لا يتم حاليًا وضع أي ملف تعريف ارتباط إعلاني أو لقياس الجمهور." },
-        { h: "خدمات الأطراف الثالثة", body: "تتضمن صفحة الاتصال خريطة من OpenStreetMap. قد تضع هذه الخدمة الخارجية ملفات تعريف ارتباط تقنية خاصة بها عند عرض الخريطة، بشكل مستقل عن موقعنا. ليس لدينا أي تحكم في هذه الملفات." },
-        { h: "إدارة تفضيلاتك", body: "يمكنك قبول أو رفض ملفات تعريف الارتباط غير الأساسية عبر الشريط الذي يظهر عند أول زيارة لك. يمكنك أيضًا حذف ملفات تعريف الارتباط والتخزين المحلي في أي وقت من إعدادات متصفحك." },
-        { h: "تحديث هذه السياسة", body: "إذا تغيّر استخدامنا لملفات تعريف الارتباط (مثل إضافة أداة لقياس الجمهور)، سيتم تحديث هذه الصفحة، وسيُطلب منك عند الحاجة موافقة جديدة." }
+        { h: "ملفات تعريف الارتباط التي نستخدمها", body: "يستخدم موقعنا افتراضيًا متتبعات أساسية فقط: لغة العرض المفضلة لديك (FR/EN/AR) واختيارك بخصوص الموافقة. إذا نقرت على «قبول»، نفعّل بكسل Meta (فيسبوك / إنستغرام) الذي يضع ملفات تعريف ارتباط لقياس الزيارات وطلبات الاتصال الناتجة عن إعلاناتنا. إذا نقرت على «رفض»، لا يتم تحميل أي بكسل." },
+        { h: "خدمات الأطراف الثالثة", body: "لا يتم تحميل بكسل Meta (Meta Platforms Ireland Ltd.) إلا بعد موافقتك. تتضمن صفحة الاتصال خريطة من OpenStreetMap. قد تضع هذه الخدمة الخارجية ملفات تعريف ارتباط تقنية خاصة بها عند عرض الخريطة، بشكل مستقل عن موقعنا. ليس لدينا أي تحكم في هذه الملفات." },
+        { h: "إدارة تفضيلاتك", body: "يمكنك قبول أو رفض ملفات تعريف الارتباط غير الأساسية عبر الشريط الذي يظهر عند أول زيارة لك. لتغيير رأيك، امسح التخزين المحلي للموقع من إعدادات متصفحك وسيظهر الشريط من جديد. يمكنك أيضًا إدارة تفضيلاتك الإعلانية من إعدادات حسابك على فيسبوك أو إنستغرام." },
+        { h: "تحديث هذه السياسة", body: "إذا تغيّر استخدامنا لملفات تعريف الارتباط، سيتم تحديث هذه الصفحة، وسيُطلب منك عند الحاجة موافقة جديدة." }
       ]
     },
     terms: {
@@ -1032,8 +1032,8 @@ window.I18N_AR = {
     }
   },
   cookieBanner: {
-    title: "نستخدم ملفات تعريف ارتباط أساسية فقط",
-    text: "فقط لحفظ لغتك واختيارك أدناه — دون أي متتبع إعلاني.",
+    title: "ملفات تعريف الارتباط: أساسية، وإعلانية إذا قبلت",
+    text: "الملفات الأساسية تحفظ لغتك. عند «قبول» نفعّل أيضًا بكسل Meta لقياس إعلاناتنا. «رفض» لا يحمّل أي متتبع.",
     accept: "قبول",
     decline: "رفض",
     link: "معرفة المزيد"

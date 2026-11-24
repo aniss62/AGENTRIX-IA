@@ -32,7 +32,7 @@ function LeadForm({ variant = "section", onDone }) {
     })
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        if (data.ok) { setStatus("sent"); if (onDone) onDone(v); }
+        if (data.ok) { setStatus("sent"); if (window.MetaPixel) window.MetaPixel.track("Lead"); if (onDone) onDone(v); }
         else { setStatus("error"); }
       })
       .catch(function () { setStatus("error"); });

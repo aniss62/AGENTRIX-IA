@@ -74,6 +74,9 @@ function App() {
   // scroll to top on route change
   useEffect(() => { window.scrollTo(0, 0); }, [route]);
 
+  // Pixel Meta : page vue à chaque route (ne fait rien sans consentement)
+  useEffect(() => { if (window.MetaPixel) window.MetaPixel.pageView(); }, [route]);
+
   const pages = {
     home: window.PageHome,
     product: window.PageProduct,
