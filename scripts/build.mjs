@@ -24,7 +24,10 @@ const require = createRequire(import.meta.url);
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = join(ROOT, "dist");
 const SITE_URL = "https://www.agentrix-ia.com/";
-const EXCLUDE = new Set(["node_modules", ".git", "dist", ".vercel", "scripts", ".env", ".env.local", "package.json", "package-lock.json"]);
+// Fichiers internes (code des fonctions, specs, agents, scripts Instagram…) : jamais servis publiquement.
+// Seul instagentrix/media est publié (URL publiques des visuels Instagram), copié plus bas.
+const EXCLUDE = new Set(["node_modules", ".git", "dist", ".vercel", "scripts", ".env", ".env.local", "package.json", "package-lock.json",
+  "api", "docs", "blog-blueprint", "claude.md", "vercel.json", ".claude", "instagentrix"]);
 
 const log = (...a) => console.log("[build]", ...a);
 const hash = (s) => createHash("sha1").update(s).digest("hex").slice(0, 10);
@@ -36,6 +39,8 @@ for (const entry of readdirSync(ROOT)) {
   if (EXCLUDE.has(entry)) continue;
   cpSync(join(ROOT, entry), join(DIST, entry), { recursive: true });
 }
+mkdirSync(join(DIST, "instagentrix"), { recursive: true });
+cpSync(join(ROOT, "instagentrix", "media"), join(DIST, "instagentrix", "media"), { recursive: true });
 
 let html = readFileSync(join(ROOT, "index.html"), "utf8");
 
