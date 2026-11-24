@@ -245,6 +245,17 @@ for (const page of PAGES) {
     n++;
   }
   log(`blog : thème clair/sombre injecté dans ${n} pages`);
+
+  // Bannière cookies + Pixel Meta (consentement partagé avec le site)
+  let c = 0;
+  for (const f of walk(join(DIST, "blog"))) {
+    let page = readFileSync(f, "utf8");
+    if (page.includes("agentrix/blog-consent.js")) continue;
+    page = page.replace("</body>", `<script src="/agentrix/blog-consent.js" defer></script>\n</body>`);
+    writeFileSync(f, page);
+    c++;
+  }
+  log(`blog : bannière cookies + pixel injectés dans ${c} pages`);
 }
 
 log("OK → dist/");
